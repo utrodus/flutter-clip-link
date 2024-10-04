@@ -10,6 +10,16 @@
             "type": "dart"
         },
         {
+            "name": "flutter_clip_link (web)",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/main.dart",
+            "args": [
+                "-d",
+                "chrome"
+            ]
+        },
+        {
             "name": "flutter_clip_link (profile mode)",
             "request": "launch",
             "type": "dart",
