@@ -1,16 +1,36 @@
-# flutter_clip_link
+# Flutter Clip Link
+> Cross-platform URL Shortener App to create short links for your favourite websites powered by Flutter and [spoo.me](https://spoo.me/)
 
-A new Flutter project.
 
-## Getting Started
+## Technologies Used ⚙
 
-This project is a starting point for a Flutter application.
+| Dart       | Flutter   | DevTools  |
+| ---------- | --------- | --------- |
+| `3.5.3` | `3.24.3` | `2.37.3`    |
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Get Started 🚀
+Before you start, make sure you have the following installed:
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- Flutter SDK `3.24.3`
+- Dart SDK `3.5.3`
+
+### Clone the repo
+- Clone the repo
+```bash
+git clone https://github.com/utrodus/flutter_clip_link
+```
+
+### Install dependencies
+run the following command to install all the dependencies
+```bash
+flutter pub get
+```
+
+### Run the app
+- in Visual Studio Code, navigate to run and debug section
+- choose the `flutter_clip_link` configuration
+  - if you choose `flutter_clip_link`, it will run in debug mode in selected device
+  - for web, choose `flutter_clip_link (web)`
+
+> Now you're ready to go! 🚀
