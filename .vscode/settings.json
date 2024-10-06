@@ -1,0 +1,16 @@
+{
+    "conventionalCommits.scopes": [
+        "docs", 
+        "barrel", 
+        "di", 
+        "assets", 
+        "routes", 
+        "theme", 
+        "auth", 
+        "main", 
+        "shorten", 
+        "favorited",
+        "search",
+        "settings",
+    ]
+}
