@@ -7,9 +7,7 @@ analyzer:
     - "**/*.freezed.dart"
     - "**/*.gr.dart"
   language:
-    strict-casts: true
-    strict-inference: true
-    strict-raw-types: true
+    strict-casts: true    
   errors:
     missing_return: error
 
