@@ -1,20 +1,14 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_clip_link/src/app.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_clip_link/src/core/core.dart';
+import 'package:flutter_clip_link/src/init_di.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  _initGoogleFonts();
+  Bloc.observer = const AppBlocObserver();
+
+  await initDI();
+  AppTheme.initGoogleFonts();
   runApp(const ClipLinkApp());
-}
-
-void _initGoogleFonts() {
-  GoogleFonts.config.allowRuntimeFetching = false;
-
-  LicenseRegistry.addLicense(() async* {
-    final license = await rootBundle.loadString('google_fonts/OFL.txt');
-    yield LicenseEntryWithLineBreaks(['google_fonts'], license);
-  });
 }
