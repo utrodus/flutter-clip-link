@@ -98,6 +98,10 @@ class $AssetsIllustrationGen {
   SvgGenImage get favoritedEmptyLight =>
       const SvgGenImage('assets/illustration/favorited_empty_light.svg');
 
+  /// File path: assets/illustration/google_logo.svg
+  SvgGenImage get googleLogo =>
+      const SvgGenImage('assets/illustration/google_logo.svg');
+
   /// File path: assets/illustration/shorten_empty_dark.svg
   SvgGenImage get shortenEmptyDark =>
       const SvgGenImage('assets/illustration/shorten_empty_dark.svg');
@@ -111,6 +115,7 @@ class $AssetsIllustrationGen {
         emailSent,
         favoritedEmptyDark,
         favoritedEmptyLight,
+        googleLogo,
         shortenEmptyDark,
         shortenEmptyLight
       ];
