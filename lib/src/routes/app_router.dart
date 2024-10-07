@@ -32,7 +32,7 @@ class AppRouter {
       ),
       GoRoute(
         path: Routes.signin.path,
-        builder: (context, state) => SignInPage(),
+        builder: (context, state) => const SignInPage(),
       ),
       GoRoute(
         path: Routes.signup.path,
