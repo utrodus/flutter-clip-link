@@ -18,7 +18,6 @@ dependencies:
   flutter_svg: ^2.0.10+1
   get_it: ^8.0.0
   go_router: ^14.2.8
-  google_fonts: ^6.2.1
   iconsax_plus: ^1.0.0
   loggy: ^2.0.3
   reactive_forms: ^17.0.1
@@ -39,6 +38,17 @@ flutter:
     - assets/illustration/
     - assets/images/
     - assets/icons/
+  fonts:
+    - family: Roboto
+      fonts:
+        - asset: assets/fonts/Roboto-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Roboto-Medium.ttf
+          weight: 500     
+        - asset: assets/fonts/Roboto-Bold.ttf
+          weight: 700    
+        - asset: assets/fonts/Roboto-Black.ttf
+          weight: 700         
 
 # To generate the launcher icons for the app, run:
 # dart run flutter_launcher_icons

@@ -10,6 +10,5 @@ void main() async {
   Bloc.observer = const AppBlocObserver();
 
   await initDI();
-  AppTheme.initGoogleFonts();
   runApp(const ClipLinkApp());
 }
