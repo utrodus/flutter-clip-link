@@ -19,7 +19,6 @@ class CLTextField extends StatelessWidget {
   });
 
   final String fcontrolName;
-  final Widget? prefixIcon;
   final Widget? suffix;
   final TextInputAction? textInputAction;
   final String? label;
@@ -27,6 +26,7 @@ class CLTextField extends StatelessWidget {
   final void Function(FormControl<Object?>)? onSubmitted;
   final Map<String, String Function(Object)>? validationMessages;
   final bool? obscureText;
+  final IconData? prefixIcon;
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +52,12 @@ class CLTextField extends StatelessWidget {
             hintStyle: context.textTheme.bodyLarge?.copyWith(
               color: context.colorScheme.onSurfaceVariant,
             ),
-            prefixIcon: prefixIcon,
+            prefixIcon: prefixIcon != null
+                ? Icon(
+                    prefixIcon,
+                    color: context.colorScheme.secondary,
+                  )
+                : null,
             suffix: suffix,
           ),
     );
