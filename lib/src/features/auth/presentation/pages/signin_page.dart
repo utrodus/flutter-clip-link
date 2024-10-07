@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_clip_link/src/core/components/button/cl_button.dart';
-import 'package:flutter_clip_link/src/core/components/input/cl_text_field.dart';
 import 'package:flutter_clip_link/src/core/core.dart';
+import 'package:flutter_clip_link/src/routes/routes.dart';
 import 'package:iconsax_plus/iconsax_plus.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
@@ -14,13 +13,13 @@ class SignInPage extends StatefulWidget {
 
 class _SignInPageState extends State<SignInPage> {
   final form = FormGroup({
-    'email': FormControl<String>(
+    FormFieldNames.email: FormControl<String>(
       validators: [
         Validators.required,
         Validators.email,
       ],
     ),
-    'password': FormControl<String>(
+    FormFieldNames.password: FormControl<String>(
       validators: [
         Validators.required,
         Validators.minLength(6),
@@ -29,6 +28,12 @@ class _SignInPageState extends State<SignInPage> {
   });
 
   bool canShowPassword = true;
+
+  @override
+  void dispose() {
+    form.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -84,29 +89,26 @@ class _SignInPageState extends State<SignInPage> {
                 child: Column(
                   children: <Widget>[
                     CLTextField(
-                      fcontrolName: 'email',
+                      fcontrolName: FormFieldNames.email,
                       textInputAction: TextInputAction.next,
                       onSubmitted: (control) =>
-                          form.control('password').focus(),
+                          form.control(FormFieldNames.password).focus(),
                       validationMessages: {
                         ValidationMessage.required: (error) =>
                             'Email must be filled!',
                       },
                       label: 'Email',
                       hintText: 'Enter your email',
-                      prefixIcon: Icon(
-                        IconsaxPlusLinear.sms,
-                        color: context.colorScheme.secondary,
-                      ),
+                      prefixIcon: IconsaxPlusLinear.sms,
                     ),
                     const SizedBox(
-                      height: 27,
+                      height: 24,
                     ),
                     CLTextField(
-                      fcontrolName: 'password',
+                      fcontrolName: FormFieldNames.password,
                       textInputAction: TextInputAction.done,
                       onSubmitted: (control) =>
-                          form.control('password').unfocus(),
+                          form.control(FormFieldNames.password).unfocus(),
                       validationMessages: {
                         ValidationMessage.required: (error) =>
                             'Password must be filled!',
@@ -115,10 +117,7 @@ class _SignInPageState extends State<SignInPage> {
                       },
                       label: 'Password',
                       hintText: 'Enter your Password',
-                      prefixIcon: Icon(
-                        IconsaxPlusLinear.lock,
-                        color: context.colorScheme.secondary,
-                      ),
+                      prefixIcon: IconsaxPlusLinear.lock,
                       suffix: GestureDetector(
                         child: Icon(
                           canShowPassword
@@ -219,7 +218,9 @@ class _SignInPageState extends State<SignInPage> {
                     ),
                   ),
                   GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      Routes.signup.push(context);
+                    },
                     child: Text(
                       'Sign Up',
                       style: context.textTheme.bodySmall?.copyWith(
