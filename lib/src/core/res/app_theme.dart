@@ -17,6 +17,7 @@ class AppTheme {
       colorScheme: colorScheme,
       textTheme: GoogleFonts.robotoTextTheme(),
       inputDecorationTheme: inputDecorationTheme(colorScheme),
+      elevatedButtonTheme: elevatedButtonThemeData(colorScheme),
     );
     return theme;
   }
@@ -76,6 +77,25 @@ class AppTheme {
             color: colorScheme.error,
           ),
           borderRadius: const BorderRadius.all(Radius.circular(4)),
+        ),
+      );
+
+  /// Elevated Button Theme Configs
+  ElevatedButtonThemeData elevatedButtonThemeData(ColorScheme colorScheme) =>
+      ElevatedButtonThemeData(
+        style: ElevatedButton.styleFrom(
+          backgroundColor: colorScheme.primary,
+          foregroundColor: colorScheme.onPrimary,
+          disabledBackgroundColor: colorScheme.onSurface.withOpacity(0.12),
+          disabledForegroundColor: colorScheme.onSurface,
+          padding: const EdgeInsets.symmetric(
+            vertical: 13,
+            horizontal: 24,
+          ),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(100),
+          ),
+          elevation: 0,
         ),
       );
 }
