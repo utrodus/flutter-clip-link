@@ -31,8 +31,128 @@
 
   <title>flutter_clip_link</title>
   <link rel="manifest" href="manifest.json">
+  <style>
+    
+    body {
+      background-color: #7852E1;
+      height: 100vh;
+      width: 100vw;
+      position: fixed;
+      inset: 0px;
+      overflow: hidden;
+      padding: 0px;
+      margin: 0px;
+      user-select: none;
+      touch-action: none;
+    }
+
+    .main-content {
+      height: 100%;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity .4s ease-out;
+    }
+
+    img {
+      width: 100px;
+      height: 100px;
+      position: absolute;
+    }
+
+    p {
+      color: #fff;
+    }
+
+
+    .loader {
+      position: relative;
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      background: linear-gradient(#5320A3, #7852E1, #6526c9);
+      animation: animate 1.2s linear infinite;
+    }
+
+    @keyframes animate {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    .loader span {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 60%;
+      background: linear-gradient(#5320A3, #7852E1, #6526c9);
+    }
+
+    .loader span:nth-child(1) {
+      filter: blur(5px);
+    }
+
+    .loader span:nth-child(2) {
+      filter: blur(10px);
+    }
+
+    .loader span:nth-child(3) {
+      filter: blur(25px);
+    }
+
+    .loader span:nth-child(4) {
+      filter: blur(50px);
+    }
+
+    .loader:after {
+      content: '';
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      right: 10px;
+      bottom: 10px;
+      background: #4F378B;
+      border-radius: 50%;
+    }
+  </style>
+  <script>
+    function delay(time) {
+      return new Promise(resolve => setTimeout(resolve, time));
+    }
+
+    window.addEventListener('load', function (ev) {
+      var loaderContent = document.querySelector('#loader-content');
+      
+      // Download main.dart.js
+      _flutter.loader.load({
+        serviceWorker: {
+          serviceWorkerVersion: serviceWorkerVersion,
+        }, 
+      })
+      .then(function (engineInitializer) {
+        return engineInitializer.initializeEngine();
+      }).then(async function (appRunner) {
+        loaderContent.style.opacity = "0";
+        await delay(400);
+        await appRunner.runApp();
+      });
+    });
+  </script>
 </head>
 <body>
+  <div class="main-content" id="loader-content">
+    <div class="loader">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <img src="main-icon.png" />
   <script src="flutter_bootstrap.js" async></script>
 </body>
 </html>
