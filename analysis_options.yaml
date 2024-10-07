@@ -11,6 +11,7 @@ analyzer:
   errors:
     missing_return: error
     library_private_types_in_public_api: ignore
+    depend_on_referenced_packages: ignore
 
 linter:
   rules:
