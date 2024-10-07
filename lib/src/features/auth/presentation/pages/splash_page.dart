@@ -42,8 +42,8 @@ class _SplashPageState extends State<SplashPage> {
                     const SizedBox(width: 13),
                     Text(
                       'ClipLink',
-                      style: context.textTheme.displayMedium?.copyWith(
-                        fontWeight: FontWeight.w800,
+                      style: context.textTheme.displaySmall?.copyWith(
+                        fontWeight: medium,
                         color: context.colorScheme.onPrimaryContainer,
                       ),
                     ),
@@ -51,7 +51,9 @@ class _SplashPageState extends State<SplashPage> {
                 ),
               ),
               const Spacer(),
-              const CircularProgressIndicator(),
+              const Center(
+                child: LoaderByPlatform(),
+              ),
               const Spacer(),
             ],
           ),
