@@ -1,6 +1,7 @@
 {
     "conventionalCommits.scopes": [
         "docs",
+        "pubspec", 
         "barrel",
         "di",
         "assets",
