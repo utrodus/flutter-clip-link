@@ -6,6 +6,7 @@ import 'package:flutter_clip_link/src/init_di.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  initLoggy();
   Bloc.observer = const AppBlocObserver();
 
   await initDI();
