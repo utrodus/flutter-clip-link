@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_clip_link/src/core/components/button/cl_button.dart';
+import 'package:flutter_clip_link/src/core/components/input/cl_text_field.dart';
 import 'package:flutter_clip_link/src/core/core.dart';
 import 'package:iconsax_plus/iconsax_plus.dart';
 import 'package:reactive_forms/reactive_forms.dart';
@@ -81,65 +83,152 @@ class _SignInPageState extends State<SignInPage> {
                 formGroup: form,
                 child: Column(
                   children: <Widget>[
-                    ReactiveTextField(
-                      formControlName: 'email',
-                      decoration: const InputDecoration()
-                          .applyDefaults(Theme.of(context).inputDecorationTheme)
-                          .copyWith(
-                            label: const Text('Email'),
-                            hintText: 'Enter your email',
-                            prefixIcon: Icon(
-                              IconsaxPlusLinear.sms,
-                              color: context.colorScheme.secondary,
-                            ),
-                          ),
+                    CLTextField(
+                      fcontrolName: 'email',
                       textInputAction: TextInputAction.next,
                       onSubmitted: (control) =>
                           form.control('password').focus(),
-                      onTapOutside: (event) => FocusScope.of(context).unfocus(),
                       validationMessages: {
                         ValidationMessage.required: (error) =>
                             'Email must be filled!',
                       },
+                      label: 'Email',
+                      hintText: 'Enter your email',
+                      prefixIcon: Icon(
+                        IconsaxPlusLinear.sms,
+                        color: context.colorScheme.secondary,
+                      ),
                     ),
                     const SizedBox(
                       height: 27,
                     ),
-                    ReactiveTextField(
-                      formControlName: 'password',
-                      decoration: const InputDecoration()
-                          .applyDefaults(Theme.of(context).inputDecorationTheme)
-                          .copyWith(
-                            label: const Text('Password'),
-                            hintText: 'Enter your Password',
-                            prefixIcon: Icon(
-                              IconsaxPlusLinear.lock,
-                              color: context.colorScheme.secondary,
-                            ),
-                            suffix: GestureDetector(
-                              child: Icon(
-                                canShowPassword
-                                    ? IconsaxPlusLinear.eye
-                                    : IconsaxPlusLinear.eye_slash,
-                                color: context.colorScheme.secondary,
-                              ),
-                              onTap: () => setState(
-                                () => canShowPassword = !canShowPassword,
-                              ),
-                            ),
-                          ),
-                      obscureText: canShowPassword,
+                    CLTextField(
+                      fcontrolName: 'password',
                       textInputAction: TextInputAction.done,
                       onSubmitted: (control) =>
                           form.control('password').unfocus(),
-                      onTapOutside: (event) => FocusScope.of(context).unfocus(),
                       validationMessages: {
                         ValidationMessage.required: (error) =>
                             'Password must be filled!',
+                        ValidationMessage.minLength: (error) =>
+                            'Password must be at least 6 characters long!',
+                      },
+                      label: 'Password',
+                      hintText: 'Enter your Password',
+                      prefixIcon: Icon(
+                        IconsaxPlusLinear.lock,
+                        color: context.colorScheme.secondary,
+                      ),
+                      suffix: GestureDetector(
+                        child: Icon(
+                          canShowPassword
+                              ? IconsaxPlusLinear.eye
+                              : IconsaxPlusLinear.eye_slash,
+                          color: context.colorScheme.secondary,
+                        ),
+                        onTap: () => setState(
+                          () => canShowPassword = !canShowPassword,
+                        ),
+                      ),
+                      obscureText: canShowPassword,
+                    ),
+                    const SizedBox(
+                      height: 8,
+                    ),
+                    Align(
+                      alignment: Alignment.centerRight,
+                      child: TextButton(
+                        child: Text(
+                          'Forgot Password?',
+                          style: context.textTheme.labelMedium?.copyWith(
+                            color: context.colorScheme.primary,
+                            fontWeight: bold,
+                          ),
+                        ),
+                        onPressed: () {},
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 16,
+                    ),
+                    ReactiveFormConsumer(
+                      builder: (context, formGroup, child) {
+                        return CLButton(
+                          text: 'Log In',
+                          onPressed: formGroup.valid ? () {} : null,
+                        );
                       },
                     ),
                   ],
                 ),
+              ),
+              const SizedBox(
+                height: 25,
+              ),
+              Center(
+                child: Text(
+                  'Or',
+                  style: context.textTheme.bodySmall,
+                ),
+              ),
+              const SizedBox(
+                height: 16,
+              ),
+              TextButton(
+                style: TextButton.styleFrom(
+                  minimumSize: const Size(double.infinity, 48),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    side: BorderSide(
+                      color: context.colorScheme.surfaceDim,
+                      width: 1,
+                    ),
+                  ),
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Assets.illustration.googleLogo.svg(
+                      width: 18,
+                      height: 18,
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    Text(
+                      'Continue with Google',
+                      style: context.textTheme.titleSmall?.copyWith(
+                        color: context.colorScheme.onSurface,
+                        fontWeight: regular,
+                      ),
+                    ),
+                  ],
+                ),
+                onPressed: () {},
+              ),
+              const SizedBox(
+                height: 46,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Text(
+                    'Don’t have an account? ',
+                    style: context.textTheme.bodySmall?.copyWith(
+                      color: context.colorScheme.secondary,
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {},
+                    child: Text(
+                      'Sign Up',
+                      style: context.textTheme.bodySmall?.copyWith(
+                        color: context.colorScheme.primary,
+                        fontWeight: bold,
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ],
           ),
