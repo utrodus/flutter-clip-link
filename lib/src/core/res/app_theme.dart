@@ -20,8 +20,29 @@ class AppTheme {
       textTheme: textTheme(colorScheme),
       inputDecorationTheme: inputDecorationTheme(colorScheme),
       elevatedButtonTheme: elevatedButtonThemeData(colorScheme),
+      snackBarTheme: snackBarThemeData(colorScheme),
     );
     return theme;
+  }
+
+  SnackBarThemeData snackBarThemeData(ColorScheme colorScheme) {
+    return SnackBarThemeData(
+      backgroundColor: colorScheme.inverseSurface,
+      contentTextStyle: TextStyle(
+        fontFamily: _fontFamily,
+        fontSize: 14,
+        height: 1.43,
+        fontWeight: regular,
+        color: colorScheme.onInverseSurface,
+        letterSpacing: 0.25,
+      ),
+      actionTextColor: colorScheme.inversePrimary,
+      elevation: 3,
+      closeIconColor: colorScheme.onInverseSurface,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(4),
+      ),
+    );
   }
 
   InputDecorationTheme inputDecorationTheme(ColorScheme colorScheme) =>
