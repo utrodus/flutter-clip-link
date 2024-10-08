@@ -40,7 +40,7 @@ class AppRouter {
       ),
       GoRoute(
         path: Routes.forgotPassword.path,
-        builder: (context, state) => const ForgotPasswordPage(),
+        builder: (context, state) => ForgotPasswordPage(),
       ),
       GoRoute(
         path: Routes.successForgotPassword.path,
