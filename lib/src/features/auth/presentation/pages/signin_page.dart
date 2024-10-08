@@ -139,12 +139,14 @@ class _SignInPageState extends State<SignInPage> {
                       child: TextButton(
                         child: Text(
                           'Forgot Password?',
-                          style: context.textTheme.labelMedium?.copyWith(
+                          style: context.textTheme.bodyMedium?.copyWith(
                             color: context.colorScheme.primary,
                             fontWeight: bold,
                           ),
                         ),
-                        onPressed: () {},
+                        onPressed: () {
+                          Routes.forgotPassword.push(context);
+                        },
                       ),
                     ),
                     const SizedBox(
@@ -213,7 +215,7 @@ class _SignInPageState extends State<SignInPage> {
                 children: <Widget>[
                   Text(
                     'Don’t have an account? ',
-                    style: context.textTheme.bodySmall?.copyWith(
+                    style: context.textTheme.bodyMedium?.copyWith(
                       color: context.colorScheme.secondary,
                     ),
                   ),
@@ -223,7 +225,7 @@ class _SignInPageState extends State<SignInPage> {
                     },
                     child: Text(
                       'Sign Up',
-                      style: context.textTheme.bodySmall?.copyWith(
+                      style: context.textTheme.bodyMedium?.copyWith(
                         color: context.colorScheme.primary,
                         fontWeight: bold,
                       ),
