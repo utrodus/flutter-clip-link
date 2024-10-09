@@ -15,35 +15,92 @@ class AppTheme {
     final theme = ThemeData(
       useMaterial3: true,
       fontFamily: _fontFamily,
-      scaffoldBackgroundColor: colorScheme.surface,
       colorScheme: colorScheme,
+      scaffoldBackgroundColor: colorScheme.surface,
+      appBarTheme: appBarTheme(colorScheme),
+      floatingActionButtonTheme: floatingActionButtonThemeData(colorScheme),
       textTheme: textTheme(colorScheme),
       inputDecorationTheme: inputDecorationTheme(colorScheme),
       elevatedButtonTheme: elevatedButtonThemeData(colorScheme),
       snackBarTheme: snackBarThemeData(colorScheme),
+      navigationRailTheme: navigationRailThemeData(colorScheme),
     );
     return theme;
   }
 
-  SnackBarThemeData snackBarThemeData(ColorScheme colorScheme) {
-    return SnackBarThemeData(
-      backgroundColor: colorScheme.inverseSurface,
-      contentTextStyle: TextStyle(
-        fontFamily: _fontFamily,
-        fontSize: 14,
-        height: 1.43,
-        fontWeight: regular,
-        color: colorScheme.onInverseSurface,
-        letterSpacing: 0.25,
-      ),
-      actionTextColor: colorScheme.inversePrimary,
-      elevation: 3,
-      closeIconColor: colorScheme.onInverseSurface,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(4),
-      ),
-    );
-  }
+  AppBarTheme appBarTheme(ColorScheme colorScheme) => AppBarTheme(
+        backgroundColor: colorScheme.surface,
+        foregroundColor: colorScheme.onSurface,
+        elevation: 0,
+        titleTextStyle: TextStyle(
+          fontFamily: _fontFamily,
+          fontSize: 22,
+          height: 1.27,
+          fontWeight: regular,
+          color: colorScheme.onSurface,
+        ),
+      );
+
+  FloatingActionButtonThemeData floatingActionButtonThemeData(
+    ColorScheme colorScheme,
+  ) =>
+      FloatingActionButtonThemeData(
+        backgroundColor: colorScheme.primaryContainer,
+        foregroundColor: colorScheme.onPrimaryContainer,
+        elevation: 2,
+        shape: const CircleBorder(),
+      );
+
+  SnackBarThemeData snackBarThemeData(ColorScheme colorScheme) =>
+      SnackBarThemeData(
+        backgroundColor: colorScheme.inverseSurface,
+        contentTextStyle: TextStyle(
+          fontFamily: _fontFamily,
+          fontSize: 14,
+          height: 1.43,
+          fontWeight: regular,
+          color: colorScheme.onInverseSurface,
+          letterSpacing: 0.25,
+        ),
+        actionTextColor: colorScheme.inversePrimary,
+        elevation: 3,
+        closeIconColor: colorScheme.onInverseSurface,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(4),
+        ),
+      );
+
+  NavigationRailThemeData navigationRailThemeData(ColorScheme colorScheme) =>
+      NavigationRailThemeData(
+        backgroundColor: colorScheme.surface,
+        elevation: 1,
+        minExtendedWidth: 170,
+        minWidth: 72,
+        selectedIconTheme: IconThemeData(
+          color: colorScheme.onSecondaryContainer,
+        ),
+        unselectedIconTheme: IconThemeData(
+          color: colorScheme.onSurfaceVariant,
+        ),
+        indicatorColor: colorScheme.secondaryContainer,
+        unselectedLabelTextStyle: TextStyle(
+          fontFamily: _fontFamily,
+          fontSize: 12,
+          height: 1.33,
+          fontWeight: medium,
+          color: colorScheme.onSurfaceVariant,
+          letterSpacing: 0.5,
+        ),
+        selectedLabelTextStyle: TextStyle(
+          fontFamily: _fontFamily,
+          fontSize: 12,
+          height: 1.33,
+          fontWeight: bold,
+          color: colorScheme.onSurface,
+          letterSpacing: 0.5,
+        ),
+        useIndicator: true,
+      );
 
   InputDecorationTheme inputDecorationTheme(ColorScheme colorScheme) =>
       InputDecorationTheme(
