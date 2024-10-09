@@ -13,4 +13,6 @@ export 'logger/loggy_types.dart';
 export 'res/app_color_scheme.dart';
 export 'res/app_theme.dart';
 export 'res/generated/assets.gen.dart';
+export 'res/generated/fonts.gen.dart';
 export 'util/app_bloc_observer.dart';
+export 'util/regexp.dart';
