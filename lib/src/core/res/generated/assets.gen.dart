@@ -71,16 +71,11 @@ class $AssetsFontsGen {
 class $AssetsIconsGen {
   const $AssetsIconsGen();
 
-  /// File path: assets/icons/ic_search_dark.svg
-  SvgGenImage get icSearchDark =>
-      const SvgGenImage('assets/icons/ic_search_dark.svg');
-
-  /// File path: assets/icons/ic_search_light.svg
-  SvgGenImage get icSearchLight =>
-      const SvgGenImage('assets/icons/ic_search_light.svg');
+  /// File path: assets/icons/ic_search.svg
+  SvgGenImage get icSearch => const SvgGenImage('assets/icons/ic_search.svg');
 
   /// List of all assets
-  List<SvgGenImage> get values => [icSearchDark, icSearchLight];
+  List<SvgGenImage> get values => [icSearch];
 }
 
 class $AssetsIllustrationGen {
