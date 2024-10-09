@@ -13,113 +13,133 @@ import 'package:flutter_clip_link/src/routes/routes.dart';
 import 'package:go_router/go_router.dart';
 
 final _rootNavigatorKey = GlobalKey<NavigatorState>();
-final _sectionNavigatorKey = GlobalKey<NavigatorState>();
+final _shortenSectionNavigatorKey = GlobalKey<NavigatorState>();
+final _favoritedSectionNavigatorKey = GlobalKey<NavigatorState>();
+final _settingsSectionNavigatorKey = GlobalKey<NavigatorState>();
 
-class AppRouter {
-  AppRouter._();
-
-  static GoRouter router = GoRouter(
-    navigatorKey: _rootNavigatorKey,
-    initialLocation: Routes.splash.path,
-    debugLogDiagnostics: kDebugMode,
-    routes: [
-      GoRoute(
-        path: Routes.splash.path,
-        builder: (_, __) => BlocProvider(
-          create: (context) => sl<SplashCubit>()..onLoaded(),
-          child: const SplashPage(),
-        ),
+GoRouter appRouter = GoRouter(
+  navigatorKey: _rootNavigatorKey,
+  initialLocation: Routes.splash.path,
+  debugLogDiagnostics: kDebugMode,
+  routes: [
+    GoRoute(
+      path: Routes.splash.path,
+      builder: (_, __) => BlocProvider(
+        create: (context) => sl<SplashCubit>()..onLoaded(),
+        child: const SplashPage(),
       ),
-      GoRoute(
-        path: Routes.signin.path,
-        builder: (context, state) => const SignInPage(),
-      ),
-      GoRoute(
-        path: Routes.signup.path,
-        builder: (context, state) => const SignUpPage(),
-      ),
-      GoRoute(
-        path: Routes.forgotPassword.path,
-        builder: (context, state) => ForgotPasswordPage(),
-      ),
-      GoRoute(
-        path: Routes.successForgotPassword.path,
-        builder: (context, state) => const SuccessForgotPasswordPage(),
-      ),
-      StatefulShellRoute.indexedStack(
-        builder: (context, state, navShell) {
-          return MainPage(
+    ),
+    GoRoute(
+      path: Routes.signin.path,
+      builder: (context, state) => const SignInPage(),
+    ),
+    GoRoute(
+      path: Routes.signup.path,
+      builder: (context, state) => const SignUpPage(),
+    ),
+    GoRoute(
+      path: Routes.forgotPassword.path,
+      builder: (context, state) => ForgotPasswordPage(),
+    ),
+    GoRoute(
+      path: Routes.successForgotPassword.path,
+      builder: (context, state) => const SuccessForgotPasswordPage(),
+    ),
+    StatefulShellRoute.indexedStack(
+      builder: (context, state, navShell) {
+        return BlocProvider(
+          create: (context) => sl<ScaffoldNavRailCubit>(),
+          child: MainPage(
             navShell: navShell,
-          );
-        },
-        branches: [
-          StatefulShellBranch(
-            navigatorKey: _sectionNavigatorKey,
-            routes: [
-              GoRoute(
-                path: Routes.listShorten.path,
-                builder: (context, state) => const ListShortenUrlPage(),
-                routes: [
-                  GoRoute(
-                    path: Routes.detailShortenURL.path,
-                    builder: (context, state) {
-                      final shortCode = state.pathParameters['shortCode']!;
-                      return DetailShortenUrlPage(
-                        shortCode: shortCode,
-                      );
-                    },
-                  ),
-                  GoRoute(
-                    path: Routes.search.path,
-                    builder: (context, state) {
-                      return const SearchPage();
-                    },
-                  ),
-                ],
-              ),
-              GoRoute(
-                path: Routes.listFavorites.path,
-                builder: (context, state) => const ListFavoritesPage(),
-                routes: [
-                  GoRoute(
-                    path: Routes.detailShortenURL.path,
-                    builder: (context, state) {
-                      final shortCode = state.pathParameters['shortCode']!;
-                      return DetailShortenUrlPage(
-                        shortCode: shortCode,
-                      );
-                    },
-                  ),
-                  GoRoute(
-                    path: Routes.search.path,
-                    builder: (context, state) {
-                      return const SearchPage();
-                    },
-                  ),
-                ],
-              ),
-              GoRoute(
-                path: Routes.settings.path,
-                builder: (context, state) => const SettingsPage(),
-                routes: [
-                  GoRoute(
-                    path: Routes.about.path,
-                    builder: (context, state) {
-                      return const AboutPage();
-                    },
-                  ),
-                  GoRoute(
-                    path: Routes.faq.path,
-                    builder: (context, state) {
-                      return const FaqPage();
-                    },
-                  ),
-                ],
-              ),
-            ],
           ),
-        ],
-      ),
-    ],
-  );
-}
+        );
+      },
+      branches: [
+        StatefulShellBranch(
+          navigatorKey: _shortenSectionNavigatorKey,
+          routes: [
+            GoRoute(
+              path: Routes.listShorten.path,
+              pageBuilder: (context, state) =>
+                  const NoTransitionPage(child: ListShortenUrlPage()),
+              routes: [
+                GoRoute(
+                  path: Routes.addNewShortenURL.path,
+                  builder: (context, state) => const AddNewShortenUrlPage(),
+                ),
+                GoRoute(
+                  path: Routes.detailShortenURL.path,
+                  builder: (context, state) {
+                    final shortCode = state.pathParameters['shortCode']!;
+                    return DetailShortenUrlPage(
+                      shortCode: shortCode,
+                    );
+                  },
+                ),
+                GoRoute(
+                  path: Routes.search.path,
+                  builder: (context, state) {
+                    return const SearchPage();
+                  },
+                ),
+              ],
+            ),
+          ],
+        ),
+        StatefulShellBranch(
+          navigatorKey: _favoritedSectionNavigatorKey,
+          routes: [
+            GoRoute(
+              path: Routes.listFavorites.path,
+              pageBuilder: (context, state) => const NoTransitionPage(
+                child: ListFavoritesPage(),
+              ),
+              routes: [
+                GoRoute(
+                  path: Routes.detailShortenURL.path,
+                  builder: (context, state) {
+                    final shortCode = state.pathParameters['shortCode']!;
+                    return DetailShortenUrlPage(
+                      shortCode: shortCode,
+                    );
+                  },
+                ),
+                GoRoute(
+                  path: Routes.search.path,
+                  builder: (context, state) {
+                    return const SearchPage();
+                  },
+                ),
+              ],
+            ),
+          ],
+        ),
+        StatefulShellBranch(
+          navigatorKey: _settingsSectionNavigatorKey,
+          routes: [
+            GoRoute(
+              path: Routes.settings.path,
+              pageBuilder: (context, state) => const NoTransitionPage(
+                child: SettingsPage(),
+              ),
+              routes: [
+                GoRoute(
+                  path: Routes.about.path,
+                  builder: (context, state) {
+                    return const AboutPage();
+                  },
+                ),
+                GoRoute(
+                  path: Routes.faq.path,
+                  builder: (context, state) {
+                    return const FaqPage();
+                  },
+                ),
+              ],
+            ),
+          ],
+        ),
+      ],
+    ),
+  ],
+);
