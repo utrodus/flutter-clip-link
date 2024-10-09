@@ -96,6 +96,8 @@ class _SignInPageState extends State<SignInPage> {
                       validationMessages: {
                         ValidationMessage.required: (error) =>
                             'Email must be filled!',
+                        ValidationMessage.email: (error) =>
+                            'Email must be valid!',
                       },
                       label: 'Email',
                       hintText: 'Enter your email',
@@ -118,7 +120,7 @@ class _SignInPageState extends State<SignInPage> {
                       label: 'Password',
                       hintText: 'Enter your Password',
                       prefixIcon: IconsaxPlusLinear.lock,
-                      suffix: GestureDetector(
+                      suffixIcon: GestureDetector(
                         child: Icon(
                           canShowPassword
                               ? IconsaxPlusLinear.eye
@@ -156,7 +158,11 @@ class _SignInPageState extends State<SignInPage> {
                       builder: (context, formGroup, child) {
                         return CLButton(
                           text: 'Log In',
-                          onPressed: formGroup.valid ? () {} : null,
+                          onPressed: formGroup.valid
+                              ? () {
+                                  Routes.listShorten.go(context);
+                                }
+                              : null,
                         );
                       },
                     ),

@@ -170,7 +170,7 @@ class _SignUpPageState extends State<SignUpPage> {
                         label: 'Password',
                         hintText: 'Enter your password',
                         prefixIcon: IconsaxPlusLinear.lock,
-                        suffix: GestureDetector(
+                        suffixIcon: GestureDetector(
                           child: Icon(
                             canShowPassword
                                 ? IconsaxPlusLinear.eye
@@ -206,7 +206,7 @@ class _SignUpPageState extends State<SignUpPage> {
                         label: 'Confirm Password',
                         hintText: 'Enter Confirm Password',
                         prefixIcon: IconsaxPlusLinear.lock_1,
-                        suffix: GestureDetector(
+                        suffixIcon: GestureDetector(
                           child: Icon(
                             canShowConfirmPassword
                                 ? IconsaxPlusLinear.eye
