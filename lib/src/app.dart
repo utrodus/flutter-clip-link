@@ -15,7 +15,7 @@ class ClipLinkApp extends StatelessWidget {
       themeMode: ThemeMode.light,
       theme: appTheme.light,
       darkTheme: appTheme.dark,
-      routerConfig: AppRouter.router,
+      routerConfig: appRouter,
     );
   }
 }
