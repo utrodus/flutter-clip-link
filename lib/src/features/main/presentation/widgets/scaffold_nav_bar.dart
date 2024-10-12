@@ -7,12 +7,14 @@ class ScaffoldNavBar extends StatelessWidget {
     required this.body,
     required this.selectedIndex,
     required this.destinations,
+    required this.initOnSelectedIndex,
     super.key,
   });
   final Widget body;
   final int selectedIndex;
   final ValueChanged<int> onDestinationSelected;
   final List<NavDestinationModel> destinations;
+  final Function(int index) initOnSelectedIndex;
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +31,10 @@ class ScaffoldNavBar extends StatelessWidget {
               ),
             )
             .toList(),
-        onDestinationSelected: onDestinationSelected,
+        onDestinationSelected: (index) {
+          onDestinationSelected(index);
+          initOnSelectedIndex(index);
+        },
       ),
     );
   }
