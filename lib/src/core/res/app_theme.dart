@@ -24,6 +24,7 @@ class AppTheme {
       elevatedButtonTheme: elevatedButtonThemeData(colorScheme),
       snackBarTheme: snackBarThemeData(colorScheme),
       navigationRailTheme: navigationRailThemeData(colorScheme),
+      cardTheme: cardTheme(colorScheme),
     );
     return theme;
   }
@@ -164,6 +165,18 @@ class AppTheme {
             borderRadius: BorderRadius.circular(100),
           ),
           elevation: 0,
+        ),
+      );
+
+  CardTheme cardTheme(ColorScheme colorScheme) => CardTheme(
+        color: colorScheme.surfaceContainerLowest,
+        elevation: 0,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(12),
+          side: BorderSide(
+            color: colorScheme.outlineVariant,
+            width: 0.5,
+          ),
         ),
       );
 
