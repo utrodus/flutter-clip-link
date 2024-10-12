@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_clip_link/src/features/main/main.dart';
+import 'package:flutter_clip_link/src/features/shorten/presentation/cubit/list_shorten_cubit.dart';
 import 'package:go_router/go_router.dart';
 import 'package:iconsax_plus/iconsax_plus.dart';
 
@@ -50,6 +52,8 @@ class MainPage extends StatelessWidget {
             body: navShell,
             selectedIndex: navShell.currentIndex,
             destinations: destinations,
+            initOnSelectedIndex: (index) =>
+                initOnSelectedIndex(context, index: index),
           );
         } else {
           return ScaffoldNavRail(
@@ -57,10 +61,25 @@ class MainPage extends StatelessWidget {
             body: navShell,
             selectedIndex: navShell.currentIndex,
             destinations: destinations,
+            initOnSelectedIndex: (index) =>
+                initOnSelectedIndex(context, index: index),
           );
         }
       },
     );
+  }
+
+  void initOnSelectedIndex(
+    BuildContext context, {
+    required int index,
+  }) {
+    switch (index) {
+      case 0:
+        context.read<ListShortenCubit>().getAllListShorten();
+        break;
+      default:
+        break;
+    }
   }
 
   void onDestinationSelected(int index) {
