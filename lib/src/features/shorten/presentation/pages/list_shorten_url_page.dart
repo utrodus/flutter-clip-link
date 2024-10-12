@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_clip_link/src/core/core.dart';
-import 'package:flutter_clip_link/src/features/shorten/shorten.dart';
+import 'package:flutter_clip_link/src/features/shorten/presentation/cubit/list_shorten_cubit.dart';
+import 'package:flutter_clip_link/src/features/shorten/presentation/widgets/shorten_url_item.dart';
 import 'package:flutter_clip_link/src/routes/routes.dart';
 import 'package:go_router/go_router.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 
 class ListShortenUrlPage extends StatelessWidget {
   const ListShortenUrlPage({super.key});
@@ -66,7 +69,43 @@ class ListShortenUrlPage extends StatelessWidget {
                 'Hi Utrodus Said, Welcome!',
                 style: context.textTheme.labelLarge,
               ),
-              const ListShortenEmpty(),
+              const SizedBox(
+                height: 16,
+              ),
+
+              BlocBuilder<ListShortenCubit, ListShortenState>(
+                builder: (context, state) {
+                  final isLoading = state is ListShortenLoading;
+                  final isLoaded = state is ListShortenLoaded;
+                  return Skeletonizer(
+                    enabled: isLoading,
+                    child: ListView.builder(
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      itemCount: isLoading
+                          ? 6
+                          : isLoaded
+                              ? state.shortenItems.length
+                              : 0,
+                      itemBuilder: (ctx, index) {
+                        return ShortenUrlItem(
+                          shortUrl: 'https://spoo.me/people-work',
+                          originalUrl: 'https://www.freepik.com/free-psd/...',
+                          isFavorited: true,
+                          onTapItem: () {
+                            debugPrint('tapped item');
+                          },
+                          onTapFavorite: () {
+                            debugPrint('coba');
+                          },
+                        );
+                      },
+                    ),
+                  );
+                },
+              ),
+
+              // const ListShortenEmpty(),
             ],
           ),
         ),
