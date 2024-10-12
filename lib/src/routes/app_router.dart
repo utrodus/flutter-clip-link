@@ -49,8 +49,16 @@ GoRouter appRouter = GoRouter(
       builder: (context, state, navShell) {
         return BlocProvider(
           create: (context) => sl<ScaffoldNavRailCubit>(),
-          child: MainPage(
-            navShell: navShell,
+          child: MultiBlocProvider(
+            providers: [
+              BlocProvider(
+                create: (context) =>
+                    sl<ListShortenCubit>()..getAllListShorten(),
+              ),
+            ],
+            child: MainPage(
+              navShell: navShell,
+            ),
           ),
         );
       },
@@ -60,8 +68,9 @@ GoRouter appRouter = GoRouter(
           routes: [
             GoRoute(
               path: Routes.listShorten.path,
-              pageBuilder: (context, state) =>
-                  const NoTransitionPage(child: ListShortenUrlPage()),
+              pageBuilder: (context, state) => const NoTransitionPage(
+                child: ListShortenUrlPage(),
+              ),
               routes: [
                 GoRoute(
                   path: Routes.addNewShortenURL.path,
