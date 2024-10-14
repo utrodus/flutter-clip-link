@@ -2,3 +2,8 @@ export 'cubit/list_shorten_cubit.dart';
 export 'pages/add_new_shorten_url_page.dart';
 export 'pages/detail_shorten_url_page.dart';
 export 'pages/list_shorten_url_page.dart';
+export 'widgets/detail_shorten_general_stats.dart';
+export 'widgets/detail_shorten_label.dart';
+export 'widgets/detail_shorten_url_password.dart';
+export 'widgets/list_shorten_empty.dart';
+export 'widgets/shorten_url_item.dart';
