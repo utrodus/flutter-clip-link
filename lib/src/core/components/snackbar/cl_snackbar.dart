@@ -57,7 +57,6 @@ class CLSnackbar {
   /// that will invoked when the action is pressed
   void Function()? actionOnTap;
 
-  /// Method utama untuk menampilkan snackbar
   void _showSnackbar({
     required String message,
     Color? color,
