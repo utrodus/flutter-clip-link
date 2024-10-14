@@ -1,4 +1,5 @@
 export 'components/button/cl_button.dart';
+export 'components/cl_dialog.dart';
 export 'components/input/cl_text_field.dart';
 export 'components/loading/cl_loading_overlay.dart';
 export 'components/loading/loader_by_platform.dart';
