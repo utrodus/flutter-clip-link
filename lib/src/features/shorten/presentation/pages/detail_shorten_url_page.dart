@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_clip_link/src/core/core.dart';
 import 'package:flutter_clip_link/src/features/shorten/shorten.dart';
+import 'package:go_router/go_router.dart';
 import 'package:iconsax_plus/iconsax_plus.dart';
 
 class DetailShortenUrlPage extends StatelessWidget {
@@ -49,7 +50,21 @@ class DetailShortenUrlPage extends StatelessWidget {
                         children: [
                           IconButton.filledTonal(
                             tooltip: 'Remove Shorten Item',
-                            onPressed: () {},
+                            onPressed: () {
+                              ClDialog(
+                                context: context,
+                                type: CLDialogType.delete,
+                                title: 'Are You Sure to Delete',
+                                body: 'https://spoo.me/people-work',
+                                acceptTitle: 'Delete',
+                                onPressedCancel: () {
+                                  context.pop();
+                                },
+                                onPressedAccept: () {
+                                  context.pop();
+                                },
+                              );
+                            },
                             icon: const Icon(
                               IconsaxPlusLinear.trash,
                             ),
