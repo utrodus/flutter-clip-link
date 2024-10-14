@@ -51,7 +51,6 @@ class ListShortenUrlPage extends StatelessWidget {
         onPressed: () {
           GoRouter.of(context)
               .go('${Routes.listShorten.path}/${Routes.addNewShortenURL.path}');
-          // Routes.addNewShortenURL.push(context);
         },
       ),
       body: SafeArea(
@@ -94,6 +93,9 @@ class ListShortenUrlPage extends StatelessWidget {
                           isFavorited: true,
                           onTapItem: () {
                             debugPrint('tapped item');
+                            GoRouter.of(context).go(
+                              '${Routes.listShorten.path}/${Routes.detailShortenURL.path}',
+                            );
                           },
                           onTapFavorite: () {
                             debugPrint('coba');
