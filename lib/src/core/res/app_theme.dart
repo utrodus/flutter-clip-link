@@ -33,6 +33,7 @@ class AppTheme {
         backgroundColor: colorScheme.surface,
         foregroundColor: colorScheme.onSurface,
         elevation: 0,
+        centerTitle: false,
         titleTextStyle: TextStyle(
           fontFamily: _fontFamily,
           fontSize: 22,
