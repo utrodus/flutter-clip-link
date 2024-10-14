@@ -79,10 +79,8 @@ GoRouter appRouter = GoRouter(
                 GoRoute(
                   path: Routes.detailShortenURL.path,
                   builder: (context, state) {
-                    final shortCode = state.pathParameters['shortCode']!;
-                    return DetailShortenUrlPage(
-                      shortCode: shortCode,
-                    );
+                    // final shortCode = state.pathParameters['shortCode']!;
+                    return const DetailShortenUrlPage();
                   },
                 ),
                 GoRoute(
@@ -107,10 +105,8 @@ GoRouter appRouter = GoRouter(
                 GoRoute(
                   path: Routes.detailShortenURL.path,
                   builder: (context, state) {
-                    final shortCode = state.pathParameters['shortCode']!;
-                    return DetailShortenUrlPage(
-                      shortCode: shortCode,
-                    );
+                    // final shortCode = state.pathParameters['shortCode']!;
+                    return const DetailShortenUrlPage();
                   },
                 ),
                 GoRoute(
