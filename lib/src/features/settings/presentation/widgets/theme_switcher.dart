@@ -9,15 +9,6 @@ class ThemeSwitcher extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: context.colorScheme.surfaceContainerLowest,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(12),
-        side: BorderSide(
-          color: context.colorScheme.outlineVariant,
-          width: 1,
-        ),
-      ),
-      elevation: 0,
       child: Padding(
         padding: const EdgeInsets.symmetric(
           vertical: 16,
@@ -29,60 +20,70 @@ class ThemeSwitcher extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisSize: MainAxisSize.min,
-                  children: <Widget>[
-                    Assets.illustration.lightTheme.svg(
-                      width: 141,
-                      height: 100,
-                    ),
-                    const SizedBox(
-                      height: 14,
-                    ),
-                    Text(
-                      'Light',
-                      style: context.textTheme.titleMedium?.copyWith(
-                        color: context.colorScheme.primary,
+                GestureDetector(
+                  onTap: () => context.read<ThemeCubit>().changeThemeMode(
+                        ThemeMode.light,
                       ),
-                    ),
-                    Radio(
-                      value: ThemeMode.light,
-                      groupValue: state,
-                      onChanged: (value) =>
-                          context.read<ThemeCubit>().changeThemeMode(value!),
-                    ),
-                  ],
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisSize: MainAxisSize.min,
+                    children: <Widget>[
+                      Assets.illustration.lightTheme.svg(
+                        width: 141,
+                        height: 100,
+                      ),
+                      const SizedBox(
+                        height: 14,
+                      ),
+                      Text(
+                        'Light',
+                        style: context.textTheme.titleMedium?.copyWith(
+                          color: context.colorScheme.primary,
+                        ),
+                      ),
+                      Radio(
+                        value: ThemeMode.light,
+                        groupValue: state,
+                        onChanged: (value) =>
+                            context.read<ThemeCubit>().changeThemeMode(value!),
+                      ),
+                    ],
+                  ),
                 ),
                 const SizedBox(
                   width: 42,
                 ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisSize: MainAxisSize.min,
-                  children: <Widget>[
-                    Assets.illustration.darkTheme.svg(
-                      width: 141,
-                      height: 100,
-                    ),
-                    const SizedBox(
-                      height: 14,
-                    ),
-                    Text(
-                      'Dark',
-                      style: context.textTheme.titleMedium?.copyWith(
-                        color: context.colorScheme.primary,
+                GestureDetector(
+                  onTap: () => context.read<ThemeCubit>().changeThemeMode(
+                        ThemeMode.dark,
                       ),
-                    ),
-                    Radio(
-                      value: ThemeMode.dark,
-                      groupValue: state,
-                      onChanged: (value) =>
-                          context.read<ThemeCubit>().changeThemeMode(value!),
-                    ),
-                  ],
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisSize: MainAxisSize.min,
+                    children: <Widget>[
+                      Assets.illustration.darkTheme.svg(
+                        width: 141,
+                        height: 100,
+                      ),
+                      const SizedBox(
+                        height: 14,
+                      ),
+                      Text(
+                        'Dark',
+                        style: context.textTheme.titleMedium?.copyWith(
+                          color: context.colorScheme.primary,
+                        ),
+                      ),
+                      Radio(
+                        value: ThemeMode.dark,
+                        groupValue: state,
+                        onChanged: (value) =>
+                            context.read<ThemeCubit>().changeThemeMode(value!),
+                      ),
+                    ],
+                  ),
                 ),
               ],
             );
