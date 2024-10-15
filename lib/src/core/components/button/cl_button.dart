@@ -23,7 +23,9 @@ class CLButton extends StatelessWidget {
       child: Text(
         text,
         style: context.textTheme.labelLarge?.copyWith(
-          color: context.colorScheme.onPrimary,
+          color: onPressed != null
+              ? context.colorScheme.onPrimary
+              : context.colorScheme.onSurface.withOpacity(0.2),
           fontWeight: bold,
         ),
       ),
