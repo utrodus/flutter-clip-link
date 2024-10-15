@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_clip_link/src/core/core.dart';
+import 'package:flutter_clip_link/src/features/settings/settings.dart';
 import 'package:flutter_clip_link/src/routes/app_router.dart';
 
 class ClipLinkApp extends StatelessWidget {
@@ -8,14 +10,21 @@ class ClipLinkApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final appTheme = AppTheme();
-    return MaterialApp.router(
-      debugShowCheckedModeBanner: false,
-      scaffoldMessengerKey: scaffoldMessengerKey,
-      title: 'Clip Link App',
-      themeMode: ThemeMode.light,
-      theme: appTheme.light,
-      darkTheme: appTheme.dark,
-      routerConfig: appRouter,
+    return BlocProvider(
+      create: (context) => sl<ThemeCubit>(),
+      child: BlocBuilder<ThemeCubit, ThemeMode>(
+        builder: (context, state) {
+          return MaterialApp.router(
+            debugShowCheckedModeBanner: false,
+            scaffoldMessengerKey: scaffoldMessengerKey,
+            title: 'Clip Link App',
+            themeMode: state,
+            theme: appTheme.light,
+            darkTheme: appTheme.dark,
+            routerConfig: appRouter,
+          );
+        },
+      ),
     );
   }
 }
