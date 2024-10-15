@@ -172,11 +172,12 @@ class AppTheme {
   CardTheme cardTheme(ColorScheme colorScheme) => CardTheme(
         color: colorScheme.surfaceContainerLowest,
         elevation: 0,
+        clipBehavior: Clip.antiAlias,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12),
           side: BorderSide(
             color: colorScheme.outlineVariant,
-            width: 0.5,
+            width: 1,
           ),
         ),
       );
