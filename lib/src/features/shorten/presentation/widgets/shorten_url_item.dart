@@ -34,8 +34,14 @@ class _ShortenUrlItemState extends State<ShortenUrlItem> {
       margin: const EdgeInsets.only(
         bottom: 12,
       ),
-      clipBehavior: Clip.antiAlias,
       color: isSelected ? context.colorScheme.primary.withOpacity(0.08) : null,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(12),
+        side: BorderSide(
+          color: context.colorScheme.outlineVariant,
+          width: 0.5,
+        ),
+      ),
       child: InkWell(
         onTap: () {
           if (isSelected) {
