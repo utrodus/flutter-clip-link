@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_clip_link/src/core/core.dart';
-import 'package:flutter_clip_link/src/features/auth/presentation/presentation.dart';
+import 'package:flutter_clip_link/src/features/auth/auth.dart';
 import 'package:flutter_clip_link/src/routes/routes.dart';
 
 class SplashPage extends StatefulWidget {

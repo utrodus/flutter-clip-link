@@ -2,12 +2,12 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_clip_link/src/core/core.dart';
-import 'package:flutter_clip_link/src/features/auth/presentation/presentation.dart';
-import 'package:flutter_clip_link/src/features/favorited/presentation/presentation.dart';
-import 'package:flutter_clip_link/src/features/main/presentation/presentation.dart';
-import 'package:flutter_clip_link/src/features/search/presentation/presentation.dart';
-import 'package:flutter_clip_link/src/features/settings/presentation/presentation.dart';
-import 'package:flutter_clip_link/src/features/shorten/presentation/presentation.dart';
+import 'package:flutter_clip_link/src/features/auth/auth.dart';
+import 'package:flutter_clip_link/src/features/favorited/favorited.dart';
+import 'package:flutter_clip_link/src/features/main/main.dart';
+import 'package:flutter_clip_link/src/features/search/search.dart';
+import 'package:flutter_clip_link/src/features/settings/settings.dart';
+import 'package:flutter_clip_link/src/features/shorten/shorten.dart';
 
 import 'package:flutter_clip_link/src/routes/routes.dart';
 import 'package:go_router/go_router.dart';

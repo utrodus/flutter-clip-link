@@ -1,6 +1,5 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_clip_link/src/features/shorten/mock/shorten_url_mock.dart';
 import 'package:flutter_clip_link/src/features/shorten/shorten.dart';
 
 part 'list_shorten_state.dart';
