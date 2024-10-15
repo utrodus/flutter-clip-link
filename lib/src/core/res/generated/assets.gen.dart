@@ -81,6 +81,10 @@ class $AssetsIconsGen {
 class $AssetsIllustrationGen {
   const $AssetsIllustrationGen();
 
+  /// File path: assets/illustration/dark_theme.svg
+  SvgGenImage get darkTheme =>
+      const SvgGenImage('assets/illustration/dark_theme.svg');
+
   /// File path: assets/illustration/email_sent.svg
   SvgGenImage get emailSent =>
       const SvgGenImage('assets/illustration/email_sent.svg');
@@ -97,6 +101,10 @@ class $AssetsIllustrationGen {
   SvgGenImage get googleLogo =>
       const SvgGenImage('assets/illustration/google_logo.svg');
 
+  /// File path: assets/illustration/light_theme.svg
+  SvgGenImage get lightTheme =>
+      const SvgGenImage('assets/illustration/light_theme.svg');
+
   /// File path: assets/illustration/shorten_empty_dark.svg
   SvgGenImage get shortenEmptyDark =>
       const SvgGenImage('assets/illustration/shorten_empty_dark.svg');
@@ -107,10 +115,12 @@ class $AssetsIllustrationGen {
 
   /// List of all assets
   List<SvgGenImage> get values => [
+        darkTheme,
         emailSent,
         favoritedEmptyDark,
         favoritedEmptyLight,
         googleLogo,
+        lightTheme,
         shortenEmptyDark,
         shortenEmptyLight
       ];
