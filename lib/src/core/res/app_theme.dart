@@ -47,8 +47,8 @@ class AppTheme {
     ColorScheme colorScheme,
   ) =>
       FloatingActionButtonThemeData(
-        backgroundColor: colorScheme.primaryContainer,
-        foregroundColor: colorScheme.onPrimaryContainer,
+        backgroundColor: colorScheme.primary,
+        foregroundColor: colorScheme.onPrimary,
         elevation: 2,
         shape: const CircleBorder(),
       );
@@ -74,17 +74,16 @@ class AppTheme {
 
   NavigationRailThemeData navigationRailThemeData(ColorScheme colorScheme) =>
       NavigationRailThemeData(
-        backgroundColor: colorScheme.surface,
+        backgroundColor: colorScheme.secondaryContainer,
         elevation: 1,
-        minExtendedWidth: 170,
-        minWidth: 72,
+        minExtendedWidth: 240,
         selectedIconTheme: IconThemeData(
           color: colorScheme.onSecondaryContainer,
         ),
         unselectedIconTheme: IconThemeData(
           color: colorScheme.onSurfaceVariant,
         ),
-        indicatorColor: colorScheme.secondaryContainer,
+        indicatorColor: colorScheme.inversePrimary,
         unselectedLabelTextStyle: TextStyle(
           fontFamily: _fontFamily,
           fontSize: 12,
