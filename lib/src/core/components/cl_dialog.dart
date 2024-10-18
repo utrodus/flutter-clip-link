@@ -55,57 +55,62 @@ class ClDialog {
               ),
             ),
           ),
-          child: Padding(
-            padding: const EdgeInsets.all(24),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text(
-                  title,
-                  style: context.textTheme.headlineSmall,
-                ),
-                const SizedBox(
-                  height: 16,
-                ),
-                Text(
-                  body,
-                  style: context.textTheme.bodyMedium?.copyWith(
-                    color: context.colorScheme.onSurfaceVariant,
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(
+              maxWidth: Breakpoints.mobile,
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(24),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Text(
+                    title,
+                    style: context.textTheme.headlineSmall,
                   ),
-                ),
-                const SizedBox(
-                  height: 34,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: <Widget>[
-                    TextButton(
-                      onPressed: onPressedCancel,
-                      child: Text(
-                        cancelTitle,
-                        style: context.textTheme.labelLarge,
-                      ),
+                  const SizedBox(
+                    height: 16,
+                  ),
+                  Text(
+                    body,
+                    style: context.textTheme.bodyMedium?.copyWith(
+                      color: context.colorScheme.onSurfaceVariant,
                     ),
-                    const SizedBox(
-                      width: 20,
-                    ),
-                    TextButton(
-                      onPressed: onPressedAccept,
-                      child: Text(
-                        acceptTitle,
-                        style: context.textTheme.labelLarge?.copyWith(
-                          color: type == CLDialogType.basic
-                              ? context.colorScheme.onSurface
-                              : context.colorScheme.error,
+                  ),
+                  const SizedBox(
+                    height: 34,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: <Widget>[
+                      TextButton(
+                        onPressed: onPressedCancel,
+                        child: Text(
+                          cancelTitle,
+                          style: context.textTheme.labelLarge,
                         ),
                       ),
-                    ),
-                  ],
-                ),
-              ],
+                      const SizedBox(
+                        width: 20,
+                      ),
+                      TextButton(
+                        onPressed: onPressedAccept,
+                        child: Text(
+                          acceptTitle,
+                          style: context.textTheme.labelLarge?.copyWith(
+                            color: type == CLDialogType.basic
+                                ? context.colorScheme.onSurface
+                                : context.colorScheme.error,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
           ),
         ),
