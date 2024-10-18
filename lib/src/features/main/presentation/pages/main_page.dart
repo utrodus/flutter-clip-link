@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_clip_link/src/core/core.dart';
 import 'package:flutter_clip_link/src/features/main/main.dart';
 import 'package:flutter_clip_link/src/features/shorten/presentation/cubit/list_shorten_cubit.dart';
 import 'package:go_router/go_router.dart';
@@ -44,28 +45,25 @@ class MainPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(
-      builder: (context, constraints) {
-        if (constraints.maxWidth < 480) {
-          return ScaffoldNavBar(
-            onDestinationSelected: onDestinationSelected,
-            body: navShell,
-            selectedIndex: navShell.currentIndex,
-            destinations: destinations,
-            initOnSelectedIndex: (index) =>
-                initOnSelectedIndex(context, index: index),
-          );
-        } else {
-          return ScaffoldNavRail(
-            onDestinationSelected: onDestinationSelected,
-            body: navShell,
-            selectedIndex: navShell.currentIndex,
-            destinations: destinations,
-            initOnSelectedIndex: (index) =>
-                initOnSelectedIndex(context, index: index),
-          );
-        }
-      },
+    final responsive = Responsive(context);
+
+    return responsive.builder(
+      mobile: ScaffoldNavBar(
+        onDestinationSelected: onDestinationSelected,
+        body: navShell,
+        selectedIndex: navShell.currentIndex,
+        destinations: destinations,
+        initOnSelectedIndex: (index) =>
+            initOnSelectedIndex(context, index: index),
+      ),
+      desktop: ScaffoldNavRail(
+        onDestinationSelected: onDestinationSelected,
+        body: navShell,
+        selectedIndex: navShell.currentIndex,
+        destinations: destinations,
+        initOnSelectedIndex: (index) =>
+            initOnSelectedIndex(context, index: index),
+      ),
     );
   }
 
