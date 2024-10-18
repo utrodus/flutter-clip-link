@@ -20,69 +20,75 @@ class ThemeSwitcher extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                GestureDetector(
-                  onTap: () => context.read<ThemeCubit>().changeThemeMode(
-                        ThemeMode.light,
-                      ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisSize: MainAxisSize.min,
-                    children: <Widget>[
-                      Assets.illustration.lightTheme.svg(
-                        width: 141,
-                        height: 100,
-                      ),
-                      const SizedBox(
-                        height: 14,
-                      ),
-                      Text(
-                        'Light',
-                        style: context.textTheme.titleMedium?.copyWith(
-                          color: context.colorScheme.primary,
+                Flexible(
+                  child: GestureDetector(
+                    onTap: () => context.read<ThemeCubit>().changeThemeMode(
+                          ThemeMode.light,
                         ),
-                      ),
-                      Radio(
-                        value: ThemeMode.light,
-                        groupValue: state,
-                        onChanged: (value) =>
-                            context.read<ThemeCubit>().changeThemeMode(value!),
-                      ),
-                    ],
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                        Assets.illustration.lightTheme.svg(
+                          width: 141,
+                          height: 100,
+                        ),
+                        const SizedBox(
+                          height: 14,
+                        ),
+                        Text(
+                          'Light Apperance',
+                          style: context.textTheme.titleMedium?.copyWith(
+                            color: context.colorScheme.primary,
+                          ),
+                        ),
+                        Radio(
+                          value: ThemeMode.light,
+                          groupValue: state,
+                          onChanged: (value) => context
+                              .read<ThemeCubit>()
+                              .changeThemeMode(value!),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
                 const SizedBox(
                   width: 42,
                 ),
-                GestureDetector(
-                  onTap: () => context.read<ThemeCubit>().changeThemeMode(
-                        ThemeMode.dark,
-                      ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisSize: MainAxisSize.min,
-                    children: <Widget>[
-                      Assets.illustration.darkTheme.svg(
-                        width: 141,
-                        height: 100,
-                      ),
-                      const SizedBox(
-                        height: 14,
-                      ),
-                      Text(
-                        'Dark',
-                        style: context.textTheme.titleMedium?.copyWith(
-                          color: context.colorScheme.primary,
+                Flexible(
+                  child: GestureDetector(
+                    onTap: () => context.read<ThemeCubit>().changeThemeMode(
+                          ThemeMode.dark,
                         ),
-                      ),
-                      Radio(
-                        value: ThemeMode.dark,
-                        groupValue: state,
-                        onChanged: (value) =>
-                            context.read<ThemeCubit>().changeThemeMode(value!),
-                      ),
-                    ],
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                        Assets.illustration.darkTheme.svg(
+                          width: 141,
+                          height: 100,
+                        ),
+                        const SizedBox(
+                          height: 14,
+                        ),
+                        Text(
+                          'Dark Apperance',
+                          style: context.textTheme.titleMedium?.copyWith(
+                            color: context.colorScheme.primary,
+                          ),
+                        ),
+                        Radio(
+                          value: ThemeMode.dark,
+                          groupValue: state,
+                          onChanged: (value) => context
+                              .read<ThemeCubit>()
+                              .changeThemeMode(value!),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ],

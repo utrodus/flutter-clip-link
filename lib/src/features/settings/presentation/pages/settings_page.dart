@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_clip_link/src/core/core.dart';
+import 'package:flutter_clip_link/src/features/settings/presentation/widgets/theme_switcher_desktop.dart';
 import 'package:flutter_clip_link/src/features/settings/settings.dart';
 import 'package:flutter_clip_link/src/routes/routes.dart';
 import 'package:go_router/go_router.dart';
@@ -10,9 +11,9 @@ class SettingsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final responsive = Responsive(context);
     return Scaffold(
       appBar: AppBar(
-        centerTitle: true,
         title: const Text(
           'Settings',
         ),
@@ -35,7 +36,12 @@ class SettingsPage extends StatelessWidget {
               const SizedBox(
                 height: 12,
               ),
-              const ThemeSwitcher(),
+              responsive.onlyVisibleOnMobileTablet(
+                child: const ThemeSwitcher(),
+              ),
+              responsive.onlyVisibleOnDesktopAndLarge(
+                child: const ThemeSwitcherDesktop(),
+              ),
               const SizedBox(
                 height: 12,
               ),
@@ -56,7 +62,7 @@ class SettingsPage extends StatelessWidget {
                   children: <Widget>[
                     MenuTile(
                       onTap: () {},
-                      title: 'About ClipURL',
+                      title: 'About ClipLink',
                       leading: Assets.illustration.logoCircle.svg(
                         width: 38,
                         height: 38,
