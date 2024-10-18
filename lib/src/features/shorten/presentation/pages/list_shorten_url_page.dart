@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_clip_link/src/core/core.dart';
 import 'package:flutter_clip_link/src/features/shorten/presentation/cubit/list_shorten_cubit.dart';
+import 'package:flutter_clip_link/src/features/shorten/presentation/widgets/list_shorten_appbar.dart';
 import 'package:flutter_clip_link/src/features/shorten/presentation/widgets/shorten_url_item.dart';
 import 'package:flutter_clip_link/src/routes/routes.dart';
 import 'package:go_router/go_router.dart';
+import 'package:iconsax_plus/iconsax_plus.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
 class ListShortenUrlPage extends StatelessWidget {
@@ -12,51 +14,29 @@ class ListShortenUrlPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final responsive = Responsive(context);
     return Scaffold(
-      appBar: AppBar(
-        title: Row(
-          children: [
-            Assets.images.logo.image(
-              height: 32,
-              width: 32,
-            ),
-            const SizedBox(
-              width: 13.5,
-            ),
-            Text(
-              'ClipLink',
-              style: context.textTheme.titleLarge?.copyWith(
-                color: context.colorScheme.onPrimaryContainer,
-                fontWeight: bold,
-              ),
-            ),
-          ],
-        ),
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: Assets.icons.icSearch.svg(
-              colorFilter: ColorFilter.mode(
-                context.colorScheme.secondary,
-                BlendMode.srcIn,
-              ),
-            ),
+      appBar: responsive.isMobile || responsive.isTablet
+          ? listShortenAppbar(
+              context,
+            )
+          : null,
+      floatingActionButton: responsive.onlyVisibleOnMobileTablet(
+        child: FloatingActionButton(
+          child: const Icon(
+            Icons.add,
           ),
-        ],
-      ),
-      floatingActionButton: FloatingActionButton(
-        child: const Icon(
-          Icons.add,
+          onPressed: () {
+            GoRouter.of(context).go(
+              '${Routes.listShorten.path}/${Routes.addNewShortenURL.path}',
+            );
+          },
         ),
-        onPressed: () {
-          GoRouter.of(context)
-              .go('${Routes.listShorten.path}/${Routes.addNewShortenURL.path}');
-        },
       ),
       body: SafeArea(
         child: SingleChildScrollView(
-          padding: const EdgeInsets.only(
-            top: 0,
+          padding: EdgeInsets.only(
+            top: responsive.isMobile || responsive.isTablet ? 0 : 24,
             left: 20,
             right: 20,
             bottom: 24,
@@ -64,12 +44,50 @@ class ListShortenUrlPage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                'Hi Utrodus Said, Welcome!',
-                style: context.textTheme.labelLarge,
+              Row(
+                children: [
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text(
+                          'Hi 👋, Welcome to ClipLink',
+                          style: context.textTheme.titleMedium,
+                        ),
+                        const SizedBox(
+                          height: 6,
+                        ),
+                        Text(
+                          'ClipLink App is a URL Shortener that lets '
+                          'you create short links for all your '
+                          'favorite websites!',
+                          style: context.textTheme.bodyMedium,
+                        ),
+                        const SizedBox(
+                          height: 16,
+                        ),
+                      ],
+                    ),
+                  ),
+                  responsive.onlyVisibleOnDesktopAndLarge(
+                    child: CLButton(
+                      text: 'Add New Link',
+                      leading: const Icon(IconsaxPlusLinear.add),
+                      minimumSize: const Size(44, 48),
+                      onPressed: () {
+                        GoRouter.of(context).go(
+                          '${Routes.listShorten.path}/${Routes.addNewShortenURL.path}',
+                        );
+                      },
+                    ),
+                  ),
+                ],
               ),
-              const SizedBox(
-                height: 16,
+              responsive.onlyVisibleOnDesktopAndLarge(
+                child: const SizedBox(
+                  height: 22,
+                ),
               ),
 
               BlocBuilder<ListShortenCubit, ListShortenState>(
