@@ -17,7 +17,7 @@ class _SplashPageState extends State<SplashPage> {
     return BlocListener<SplashCubit, SplashState>(
       listener: (context, state) {
         if (state is SplashLoaded) {
-          Routes.signin.go(context);
+          Routes.listShorten.go(context);
         }
       },
       child: Scaffold(
