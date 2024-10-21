@@ -61,8 +61,12 @@ class SettingsPage extends StatelessWidget {
                 child: Column(
                   children: <Widget>[
                     MenuTile(
-                      onTap: () {},
-                      title: 'About ClipLink',
+                      onTap: () {
+                        GoRouter.of(context).go(
+                          '${Routes.settings.path}/${Routes.about.path}',
+                        );
+                      },
+                      title: 'About App',
                       leading: Assets.illustration.logoCircle.svg(
                         width: 38,
                         height: 38,
