@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_clip_link/src/core/core.dart';
 
-enum CLDialogType { basic, delete }
+enum CLDialogType { basic, delete, withoutCancelButton }
 
 class ClDialog {
   ClDialog({
     required this.context,
     required this.title,
     required this.body,
-    required this.onPressedCancel,
     required this.onPressedAccept,
+    this.onPressedCancel,
     this.acceptTitle = 'Okay',
     this.cancelTitle = 'Cancel',
     this.type = CLDialogType.basic,
@@ -86,22 +86,25 @@ class ClDialog {
                     mainAxisAlignment: MainAxisAlignment.end,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: <Widget>[
-                      TextButton(
-                        onPressed: onPressedCancel,
-                        child: Text(
-                          cancelTitle,
-                          style: context.textTheme.labelLarge,
+                      if (type != CLDialogType.withoutCancelButton) ...[
+                        TextButton(
+                          onPressed: onPressedCancel,
+                          child: Text(
+                            cancelTitle,
+                            style: context.textTheme.labelLarge,
+                          ),
                         ),
-                      ),
-                      const SizedBox(
-                        width: 20,
-                      ),
+                        const SizedBox(
+                          width: 20,
+                        ),
+                      ],
                       TextButton(
                         onPressed: onPressedAccept,
                         child: Text(
                           acceptTitle,
                           style: context.textTheme.labelLarge?.copyWith(
-                            color: type == CLDialogType.basic
+                            color: type == CLDialogType.basic ||
+                                    type == CLDialogType.withoutCancelButton
                                 ? context.colorScheme.onSurface
                                 : context.colorScheme.error,
                           ),
