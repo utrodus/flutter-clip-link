@@ -27,9 +27,15 @@ class ListShortenUrlPage extends StatelessWidget {
             Icons.add,
           ),
           onPressed: () {
-            GoRouter.of(context).go(
-              '${Routes.listShorten.path}/${Routes.addNewShortenURL.path}',
+            // TODO: add logic to handle if user not login then redirect to login page
+            // TODO: if user has login then redirect to add new link page
+
+            GoRouter.of(context).push(
+              Routes.signin.path,
             );
+            // GoRouter.of(context).go(
+            //   '${Routes.listShorten.path}/${Routes.addNewShortenURL.path}',
+            // );
           },
         ),
       ),
@@ -76,9 +82,15 @@ class ListShortenUrlPage extends StatelessWidget {
                       leading: const Icon(IconsaxPlusLinear.add),
                       minimumSize: const Size(44, 48),
                       onPressed: () {
-                        GoRouter.of(context).go(
-                          '${Routes.listShorten.path}/${Routes.addNewShortenURL.path}',
+                        // TODO: add logic to handle if user not login then redirect to login page
+                        // TODO: if user has login then redirect to add new link page
+
+                        GoRouter.of(context).push(
+                          Routes.signin.path,
                         );
+                        // GoRouter.of(context).go(
+                        //   '${Routes.listShorten.path}/${Routes.addNewShortenURL.path}',
+                        // );
                       },
                     ),
                   ),
