@@ -1,18 +1,19 @@
 {
-    "conventionalCommits.scopes": [
-        "docs",
-        "pubspec", 
-        "barrel",
-        "di",
-        "assets",
-        "routes",
-        "theme",
-        "auth",
-        "main",
-        "shorten",
-        "favorited",
-        "search",
-        "settings",
-        "widget",
-    ]
+  "conventionalCommits.scopes": [
+    "docs",
+    "pubspec",
+    "barrel",
+    "di",
+    "assets",
+    "routes",
+    "theme",
+    "auth",
+    "main",
+    "shorten",
+    "favorited",
+    "search",
+    "settings",
+    "widget"
+  ],
+  "dart.flutterSdkPath": ".fvm/versions/stable"
 }
