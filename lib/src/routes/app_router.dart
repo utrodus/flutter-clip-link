@@ -19,7 +19,7 @@ final _settingsSectionNavigatorKey = GlobalKey<NavigatorState>();
 
 GoRouter appRouter = GoRouter(
   navigatorKey: _rootNavigatorKey,
-  initialLocation: Routes.splash.path,
+  initialLocation: kIsWeb ? Routes.listShorten.path : Routes.splash.path,
   debugLogDiagnostics: kDebugMode,
   routes: [
     GoRoute(
