@@ -12,7 +12,7 @@ class ListShortenEmpty extends StatelessWidget {
           const SizedBox(
             height: 91.26,
           ),
-          Assets.illustration.shortenEmptyLight.svg(),
+          Assets.images.shortenEmptyLight.image(),
           const SizedBox(
             height: 30,
           ),

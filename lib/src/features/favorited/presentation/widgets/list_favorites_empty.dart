@@ -13,7 +13,7 @@ class ListFavoritesEmpty extends StatelessWidget {
           const SizedBox(
             height: 91.26,
           ),
-          Assets.illustration.favoritedEmptyLight.svg(),
+          Assets.images.favoritesEmptyLight.image(),
           const SizedBox(
             height: 30,
           ),

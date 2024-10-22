@@ -53,14 +53,6 @@ class $AssetsIllustrationGen {
   SvgGenImage get emailSent =>
       const SvgGenImage('assets/illustration/email_sent.svg');
 
-  /// File path: assets/illustration/favorited_empty_dark.svg
-  SvgGenImage get favoritedEmptyDark =>
-      const SvgGenImage('assets/illustration/favorited_empty_dark.svg');
-
-  /// File path: assets/illustration/favorited_empty_light.svg
-  SvgGenImage get favoritedEmptyLight =>
-      const SvgGenImage('assets/illustration/favorited_empty_light.svg');
-
   /// File path: assets/illustration/google_logo.svg
   SvgGenImage get googleLogo =>
       const SvgGenImage('assets/illustration/google_logo.svg');
@@ -73,30 +65,21 @@ class $AssetsIllustrationGen {
   SvgGenImage get logoCircle =>
       const SvgGenImage('assets/illustration/logo_circle.svg');
 
-  /// File path: assets/illustration/shorten_empty_dark.svg
-  SvgGenImage get shortenEmptyDark =>
-      const SvgGenImage('assets/illustration/shorten_empty_dark.svg');
-
-  /// File path: assets/illustration/shorten_empty_light.svg
-  SvgGenImage get shortenEmptyLight =>
-      const SvgGenImage('assets/illustration/shorten_empty_light.svg');
-
   /// List of all assets
-  List<SvgGenImage> get values => [
-        darkTheme,
-        emailSent,
-        favoritedEmptyDark,
-        favoritedEmptyLight,
-        googleLogo,
-        lightTheme,
-        logoCircle,
-        shortenEmptyDark,
-        shortenEmptyLight
-      ];
+  List<SvgGenImage> get values =>
+      [darkTheme, emailSent, googleLogo, lightTheme, logoCircle];
 }
 
 class $AssetsImagesGen {
   const $AssetsImagesGen();
+
+  /// File path: assets/images/favorites-empty-dark.png
+  AssetGenImage get favoritesEmptyDark =>
+      const AssetGenImage('assets/images/favorites-empty-dark.png');
+
+  /// File path: assets/images/favorites-empty-light.png
+  AssetGenImage get favoritesEmptyLight =>
+      const AssetGenImage('assets/images/favorites-empty-light.png');
 
   /// File path: assets/images/logo.png
   AssetGenImage get logo => const AssetGenImage('assets/images/logo.png');
@@ -105,8 +88,23 @@ class $AssetsImagesGen {
   AssetGenImage get qrExample =>
       const AssetGenImage('assets/images/qr_example.png');
 
+  /// File path: assets/images/shorten_empty_dark.png
+  AssetGenImage get shortenEmptyDark =>
+      const AssetGenImage('assets/images/shorten_empty_dark.png');
+
+  /// File path: assets/images/shorten_empty_light.png
+  AssetGenImage get shortenEmptyLight =>
+      const AssetGenImage('assets/images/shorten_empty_light.png');
+
   /// List of all assets
-  List<AssetGenImage> get values => [logo, qrExample];
+  List<AssetGenImage> get values => [
+        favoritesEmptyDark,
+        favoritesEmptyLight,
+        logo,
+        qrExample,
+        shortenEmptyDark,
+        shortenEmptyLight
+      ];
 }
 
 class Assets {
