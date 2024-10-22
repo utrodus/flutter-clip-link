@@ -133,7 +133,8 @@ class _SignUpPageState extends State<SignUpPage> {
                               ValidationMessage.required: (error) =>
                                   'Full Name must be filled!',
                               ValidationMessage.minLength: (error) =>
-                                  'Full Name must be at least 3 characters long!',
+                                  'Full Name must be at least 3 '
+                                  'characters long!',
                             },
                             label: 'Full Name',
                             hintText: 'Enter your full name',
@@ -173,7 +174,8 @@ class _SignUpPageState extends State<SignUpPage> {
                               ValidationMessage.required: (error) =>
                                   'Password must be filled!',
                               ValidationMessage.minLength: (error) =>
-                                  'Password must be at least 6 characters long!',
+                                  'Password must be at least '
+                                  '6 characters long!',
                             },
                             label: 'Password',
                             hintText: 'Enter your password',
