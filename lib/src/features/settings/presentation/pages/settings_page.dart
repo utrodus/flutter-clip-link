@@ -78,11 +78,42 @@ class SettingsPage extends StatelessWidget {
                     ),
                     MenuTile(
                       onTap: () {},
-                      title: 'Frequently Asked Question',
-                      leading: const CircleAvatar(
+                      title: 'Information & Rate Limits',
+                      leading: CircleAvatar(
+                        backgroundColor: context.colorScheme.secondaryContainer,
                         radius: 20,
-                        child: Icon(
-                          IconsaxPlusBold.message_question,
+                        child: const Icon(
+                          IconsaxPlusLinear.calculator,
+                        ),
+                      ),
+                      trailing: const Icon(
+                        Icons.arrow_forward_ios,
+                        size: 20,
+                      ),
+                    ),
+                    MenuTile(
+                      onTap: () {},
+                      title: 'Term Of Service',
+                      leading: CircleAvatar(
+                        backgroundColor: context.colorScheme.secondaryContainer,
+                        radius: 20,
+                        child: const Icon(
+                          IconsaxPlusLinear.document_text,
+                        ),
+                      ),
+                      trailing: const Icon(
+                        Icons.arrow_forward_ios,
+                        size: 20,
+                      ),
+                    ),
+                    MenuTile(
+                      onTap: () {},
+                      title: 'Privacy Policy',
+                      leading: CircleAvatar(
+                        radius: 20,
+                        backgroundColor: context.colorScheme.secondaryContainer,
+                        child: const Icon(
+                          IconsaxPlusLinear.document_text_1,
                         ),
                       ),
                       trailing: const Icon(
@@ -126,10 +157,11 @@ class SettingsPage extends StatelessWidget {
                     );
                   },
                   title: 'Logout Account',
-                  leading: const CircleAvatar(
+                  leading: CircleAvatar(
+                    backgroundColor: context.colorScheme.errorContainer,
                     radius: 20,
-                    child: Icon(
-                      IconsaxPlusBold.message_question,
+                    child: const Icon(
+                      IconsaxPlusLinear.logout,
                     ),
                   ),
                   trailing: const Icon(
