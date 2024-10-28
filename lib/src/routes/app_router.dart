@@ -2,13 +2,12 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_clip_link/src/core/core.dart';
-import 'package:flutter_clip_link/src/features/auth/auth.dart';
 import 'package:flutter_clip_link/src/features/favorited/favorited.dart';
 import 'package:flutter_clip_link/src/features/main/main.dart';
 import 'package:flutter_clip_link/src/features/search/search.dart';
 import 'package:flutter_clip_link/src/features/settings/settings.dart';
 import 'package:flutter_clip_link/src/features/shorten/shorten.dart';
-
+import 'package:flutter_clip_link/src/features/splash/auth.dart';
 import 'package:flutter_clip_link/src/routes/routes.dart';
 import 'package:go_router/go_router.dart';
 
@@ -28,22 +27,6 @@ GoRouter appRouter = GoRouter(
         create: (context) => sl<SplashCubit>()..onLoaded(),
         child: const SplashPage(),
       ),
-    ),
-    GoRoute(
-      path: Routes.signin.path,
-      builder: (context, state) => const SignInPage(),
-    ),
-    GoRoute(
-      path: Routes.signup.path,
-      builder: (context, state) => const SignUpPage(),
-    ),
-    GoRoute(
-      path: Routes.forgotPassword.path,
-      builder: (context, state) => ForgotPasswordPage(),
-    ),
-    GoRoute(
-      path: Routes.successForgotPassword.path,
-      builder: (context, state) => const SuccessForgotPasswordPage(),
     ),
     StatefulShellRoute.indexedStack(
       builder: (context, state, navShell) {

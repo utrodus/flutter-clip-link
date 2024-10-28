@@ -9,7 +9,7 @@ class ListShortenCubit extends Cubit<ListShortenState> {
 
   Future<void> getAllListShorten() async {
     emit(ListShortenLoading());
-    await Future.delayed(const Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 1));
     emit(
       ListShortenLoaded(
         shortenItems: shortenUrlMock,

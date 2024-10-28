@@ -151,9 +151,7 @@ class SettingsPage extends StatelessWidget {
                       onPressedCancel: () {
                         context.pop();
                       },
-                      onPressedAccept: () {
-                        Routes.signin.go(context);
-                      },
+                      onPressedAccept: () {},
                     );
                   },
                   title: 'Logout Account',
