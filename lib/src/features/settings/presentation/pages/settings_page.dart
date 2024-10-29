@@ -124,50 +124,6 @@ class SettingsPage extends StatelessWidget {
                   ],
                 ),
               ),
-              const SizedBox(
-                height: 12,
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 6),
-                child: Text(
-                  'Logout',
-                  style: context.textTheme.titleSmall?.copyWith(
-                    color: context.colorScheme.onSurfaceVariant,
-                  ),
-                ),
-              ),
-              const SizedBox(
-                height: 12,
-              ),
-              Card(
-                child: MenuTile(
-                  onTap: () {
-                    ClDialog(
-                      context: context,
-                      type: CLDialogType.basic,
-                      title: 'Confirm Logout',
-                      body: 'Are you sure you want to log out?',
-                      acceptTitle: 'Yes',
-                      onPressedCancel: () {
-                        context.pop();
-                      },
-                      onPressedAccept: () {},
-                    );
-                  },
-                  title: 'Logout Account',
-                  leading: CircleAvatar(
-                    backgroundColor: context.colorScheme.errorContainer,
-                    radius: 20,
-                    child: const Icon(
-                      IconsaxPlusLinear.logout,
-                    ),
-                  ),
-                  trailing: const Icon(
-                    Icons.arrow_forward_ios,
-                    size: 20,
-                  ),
-                ),
-              ),
             ],
           ),
         ),
