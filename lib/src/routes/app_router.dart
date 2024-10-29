@@ -7,7 +7,7 @@ import 'package:flutter_clip_link/src/features/main/main.dart';
 import 'package:flutter_clip_link/src/features/search/search.dart';
 import 'package:flutter_clip_link/src/features/settings/settings.dart';
 import 'package:flutter_clip_link/src/features/shorten/shorten.dart';
-import 'package:flutter_clip_link/src/features/splash/auth.dart';
+import 'package:flutter_clip_link/src/features/splash/splash.dart';
 import 'package:flutter_clip_link/src/routes/routes.dart';
 import 'package:go_router/go_router.dart';
 

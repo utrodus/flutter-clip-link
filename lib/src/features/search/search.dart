@@ -1,2 +1,2 @@
-export 'presentation/cubit/search_cubit.dart';
-export 'presentation/pages/search_page.dart';
+export 'cubit/search_cubit.dart';
+export 'view/pages/search_page.dart';

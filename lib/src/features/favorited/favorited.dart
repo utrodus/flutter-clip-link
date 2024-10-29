@@ -1,3 +1,3 @@
-export 'presentation/cubit/favorited_cubit.dart';
-export 'presentation/pages/list_favorites_page.dart';
-export 'presentation/widgets/list_favorites_empty.dart';
+export 'cubit/favorited_cubit.dart';
+export 'view/pages/list_favorites_page.dart';
+export 'view/widgets/list_favorites_empty.dart';

@@ -1,4 +1,4 @@
-import 'package:flutter_clip_link/src/features/shorten/domain/entities/shorten_item_entity.dart';
+import 'package:flutter_clip_link/src/features/shorten/models/shorten_item_entity.dart';
 
 List<ShortenItemEntity> shortenUrlMock = [
   const ShortenItemEntity(
