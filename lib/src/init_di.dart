@@ -5,7 +5,7 @@ import 'package:flutter_clip_link/src/features/splash/di.dart';
 
 Future<void> initDI() async {
   settingsFeatureDI();
-  authFeatureDI();
+  splashFeatureDI();
   mainFeatureDI();
   shortenFeatureDI();
 }
