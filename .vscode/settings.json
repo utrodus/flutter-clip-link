@@ -13,7 +13,8 @@
     "favorited",
     "search",
     "settings",
-    "widget"
+    "widget",
+    "spoo_me_api_package"
   ],
   "dart.flutterSdkPath": ".fvm/versions/stable"
 }
