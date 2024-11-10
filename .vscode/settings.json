@@ -14,7 +14,8 @@
     "search",
     "settings",
     "widget",
-    "spoo_me_api_package"
+    "spoo_me_api_package",
+    "clip_link_repository_package"
   ],
   "dart.flutterSdkPath": ".fvm/versions/stable"
 }
