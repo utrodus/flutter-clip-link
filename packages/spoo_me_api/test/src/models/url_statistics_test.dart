@@ -9,7 +9,7 @@ void main() {
         test(
             'should parses JSON map into UrlStatistics instance with correct properties',
             () {
-          final urlStatistics = UrlStatistics.fromJson({
+          final urlStatistics = UrlStatisticsResponse.fromJson({
             "_id": "dSP9do",
             "short_code": "dSP9do",
             "total-clicks": 1,
@@ -21,7 +21,7 @@ void main() {
             "url": "https://www.google.com",
             "password": null
           });
-          expect(urlStatistics, isA<UrlStatistics>());
+          expect(urlStatistics, isA<UrlStatisticsResponse>());
           expect(urlStatistics.shortCode, equals('dSP9do'));
           expect(urlStatistics.totalClicks, equals(1));
           expect(urlStatistics.creationDate, equals('2024-10-28'));
@@ -34,7 +34,8 @@ void main() {
         });
 
         test('should throw an error when all key is missing in JSON data', () {
-          expect(() => UrlStatistics.fromJson({}), throwsA(isA<TypeError>()));
+          expect(() => UrlStatisticsResponse.fromJson({}),
+              throwsA(isA<TypeError>()));
         });
       });
     },

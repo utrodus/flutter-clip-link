@@ -6,7 +6,7 @@ part 'url_statistics.g.dart';
   createToJson: false,
   includeIfNull: false,
 )
-class UrlStatistics {
+class UrlStatisticsResponse {
   @JsonKey(name: '_id')
   final String id;
   @JsonKey(name: 'short_code')
@@ -28,7 +28,7 @@ class UrlStatistics {
   @JsonKey(name: 'url')
   final String originalUrl;
 
-  UrlStatistics({
+  UrlStatisticsResponse({
     required this.id,
     required this.shortCode,
     required this.totalClicks,
@@ -41,6 +41,6 @@ class UrlStatistics {
     this.password,
   });
 
-  factory UrlStatistics.fromJson(Map<String, dynamic> json) =>
+  factory UrlStatisticsResponse.fromJson(Map<String, dynamic> json) =>
       _$UrlStatisticsFromJson(json);
 }

@@ -17,7 +17,8 @@ class SpooMeApiClient {
   }
 
   /// Request shorten URL
-  Future<ShortUrl> generateShortUrl({required ShortUrlParam param}) async {
+  Future<ShortUrlResponse> generateShortUrl(
+      {required ShortUrlParam param}) async {
     try {
       final headers = {
         'Accept': 'application/json',
@@ -44,7 +45,7 @@ class SpooMeApiClient {
             throw HttpRequestFailure();
         }
       }
-      return ShortUrl.fromJson(
+      return ShortUrlResponse.fromJson(
         jsonDecode(response.body) as Map<String, dynamic>,
       );
     } on InvalidUrlRequestFailure {
@@ -61,7 +62,7 @@ class SpooMeApiClient {
   }
 
   // Get URL statistics
-  Future<UrlStatistics> getUrlStatistics({
+  Future<UrlStatisticsResponse> getUrlStatistics({
     required String shortCode,
     String? password,
   }) async {
@@ -95,7 +96,7 @@ class SpooMeApiClient {
           throw WrongPasswordFailure();
         }
       }
-      return UrlStatistics.fromJson(
+      return UrlStatisticsResponse.fromJson(
         jsonDecode(response.body) as Map<String, dynamic>,
       );
     } on UrlNotFoundRequestFailure {

@@ -6,8 +6,8 @@ part of 'url_statistics.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-UrlStatistics _$UrlStatisticsFromJson(Map<String, dynamic> json) =>
-    UrlStatistics(
+UrlStatisticsResponse _$UrlStatisticsFromJson(Map<String, dynamic> json) =>
+    UrlStatisticsResponse(
       id: json['_id'] as String,
       shortCode: json['short_code'] as String,
       totalClicks: (json['total-clicks'] as num).toInt(),

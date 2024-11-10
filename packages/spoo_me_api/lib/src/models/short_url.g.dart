@@ -6,6 +6,7 @@ part of 'short_url.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-ShortUrl _$ShortUrlFromJson(Map<String, dynamic> json) => ShortUrl(
+ShortUrlResponse _$ShortUrlFromJson(Map<String, dynamic> json) =>
+    ShortUrlResponse(
       url: json['short_url'] as String,
     );

@@ -5,12 +5,12 @@ part 'short_url.g.dart';
 @JsonSerializable(
   createToJson: false,
 )
-class ShortUrl {
-  ShortUrl({
+class ShortUrlResponse {
+  ShortUrlResponse({
     required this.url,
   });
 
-  factory ShortUrl.fromJson(Map<String, dynamic> json) =>
+  factory ShortUrlResponse.fromJson(Map<String, dynamic> json) =>
       _$ShortUrlFromJson(json);
 
   @JsonKey(name: 'short_url')

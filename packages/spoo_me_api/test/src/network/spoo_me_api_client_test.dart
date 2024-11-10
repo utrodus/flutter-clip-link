@@ -149,7 +149,7 @@ void main() {
             await spooMeApiClient.generateShortUrl(param: mockShortUrlParam);
         expect(
             actual,
-            isA<ShortUrl>().having(
+            isA<ShortUrlResponse>().having(
                 (value) => value.url, 'short_url', 'https://spoo.me/TdrWjy'));
       });
     });
@@ -282,7 +282,7 @@ void main() {
         );
         expect(
             actual,
-            isA<UrlStatistics>()
+            isA<UrlStatisticsResponse>()
                 .having((value) => value.id, 'id', 'dSP9do')
                 .having((value) => value.shortCode, 'short_code', 'dSP9do')
                 .having((value) => value.totalClicks, 'total-clicks', 1)
