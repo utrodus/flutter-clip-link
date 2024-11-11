@@ -37,6 +37,8 @@ dev_dependencies:
     sdk: flutter
   json_serializable: ^6.8.0
   mocktail: ^1.0.4
+  clip_link_repository:
+    path: packages/clip_link_repository
 
 flutter:
   uses-material-design: true
