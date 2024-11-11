@@ -3,11 +3,11 @@ import 'package:spoo_me_api/spoo_me_api.dart';
 
 void main() {
   group(
-    'UrlStatistics',
+    'UrlStatisticsResponse',
     () {
       group('fromJson', () {
         test(
-            'should parses JSON map into UrlStatistics instance with correct properties',
+            'should parses JSON map into UrlStatisticsResponse instance with correct properties',
             () {
           final urlStatistics = UrlStatisticsResponse.fromJson({
             "_id": "dSP9do",

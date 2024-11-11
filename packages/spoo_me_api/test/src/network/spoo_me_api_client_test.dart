@@ -135,7 +135,7 @@ void main() {
       });
 
       test(
-          'should return ShortUrl instance with correct value when status code is 200',
+          'should return ShortUrlResponse instance with correct value when status code is 200',
           () async {
         when(() => mockResponse.statusCode).thenReturn(200);
         when(() => mockResponse.body)
@@ -255,7 +255,7 @@ void main() {
       });
 
       test(
-          'should return UrlStatistics instance with correct value when status code is 200',
+          'should return UrlStatisticsResponse instance with correct value when status code is 200',
           () async {
         when(() => mockResponse.statusCode).thenReturn(200);
         when(() => mockResponse.body).thenReturn('''

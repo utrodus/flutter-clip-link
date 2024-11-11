@@ -2,12 +2,12 @@ import 'package:test/test.dart';
 import 'package:spoo_me_api/spoo_me_api.dart';
 
 void main() {
-  group('ShortUrl', () {
+  group('ShortUrlResponse', () {
     group(
       'fromJson',
       () {
         test(
-            'should parses JSON map into ShortUrl instance with correct properties',
+            'should parses JSON map into ShortUrlResponse instance with correct properties',
             () {
           final shortUrl = ShortUrlResponse.fromJson(
               {'short_url': 'https://www.utrodus.com'});
