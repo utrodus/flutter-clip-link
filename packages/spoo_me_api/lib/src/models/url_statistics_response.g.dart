@@ -1,12 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'url_statistics.dart';
+part of 'url_statistics_response.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-UrlStatisticsResponse _$UrlStatisticsFromJson(Map<String, dynamic> json) =>
+UrlStatisticsResponse _$UrlStatisticsResponseFromJson(
+        Map<String, dynamic> json) =>
     UrlStatisticsResponse(
       id: json['_id'] as String,
       shortCode: json['short_code'] as String,

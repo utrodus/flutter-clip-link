@@ -17,7 +17,7 @@ class SpooMeApiClient {
   }
 
   /// Request shorten URL
-  Future<ShortUrlResponse> generateShortUrl(
+  Future<ShortUrlResponse> postShortenUrl(
       {required ShortUrlParam param}) async {
     try {
       final headers = {

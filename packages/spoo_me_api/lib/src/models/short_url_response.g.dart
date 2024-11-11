@@ -1,12 +1,12 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'short_url.dart';
+part of 'short_url_response.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-ShortUrlResponse _$ShortUrlFromJson(Map<String, dynamic> json) =>
+ShortUrlResponse _$ShortUrlResponseFromJson(Map<String, dynamic> json) =>
     ShortUrlResponse(
       url: json['short_url'] as String,
     );

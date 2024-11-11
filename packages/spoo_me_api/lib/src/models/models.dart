@@ -1,3 +1,3 @@
-export 'short_url.dart';
+export 'short_url_response.dart';
 export 'short_url_param.dart';
-export 'url_statistics.dart';
+export 'url_statistics_response.dart';

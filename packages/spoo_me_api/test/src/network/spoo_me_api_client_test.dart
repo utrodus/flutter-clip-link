@@ -46,7 +46,7 @@ void main() {
         when(() => httpClient.post(any()))
             .thenAnswer((_) async => mockResponse);
         try {
-          await spooMeApiClient.generateShortUrl(param: mockShortUrlParam);
+          await spooMeApiClient.postShortenUrl(param: mockShortUrlParam);
         } catch (e) {}
         verify(
           () => httpClient.post(
@@ -70,7 +70,7 @@ void main() {
               )).thenAnswer((_) async => mockResponse);
 
           expect(
-            () => spooMeApiClient.generateShortUrl(param: mockShortUrlParam),
+            () => spooMeApiClient.postShortenUrl(param: mockShortUrlParam),
             throwsA(isA<InvalidUrlRequestFailure>()),
           );
         },
@@ -89,7 +89,7 @@ void main() {
               )).thenAnswer((_) async => mockResponse);
 
           expect(
-            () => spooMeApiClient.generateShortUrl(param: mockShortUrlParam),
+            () => spooMeApiClient.postShortenUrl(param: mockShortUrlParam),
             throwsA(isA<AliasRequestFailure>()),
           );
         },
@@ -108,7 +108,7 @@ void main() {
               )).thenAnswer((_) async => mockResponse);
 
           expect(
-            () => spooMeApiClient.generateShortUrl(param: mockShortUrlParam),
+            () => spooMeApiClient.postShortenUrl(param: mockShortUrlParam),
             throwsA(isA<PasswordInvalidRequestFailure>()),
           );
         },
@@ -128,7 +128,7 @@ void main() {
 
         // Act & Assert
         expect(
-          () => spooMeApiClient.generateShortUrl(param: mockShortUrlParam),
+          () => spooMeApiClient.postShortenUrl(param: mockShortUrlParam),
           throwsA(predicate((e) =>
               e is Exception && e.toString().contains('Unexpected error'))),
         );
@@ -146,7 +146,7 @@ void main() {
               body: any(named: "body"),
             )).thenAnswer((_) async => mockResponse);
         final actual =
-            await spooMeApiClient.generateShortUrl(param: mockShortUrlParam);
+            await spooMeApiClient.postShortenUrl(param: mockShortUrlParam);
         expect(
             actual,
             isA<ShortUrlResponse>().having(
@@ -294,8 +294,8 @@ void main() {
                     "Chrome")
                 .having((value) => value.averageRedirectionTime,
                     'average_redirection_time', 1.33)
-                .having((value) => value.originalUrl,
-                    'average_redirection_time', "https://www.google.com"));
+                .having((value) => value.originalUrl, 'original_url',
+                    "https://www.google.com"));
       });
     });
   });

@@ -1,10 +1,10 @@
 import 'package:json_annotation/json_annotation.dart';
 
-part 'url_statistics.g.dart';
+part 'url_statistics_response.g.dart';
 
 @JsonSerializable(
   createToJson: false,
-  includeIfNull: false,
+  includeIfNull: true,
 )
 class UrlStatisticsResponse {
   @JsonKey(name: '_id')
@@ -42,5 +42,5 @@ class UrlStatisticsResponse {
   });
 
   factory UrlStatisticsResponse.fromJson(Map<String, dynamic> json) =>
-      _$UrlStatisticsFromJson(json);
+      _$UrlStatisticsResponseFromJson(json);
 }
