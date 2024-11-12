@@ -118,6 +118,10 @@ GoRouter appRouter = GoRouter(
                   },
                 ),
                 GoRoute(
+                  path: Routes.aboutDeveloper.path,
+                  builder: (context, state) => const AboutDeveloperPage(),
+                ),
+                GoRoute(
                   path: Routes.faq.path,
                   builder: (context, state) {
                     return const FaqPage();

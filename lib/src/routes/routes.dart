@@ -7,7 +7,8 @@ enum Routes {
   search('search'),
   settings('/settings'),
   about('about'),
-  faq('faq');
+  faq('faq'),
+  aboutDeveloper('about-developers');
 
   const Routes(this.path);
   final String path;
