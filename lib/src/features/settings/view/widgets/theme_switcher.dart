@@ -38,7 +38,7 @@ class ThemeSwitcher extends StatelessWidget {
                           height: 14,
                         ),
                         Text(
-                          'Light Apperance',
+                          'Light Mode',
                           style: context.textTheme.titleMedium?.copyWith(
                             color: context.colorScheme.primary,
                           ),
@@ -75,7 +75,7 @@ class ThemeSwitcher extends StatelessWidget {
                           height: 14,
                         ),
                         Text(
-                          'Dark Apperance',
+                          'Dark Mode',
                           style: context.textTheme.titleMedium?.copyWith(
                             color: context.colorScheme.primary,
                           ),
