@@ -1,40 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_clip_link/src/core/core.dart';
-import 'package:go_router/go_router.dart';
 import 'package:iconsax_plus/iconsax_plus.dart';
-import 'package:url_launcher/url_launcher.dart';
 
-class AboutPage extends StatefulWidget {
+class AboutPage extends StatelessWidget {
   const AboutPage({super.key});
-
-  @override
-  State<AboutPage> createState() => _AboutPageState();
-}
-
-class _AboutPageState extends State<AboutPage> {
-  final portfolioUri = Uri.parse('https://utrodus.com/about/');
-  Future<void> _launchUrl() async {
-    final canLaunchUrl = await launchUrl(
-      portfolioUri,
-      mode: LaunchMode.inAppBrowserView,
-    );
-
-    if (!canLaunchUrl) {
-      _showErrorDialog();
-      throw Exception('Could not launch $portfolioUri');
-    }
-  }
-
-  void _showErrorDialog() {
-    ClDialog(
-      context: context,
-      type: CLDialogType.withoutCancelButton,
-      title: 'Sorry for the inconvenience',
-      body: 'Could not launch $portfolioUri',
-      onPressedAccept: context.pop,
-      acceptTitle: 'Ok',
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -223,75 +192,6 @@ class _AboutPageState extends State<AboutPage> {
                               ),
                             ],
                           ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 24,
-                  ),
-                  Text(
-                    'About The Developer',
-                    style: context.textTheme.titleMedium?.copyWith(
-                      fontWeight: bold,
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 11,
-                  ),
-                  RichText(
-                    text: TextSpan(
-                      text: 'Developed by ',
-                      style: context.textTheme.bodyMedium,
-                      children: [
-                        TextSpan(
-                          text: 'Utrodus Said Al Baqi, ',
-                          style: context.textTheme.bodyMedium?.copyWith(
-                            fontWeight: bold,
-                          ),
-                        ),
-                        TextSpan(
-                          text: 'a software engineer focused on '
-                              'creating beautiful, '
-                              'cross-platform apps using ',
-                          style: context.textTheme.bodyMedium,
-                        ),
-                        TextSpan(
-                          text: 'Flutter.',
-                          style: context.textTheme.bodyMedium?.copyWith(
-                            fontWeight: bold,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 12,
-                  ),
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Flexible(
-                        child: Text(
-                          'Discover more projects at:',
-                          style: context.textTheme.bodyMedium,
-                        ),
-                      ),
-                      const SizedBox(width: 8),
-                      OutlinedButton(
-                        style: OutlinedButton.styleFrom(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 16,
-                            vertical: 0,
-                          ),
-                          side: BorderSide(
-                            width: 0.8,
-                            color: context.colorScheme.outlineVariant,
-                          ),
-                        ),
-                        onPressed: _launchUrl,
-                        child: const Text(
-                          'utrodus.com',
                         ),
                       ),
                     ],
