@@ -72,52 +72,45 @@ class SettingsPage extends StatelessWidget {
                       ),
                       trailing: const Icon(
                         Icons.arrow_forward_ios,
-                        size: 20,
+                        size: 18,
                       ),
                     ),
                     MenuTile(
                       onTap: () {},
-                      title: 'Information & Rate Limits',
+                      title: 'API Rate Limits',
                       leading: CircleAvatar(
-                        backgroundColor: context.colorScheme.secondaryContainer,
-                        radius: 20,
-                        child: const Icon(
-                          IconsaxPlusLinear.calculator,
+                        backgroundColor: context.colorScheme.primary,
+                        radius: 18,
+                        child: Icon(
+                          IconsaxPlusBroken.chart_2,
+                          color: context.colorScheme.onPrimary,
+                          size: 20,
                         ),
                       ),
                       trailing: const Icon(
                         Icons.arrow_forward_ios,
-                        size: 20,
+                        size: 18,
                       ),
                     ),
                     MenuTile(
-                      onTap: () {},
-                      title: 'Term Of Service',
+                      onTap: () {
+                        GoRouter.of(context).go(
+                          '${Routes.settings.path}/${Routes.aboutDeveloper.path}',
+                        );
+                      },
+                      title: 'About Developer',
                       leading: CircleAvatar(
-                        backgroundColor: context.colorScheme.secondaryContainer,
-                        radius: 20,
-                        child: const Icon(
-                          IconsaxPlusLinear.document_text,
+                        backgroundColor: context.colorScheme.primary,
+                        radius: 18,
+                        child: Icon(
+                          IconsaxPlusBroken.profile_circle,
+                          color: context.colorScheme.onPrimary,
+                          size: 24,
                         ),
                       ),
                       trailing: const Icon(
                         Icons.arrow_forward_ios,
-                        size: 20,
-                      ),
-                    ),
-                    MenuTile(
-                      onTap: () {},
-                      title: 'Privacy Policy',
-                      leading: CircleAvatar(
-                        radius: 20,
-                        backgroundColor: context.colorScheme.secondaryContainer,
-                        child: const Icon(
-                          IconsaxPlusLinear.document_text_1,
-                        ),
-                      ),
-                      trailing: const Icon(
-                        Icons.arrow_forward_ios,
-                        size: 20,
+                        size: 18,
                       ),
                     ),
                   ],
