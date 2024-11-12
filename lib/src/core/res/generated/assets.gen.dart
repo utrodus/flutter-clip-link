@@ -96,6 +96,10 @@ class $AssetsImagesGen {
   AssetGenImage get shortenEmptyLight =>
       const AssetGenImage('assets/images/shorten_empty_light.png');
 
+  /// File path: assets/images/utrodus-profile-photo.png
+  AssetGenImage get utrodusProfilePhoto =>
+      const AssetGenImage('assets/images/utrodus-profile-photo.png');
+
   /// List of all assets
   List<AssetGenImage> get values => [
         favoritesEmptyDark,
@@ -103,7 +107,8 @@ class $AssetsImagesGen {
         logo,
         qrExample,
         shortenEmptyDark,
-        shortenEmptyLight
+        shortenEmptyLight,
+        utrodusProfilePhoto
       ];
 }
 
