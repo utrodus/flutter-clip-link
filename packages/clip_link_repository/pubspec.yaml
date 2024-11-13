@@ -1,5 +1,5 @@
 name: clip_link_repository
-description: "A dart repository which manages the ClipLink domain."
+description: "a flutter package which provides a repository for Clip Link App."
 version: 0.0.1
 publish_to: none
 
