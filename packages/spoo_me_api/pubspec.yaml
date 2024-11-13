@@ -1,5 +1,5 @@
 name: spoo_me_api
-description: "A Dart API Client for the SpooMe API."
+description: "A flutter package for the Spoo.me API client."
 version: 0.0.1
 publish_to: none
 
