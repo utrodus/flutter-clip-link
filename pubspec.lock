@@ -175,7 +175,7 @@ packages:
     source: hosted
     version: "0.4.1"
   clip_link_repository:
-    dependency: "direct dev"
+    dependency: "direct main"
     description:
       path: "packages/clip_link_repository"
       relative: true
