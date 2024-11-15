@@ -1,6 +1,6 @@
 import 'package:clip_link_repository/clip_link_repository.dart';
+import 'package:flutter_test/flutter_test.dart';
 import 'package:spoo_me_api/spoo_me_api.dart';
-import 'package:test/test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:spoo_me_api/spoo_me_api.dart' as spoo_me_api;
 
@@ -13,6 +13,7 @@ class MockUrlStatisticsResponse extends Mock
     implements spoo_me_api.UrlStatisticsResponse {}
 
 void main() {
+  TestWidgetsFlutterBinding.ensureInitialized();
   group('ClipLinkRepository', () {
     late spoo_me_api.SpooMeApiClient spooMeApiClient;
     late ClipLinkRepository clipLinkRepository;
@@ -33,21 +34,23 @@ void main() {
     group(
       'generateShortUrl',
       () {
-        ShortUrlParam param = ShortUrlParam(url: "https://www.utrodus.com");
         test('should call postShortenUrl once when generate short url',
             () async {
           try {
-            await clipLinkRepository.generateShortUrl(param);
+            await clipLinkRepository.generateShortUrl(
+                url: 'https://www.utrodus.com');
           } catch (_) {}
 
-          verify(() => spooMeApiClient.postShortenUrl(param: param)).called(1);
+          verify(() => spooMeApiClient.postShortenUrl(
+              url: "https://www.utrodus.com")).called(1);
         });
 
         test('should throws exception when generate short url fails', () {
-          when(() => spooMeApiClient.postShortenUrl(param: param))
-              .thenThrow(Exception("Error"));
+          when(() => spooMeApiClient.postShortenUrl(
+              url: "https://www.utrodus.com")).thenThrow(Exception("Error"));
           expect(
-            () => clipLinkRepository.generateShortUrl(param),
+            () => clipLinkRepository.generateShortUrl(
+                url: "https://www.utrodus.com"),
             throwsA(isA<Exception>()),
           );
         });
@@ -55,10 +58,12 @@ void main() {
         test(
             'should throw InvalidUrlRequestFailure when postShortenUrl throw InvalidUrlRequestFailure',
             () async {
-          when(() => spooMeApiClient.postShortenUrl(param: param))
+          when(() => spooMeApiClient.postShortenUrl(
+                  url: "https://www.utrodus.com"))
               .thenThrow(InvalidUrlRequestFailure());
           expect(
-            () => clipLinkRepository.generateShortUrl(param),
+            () => clipLinkRepository.generateShortUrl(
+                url: "https://www.utrodus.com"),
             throwsA(isA<InvalidUrlRequestFailure>()),
           );
         });
@@ -66,10 +71,11 @@ void main() {
         test(
             'should throw AliasRequestFailure when postShortenUrl throw AliasRequestFailure',
             () async {
-          when(() => spooMeApiClient.postShortenUrl(param: param))
-              .thenThrow(AliasRequestFailure());
+          when(() => spooMeApiClient.postShortenUrl(
+              url: "https://www.utrodus.com")).thenThrow(AliasRequestFailure());
           expect(
-            () => clipLinkRepository.generateShortUrl(param),
+            () => clipLinkRepository.generateShortUrl(
+                url: "https://www.utrodus.com"),
             throwsA(isA<AliasRequestFailure>()),
           );
         });
@@ -77,10 +83,12 @@ void main() {
         test(
             'should throw PasswordInvalidRequestFailure when postShortenUrl throw PasswordInvalidRequestFailure',
             () async {
-          when(() => spooMeApiClient.postShortenUrl(param: param))
+          when(() => spooMeApiClient.postShortenUrl(
+                  url: "https://www.utrodus.com"))
               .thenThrow(PasswordInvalidRequestFailure());
           expect(
-            () => clipLinkRepository.generateShortUrl(param),
+            () => clipLinkRepository.generateShortUrl(
+                url: "https://www.utrodus.com"),
             throwsA(isA<PasswordInvalidRequestFailure>()),
           );
         });
@@ -91,9 +99,11 @@ void main() {
           final mockShortUrlResponse = MockShortUrlResponse();
           when(() => mockShortUrlResponse.url)
               .thenReturn('https://www.spoo.me/utrd');
-          when(() => spooMeApiClient.postShortenUrl(param: param))
+          when(() => spooMeApiClient.postShortenUrl(
+                  url: "https://www.utrodus.com"))
               .thenAnswer((_) async => mockShortUrlResponse);
-          final actual = await clipLinkRepository.generateShortUrl(param);
+          final actual = await clipLinkRepository.generateShortUrl(
+              url: "https://www.utrodus.com");
           expect(
               actual,
               isA<ShortUrlModel>().having((value) => value.shortUrl,

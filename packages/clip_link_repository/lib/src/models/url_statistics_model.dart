@@ -1,7 +1,6 @@
-import 'package:equatable/equatable.dart';
 import 'package:spoo_me_api/spoo_me_api.dart';
 
-class UrlStatisticsModel extends Equatable {
+class UrlStatisticsModel {
   final String id;
   final String shortCode;
   final int totalClicks;
@@ -40,18 +39,4 @@ class UrlStatisticsModel extends Equatable {
         originalUrl: urlStatisticsResponse.originalUrl,
         password: urlStatisticsResponse.password ?? '',
       );
-
-  @override
-  List<Object?> get props => [
-        id,
-        shortCode,
-        totalClicks,
-        creationDate,
-        lastClickDate,
-        lastClickBrowser,
-        lastClickOS,
-        averageRedirectionTime,
-        originalUrl,
-        password,
-      ];
 }
