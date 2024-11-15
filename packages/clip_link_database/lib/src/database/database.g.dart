@@ -4,7 +4,7 @@ part of 'database.dart';
 
 // ignore_for_file: type=lint
 class $ShortUrlTableTable extends ShortUrlTable
-    with TableInfo<$ShortUrlTableTable, ShortUrlModel> {
+    with TableInfo<$ShortUrlTableTable, ShortUrlItemModel> {
   @override
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
@@ -77,7 +77,7 @@ class $ShortUrlTableTable extends ShortUrlTable
   String get actualTableName => $name;
   static const String $name = 'short_url_table';
   @override
-  VerificationContext validateIntegrity(Insertable<ShortUrlModel> instance,
+  VerificationContext validateIntegrity(Insertable<ShortUrlItemModel> instance,
       {bool isInserting = false}) {
     final context = VerificationContext();
     final data = instance.toColumns(true);
@@ -130,9 +130,9 @@ class $ShortUrlTableTable extends ShortUrlTable
   @override
   Set<GeneratedColumn> get $primaryKey => {id};
   @override
-  ShortUrlModel map(Map<String, dynamic> data, {String? tablePrefix}) {
+  ShortUrlItemModel map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
-    return ShortUrlModel(
+    return ShortUrlItemModel(
       id: attachedDatabase.typeMapping
           .read(DriftSqlType.int, data['${effectivePrefix}id'])!,
       shortCode: attachedDatabase.typeMapping
@@ -156,7 +156,7 @@ class $ShortUrlTableTable extends ShortUrlTable
   }
 }
 
-class ShortUrlTableCompanion extends UpdateCompanion<ShortUrlModel> {
+class ShortUrlTableCompanion extends UpdateCompanion<ShortUrlItemModel> {
   final Value<int> id;
   final Value<String> shortCode;
   final Value<String> originalUrl;
@@ -185,7 +185,7 @@ class ShortUrlTableCompanion extends UpdateCompanion<ShortUrlModel> {
         originalUrl = Value(originalUrl),
         shortenedUrl = Value(shortenedUrl),
         isHavePassword = Value(isHavePassword);
-  static Insertable<ShortUrlModel> custom({
+  static Insertable<ShortUrlItemModel> custom({
     Expression<int>? id,
     Expression<String>? shortCode,
     Expression<String>? originalUrl,
@@ -397,17 +397,17 @@ class $$ShortUrlTableTableAnnotationComposer
 class $$ShortUrlTableTableTableManager extends RootTableManager<
     _$Database,
     $ShortUrlTableTable,
-    ShortUrlModel,
+    ShortUrlItemModel,
     $$ShortUrlTableTableFilterComposer,
     $$ShortUrlTableTableOrderingComposer,
     $$ShortUrlTableTableAnnotationComposer,
     $$ShortUrlTableTableCreateCompanionBuilder,
     $$ShortUrlTableTableUpdateCompanionBuilder,
     (
-      ShortUrlModel,
-      BaseReferences<_$Database, $ShortUrlTableTable, ShortUrlModel>
+      ShortUrlItemModel,
+      BaseReferences<_$Database, $ShortUrlTableTable, ShortUrlItemModel>
     ),
-    ShortUrlModel,
+    ShortUrlItemModel,
     PrefetchHooks Function()> {
   $$ShortUrlTableTableTableManager(_$Database db, $ShortUrlTableTable table)
       : super(TableManagerState(
@@ -465,17 +465,17 @@ class $$ShortUrlTableTableTableManager extends RootTableManager<
 typedef $$ShortUrlTableTableProcessedTableManager = ProcessedTableManager<
     _$Database,
     $ShortUrlTableTable,
-    ShortUrlModel,
+    ShortUrlItemModel,
     $$ShortUrlTableTableFilterComposer,
     $$ShortUrlTableTableOrderingComposer,
     $$ShortUrlTableTableAnnotationComposer,
     $$ShortUrlTableTableCreateCompanionBuilder,
     $$ShortUrlTableTableUpdateCompanionBuilder,
     (
-      ShortUrlModel,
-      BaseReferences<_$Database, $ShortUrlTableTable, ShortUrlModel>
+      ShortUrlItemModel,
+      BaseReferences<_$Database, $ShortUrlTableTable, ShortUrlItemModel>
     ),
-    ShortUrlModel,
+    ShortUrlItemModel,
     PrefetchHooks Function()>;
 
 class $DatabaseManager {

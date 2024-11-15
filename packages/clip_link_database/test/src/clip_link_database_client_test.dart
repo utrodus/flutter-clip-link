@@ -24,7 +24,7 @@ void main() {
   group('ClipLinkDatabaseClient', () {
     group('insertShortUrlItem', () {
       test('should successfully insert short url item', () async {
-        const shortUrlItemOne = ShortUrlModel(
+        const shortUrlItemOne = ShortUrlItemModel(
           id: 1,
           shortCode: 'abc123',
           originalUrl: 'https://www.utrodus.com',
@@ -33,7 +33,7 @@ void main() {
           isFavorited: false,
           password: null,
         );
-        const shortUrlItemTwo = ShortUrlModel(
+        const shortUrlItemTwo = ShortUrlItemModel(
           id: 2,
           shortCode: 'abc123',
           originalUrl: 'https://www.utrodus.com',
@@ -51,7 +51,7 @@ void main() {
 
     group('addItemToFavorites', () {
       test('should successfully add item to favorites', () async {
-        const shortUrlItemOne = ShortUrlModel(
+        const shortUrlItemOne = ShortUrlItemModel(
           id: 1,
           shortCode: 'abc123',
           originalUrl: 'https://www.utrodus.com',
@@ -67,7 +67,7 @@ void main() {
             .get();
         expect(
           result,
-          isA<List<ShortUrlModel>>()
+          isA<List<ShortUrlItemModel>>()
               .having((value) => value.length, 'length', 1)
               .having((value) => value.first.isFavorited, 'isFavorited', true),
         );
@@ -75,7 +75,7 @@ void main() {
     });
 
     group('getAllShortUrlItems', () {
-      const shortUrlItemOne = ShortUrlModel(
+      const shortUrlItemOne = ShortUrlItemModel(
         id: 1,
         shortCode: 'abc123',
         originalUrl: 'https://example.com',
@@ -83,7 +83,7 @@ void main() {
         isHavePassword: false,
         isFavorited: false,
       );
-      const shortUrlItemTwo = ShortUrlModel(
+      const shortUrlItemTwo = ShortUrlItemModel(
         id: 2,
         shortCode: 'abc123',
         originalUrl: 'https://example.com',
@@ -98,14 +98,14 @@ void main() {
         expect(
             clipLinkDatabaseClient.getAllShortUrlItems(),
             emitsInOrder([
-              isA<List<ShortUrlModel>>()
+              isA<List<ShortUrlItemModel>>()
                   .having((value) => value.length, 'length', 2)
             ]));
       });
     });
 
     group('getAllFavoritesShortUrlItems', () {
-      const shortUrlItemOne = ShortUrlModel(
+      const shortUrlItemOne = ShortUrlItemModel(
         id: 1,
         shortCode: 'abc123',
         originalUrl: 'https://example.com',
@@ -113,7 +113,7 @@ void main() {
         isHavePassword: false,
         isFavorited: true,
       );
-      const shortUrlItemTwo = ShortUrlModel(
+      const shortUrlItemTwo = ShortUrlItemModel(
         id: 2,
         shortCode: 'abc123',
         originalUrl: 'https://example.com',
@@ -130,7 +130,7 @@ void main() {
         expect(
             clipLinkDatabaseClient.getAllFavoritesShortUrlItems(),
             emitsInOrder([
-              isA<List<ShortUrlModel>>()
+              isA<List<ShortUrlItemModel>>()
                   .having((value) => value.length, 'length', 2)
                   .having(
                       (value) => value.first.isFavorited, 'isFavorited', true)
@@ -141,7 +141,7 @@ void main() {
     });
 
     group('removeItemFromFavorites', () {
-      const shortUrlItemOne = ShortUrlModel(
+      const shortUrlItemOne = ShortUrlItemModel(
         id: 1,
         shortCode: 'abc123',
         originalUrl: 'https://example.com',
@@ -149,7 +149,7 @@ void main() {
         isHavePassword: false,
         isFavorited: true,
       );
-      const shortUrlItemTwo = ShortUrlModel(
+      const shortUrlItemTwo = ShortUrlItemModel(
         id: 2,
         shortCode: 'abc123',
         originalUrl: 'https://example.com',
@@ -168,7 +168,7 @@ void main() {
         expect(
             clipLinkDatabaseClient.getAllFavoritesShortUrlItems(),
             emitsInOrder([
-              isA<List<ShortUrlModel>>()
+              isA<List<ShortUrlItemModel>>()
                   .having((value) => value.length, 'length', 1)
             ]));
       });

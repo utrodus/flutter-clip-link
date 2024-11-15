@@ -6,24 +6,24 @@ class ClipLinkDatabaseClient {
   ClipLinkDatabaseClient({Database? database})
       : _database = database ?? Database();
 
-  Future<int> insertShortUrlItem(ShortUrlModel shortUrlModel) async =>
+  Future<int> insertShortUrlItem(ShortUrlItemModel shortUrlItemModel) async =>
       await _database.managers.shortUrlTable.create(
         (item) => item(
-          originalUrl: shortUrlModel.originalUrl,
-          shortenedUrl: shortUrlModel.shortenedUrl,
-          shortCode: shortUrlModel.shortCode,
-          isHavePassword: shortUrlModel.isHavePassword,
-          password: shortUrlModel.isHavePassword
-              ? Value(shortUrlModel.password)
+          originalUrl: shortUrlItemModel.originalUrl,
+          shortenedUrl: shortUrlItemModel.shortenedUrl,
+          shortCode: shortUrlItemModel.shortCode,
+          isHavePassword: shortUrlItemModel.isHavePassword,
+          password: shortUrlItemModel.isHavePassword
+              ? Value(shortUrlItemModel.password)
               : const Value.absent(),
           isFavorited: const Value(false),
         ),
       );
 
-  Stream<List<ShortUrlModel>> getAllShortUrlItems() =>
+  Stream<List<ShortUrlItemModel>> getAllShortUrlItems() =>
       _database.managers.shortUrlTable.watch();
 
-  Stream<List<ShortUrlModel>> getAllFavoritesShortUrlItems() =>
+  Stream<List<ShortUrlItemModel>> getAllFavoritesShortUrlItems() =>
       _database.managers.shortUrlTable
           .filter((row) => row.isFavorited.isTrue())
           .watch();

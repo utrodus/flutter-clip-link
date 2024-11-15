@@ -5,7 +5,7 @@ import 'package:clip_link_database/clip_link_database.dart';
 void main() {
   group('ShortUrlModel', () {
     test('should create an instance with the correct values', () {
-      const shortUrl = ShortUrlModel(
+      const shortUrl = ShortUrlItemModel(
         id: 1,
         shortCode: 'abc123',
         originalUrl: 'https://example.com',
@@ -25,7 +25,7 @@ void main() {
     });
 
     test('should allow password to be null', () {
-      const shortUrl = ShortUrlModel(
+      const shortUrl = ShortUrlItemModel(
         id: 2,
         shortCode: 'xyz789',
         originalUrl: 'https://another.com',
@@ -44,7 +44,7 @@ void main() {
     });
 
     test('should consider instances with the same values as equal', () {
-      const shortUrl1 = ShortUrlModel(
+      const shortUrl1 = ShortUrlItemModel(
         id: 3,
         shortCode: 'qwe456',
         originalUrl: 'https://example.org',
@@ -53,7 +53,7 @@ void main() {
         isFavorited: true,
       );
 
-      const shortUrl2 = ShortUrlModel(
+      const shortUrl2 = ShortUrlItemModel(
         id: 3,
         shortCode: 'qwe456',
         originalUrl: 'https://example.org',

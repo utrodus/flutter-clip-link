@@ -1,7 +1,7 @@
 import 'package:clip_link_database/clip_link_database.dart';
 import 'package:drift/drift.dart';
 
-@UseRowClass(ShortUrlModel)
+@UseRowClass(ShortUrlItemModel)
 class ShortUrlTable extends Table {
   IntColumn get id => integer().autoIncrement()();
   TextColumn get shortCode => text()();

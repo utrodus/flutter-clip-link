@@ -1,4 +1,4 @@
-class ShortUrlModel {
+class ShortUrlItemModel {
   final int id;
   final String shortCode;
   final String originalUrl;
@@ -7,7 +7,7 @@ class ShortUrlModel {
   final bool isHavePassword;
   final bool isFavorited;
 
-  const ShortUrlModel({
+  const ShortUrlItemModel({
     required this.id,
     required this.shortCode,
     required this.originalUrl,
