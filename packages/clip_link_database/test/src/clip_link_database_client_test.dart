@@ -25,7 +25,6 @@ void main() {
     group('insertShortUrlItem', () {
       test('should successfully insert short url item', () async {
         const shortUrlItemOne = ShortUrlItemModel(
-          id: 1,
           shortCode: 'abc123',
           originalUrl: 'https://www.utrodus.com',
           shortenedUrl: 'https://www.spoo.me/abc123',
@@ -34,7 +33,6 @@ void main() {
           password: null,
         );
         const shortUrlItemTwo = ShortUrlItemModel(
-          id: 2,
           shortCode: 'abc123',
           originalUrl: 'https://www.utrodus.com',
           shortenedUrl: 'https://www.spoo.me/abc123',
@@ -52,7 +50,6 @@ void main() {
     group('addItemToFavorites', () {
       test('should successfully add item to favorites', () async {
         const shortUrlItemOne = ShortUrlItemModel(
-          id: 1,
           shortCode: 'abc123',
           originalUrl: 'https://www.utrodus.com',
           shortenedUrl: 'https://www.spoo.me/abc123',
@@ -76,7 +73,6 @@ void main() {
 
     group('getAllShortUrlItems', () {
       const shortUrlItemOne = ShortUrlItemModel(
-        id: 1,
         shortCode: 'abc123',
         originalUrl: 'https://example.com',
         shortenedUrl: 'https://short.ly/abc123',
@@ -84,7 +80,6 @@ void main() {
         isFavorited: false,
       );
       const shortUrlItemTwo = ShortUrlItemModel(
-        id: 2,
         shortCode: 'abc123',
         originalUrl: 'https://example.com',
         shortenedUrl: 'https://short.ly/abc123',
@@ -106,7 +101,6 @@ void main() {
 
     group('getAllFavoritesShortUrlItems', () {
       const shortUrlItemOne = ShortUrlItemModel(
-        id: 1,
         shortCode: 'abc123',
         originalUrl: 'https://example.com',
         shortenedUrl: 'https://short.ly/abc123',
@@ -114,7 +108,6 @@ void main() {
         isFavorited: true,
       );
       const shortUrlItemTwo = ShortUrlItemModel(
-        id: 2,
         shortCode: 'abc123',
         originalUrl: 'https://example.com',
         shortenedUrl: 'https://short.ly/abc123',
@@ -142,7 +135,6 @@ void main() {
 
     group('removeItemFromFavorites', () {
       const shortUrlItemOne = ShortUrlItemModel(
-        id: 1,
         shortCode: 'abc123',
         originalUrl: 'https://example.com',
         shortenedUrl: 'https://short.ly/abc123',
@@ -150,7 +142,6 @@ void main() {
         isFavorited: true,
       );
       const shortUrlItemTwo = ShortUrlItemModel(
-        id: 2,
         shortCode: 'abc123',
         originalUrl: 'https://example.com',
         shortenedUrl: 'https://short.ly/abc123',
