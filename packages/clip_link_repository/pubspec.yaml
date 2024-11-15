@@ -15,6 +15,7 @@ dependencies:
     path: ../spoo_me_api
   clip_link_database:
     path: ../clip_link_database
+  drift: ^2.21.0
 
 dev_dependencies:
   build_runner: ^2.4.13
