@@ -28,7 +28,7 @@ class ClipLinkDatabaseClient {
           .filter((row) => row.isFavorited.isTrue())
           .watch();
 
-  Future addItemToFavorites({required int id}) async =>
+  Future<int> addItemToFavorites({required int id}) async =>
       await _database.managers.shortUrlTable
           .filter(
             (row) => row.id(id),
@@ -39,7 +39,7 @@ class ClipLinkDatabaseClient {
             ),
           );
 
-  Future removeItemFromFavorites({required int id}) async =>
+  Future<int> removeItemFromFavorites({required int id}) async =>
       await _database.managers.shortUrlTable.filter((row) => row.id(id)).update(
             (item) => item(
               isFavorited: const Value(false),
