@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - lcov.info - constant/lib/src/constant/error_message.dart</title>
+  <title>LCOV - lcov.info - models/lib/src/models/short_url_response.dart</title>
   <link rel="stylesheet" type="text/css" href="../../../../gcov.css">
 </head>
 
@@ -19,7 +19,7 @@
                 <table cellpadding=1 border=0 width="100%">
           <tr>
             <td width="10%" class="headerItem">Current view:</td>
-            <td width="10%" class="headerValue"><a href="../../../../index.html">top level</a> - <a href="index.html">constant/lib/src/constant</a> - error_message.dart<span style="font-size: 80%;"> (source / <a href="error_message.dart.func-c.html">functions</a>)</span></td>
+            <td width="10%" class="headerValue"><a href="../../../../index.html">top level</a> - <a href="index.html">models/lib/src/models</a> - short_url_response.dart<span style="font-size: 80%;"> (source / <a href="short_url_response.dart.func-c.html">functions</a>)</span></td>
             <td width="5%"></td>
             <td width="5%"></td>
             <td width="5%" class="headerCovTableHead">Coverage</td>
@@ -31,9 +31,9 @@
             <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntryLo">0.0&nbsp;%</td>
-            <td class="headerCovTableEntry">1</td>
-            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
+            <td class="headerCovTableEntry">3</td>
+            <td class="headerCovTableEntry">3</td>
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
@@ -60,20 +60,24 @@
               <td>
 <pre class="sourceHeading">            Line data    Source code</pre>
 <pre class="source">
-<span id="L1"><span class="lineNum">       1</span>              : class ErrorMessage {</span>
-<span id="L2"><span class="lineNum">       2</span> <span class="tlaUNC tlaBgUNC">           0 :   ErrorMessage._();</span></span>
-<span id="L3"><span class="lineNum">       3</span>              :   static const String httpRequestFailure =</span>
-<span id="L4"><span class="lineNum">       4</span>              :       'Terjadi kesalahan pada server. Coba lagi nanti.';</span>
-<span id="L5"><span class="lineNum">       5</span>              :   static const String parseJsonFailure =</span>
-<span id="L6"><span class="lineNum">       6</span>              :       'JSON tidak valid, coba periksa kembali response dari server';</span>
-<span id="L7"><span class="lineNum">       7</span>              :   static const String urlInvalid =</span>
-<span id="L8"><span class="lineNum">       8</span>              :       'URL tidak lengkap atau tidak valid. Pastikan URL dimulai dengan https atau http';</span>
-<span id="L9"><span class="lineNum">       9</span>              :   static const String urlNotFound = &quot;Short Url tidak ditemukan&quot;;</span>
-<span id="L10"><span class="lineNum">      10</span>              :   static const String aliasError = 'Alias URL telah digunakan';</span>
-<span id="L11"><span class="lineNum">      11</span>              :   static const String passwordInvalid =</span>
-<span id="L12"><span class="lineNum">      12</span>              :       'Password setidaknya 8 karakter dan harus berisi huruf, angka, dan karakter spesial serta tidak bisa berurutan';</span>
-<span id="L13"><span class="lineNum">      13</span>              :   static const String wrongPassword = 'Password salah, mohon coba lagi';</span>
-<span id="L14"><span class="lineNum">      14</span>              : }</span>
+<span id="L1"><span class="lineNum">       1</span>              : import 'package:json_annotation/json_annotation.dart';</span>
+<span id="L2"><span class="lineNum">       2</span>              : </span>
+<span id="L3"><span class="lineNum">       3</span>              : part 'short_url_response.g.dart';</span>
+<span id="L4"><span class="lineNum">       4</span>              : </span>
+<span id="L5"><span class="lineNum">       5</span>              : @JsonSerializable(</span>
+<span id="L6"><span class="lineNum">       6</span>              :   createToJson: false,</span>
+<span id="L7"><span class="lineNum">       7</span>              : )</span>
+<span id="L8"><span class="lineNum">       8</span>              : class ShortUrlResponse {</span>
+<span id="L9"><span class="lineNum">       9</span> <span class="tlaGNC tlaBgGNC">           2 :   ShortUrlResponse({</span></span>
+<span id="L10"><span class="lineNum">      10</span>              :     required this.url,</span>
+<span id="L11"><span class="lineNum">      11</span>              :   });</span>
+<span id="L12"><span class="lineNum">      12</span>              : </span>
+<span id="L13"><span class="lineNum">      13</span> <span class="tlaGNC">           2 :   factory ShortUrlResponse.fromJson(Map&lt;String, dynamic&gt; json) =&gt;</span></span>
+<span id="L14"><span class="lineNum">      14</span> <span class="tlaGNC">           2 :       _$ShortUrlResponseFromJson(json);</span></span>
+<span id="L15"><span class="lineNum">      15</span>              : </span>
+<span id="L16"><span class="lineNum">      16</span>              :   @JsonKey(name: 'short_url')</span>
+<span id="L17"><span class="lineNum">      17</span>              :   final String url;</span>
+<span id="L18"><span class="lineNum">      18</span>              : }</span>
         </pre>
               </td>
             </tr>

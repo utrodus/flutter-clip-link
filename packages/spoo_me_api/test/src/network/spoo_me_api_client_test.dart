@@ -1,9 +1,9 @@
 // ignore_for_file: empty_catches, avoid_print
 
+import 'package:test/test.dart';
 import 'package:http/http.dart' as http;
 import 'package:mocktail/mocktail.dart';
 import 'package:spoo_me_api/spoo_me_api.dart';
-import 'package:test/test.dart';
 
 class MockHttpClient extends Mock implements http.Client {}
 
@@ -32,8 +32,6 @@ void main() {
     });
 
     group('generateShortUrl', () {
-      ShortUrlParam mockShortUrlParam =
-          ShortUrlParam(url: 'https://example.com');
       final mockResponse = MockResponse();
       final mockHeaders = {
         'Accept': 'application/json',
@@ -46,13 +44,20 @@ void main() {
         when(() => httpClient.post(any()))
             .thenAnswer((_) async => mockResponse);
         try {
-          await spooMeApiClient.postShortenUrl(param: mockShortUrlParam);
+          await spooMeApiClient.postShortenUrl(
+              url: 'https://www.utrodus.com',
+              alias: 'utrd',
+              password: '123456');
         } catch (e) {}
         verify(
           () => httpClient.post(
             Uri.parse(ApiEndpoints.baseUrl),
             headers: mockHeaders,
-            body: mockShortUrlParam.toJson(),
+            body: {
+              'url': 'https://www.utrodus.com',
+              'alias': 'utrd',
+              'password': '123456'
+            },
           ),
         ).called(1);
       });
@@ -70,7 +75,8 @@ void main() {
               )).thenAnswer((_) async => mockResponse);
 
           expect(
-            () => spooMeApiClient.postShortenUrl(param: mockShortUrlParam),
+            () =>
+                spooMeApiClient.postShortenUrl(url: "https://www.utrodus.com"),
             throwsA(isA<InvalidUrlRequestFailure>()),
           );
         },
@@ -89,7 +95,8 @@ void main() {
               )).thenAnswer((_) async => mockResponse);
 
           expect(
-            () => spooMeApiClient.postShortenUrl(param: mockShortUrlParam),
+            () =>
+                spooMeApiClient.postShortenUrl(url: "https://www.utrodus.com"),
             throwsA(isA<AliasRequestFailure>()),
           );
         },
@@ -108,7 +115,8 @@ void main() {
               )).thenAnswer((_) async => mockResponse);
 
           expect(
-            () => spooMeApiClient.postShortenUrl(param: mockShortUrlParam),
+            () =>
+                spooMeApiClient.postShortenUrl(url: "https://www.utrodus.com"),
             throwsA(isA<PasswordInvalidRequestFailure>()),
           );
         },
@@ -128,7 +136,7 @@ void main() {
 
         // Act & Assert
         expect(
-          () => spooMeApiClient.postShortenUrl(param: mockShortUrlParam),
+          () => spooMeApiClient.postShortenUrl(url: "https://www.utrodus.com"),
           throwsA(predicate((e) =>
               e is Exception && e.toString().contains('Unexpected error'))),
         );
@@ -145,8 +153,8 @@ void main() {
               headers: mockHeaders,
               body: any(named: "body"),
             )).thenAnswer((_) async => mockResponse);
-        final actual =
-            await spooMeApiClient.postShortenUrl(param: mockShortUrlParam);
+        final actual = await spooMeApiClient.postShortenUrl(
+            url: "https://www.utrodus.com");
         expect(
             actual,
             isA<ShortUrlResponse>().having(

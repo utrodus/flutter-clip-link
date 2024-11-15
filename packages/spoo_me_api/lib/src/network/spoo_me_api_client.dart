@@ -18,17 +18,26 @@ class SpooMeApiClient {
 
   /// Request shorten URL
   Future<ShortUrlResponse> postShortenUrl(
-      {required ShortUrlParam param}) async {
+      {required String url, String? alias, String? password}) async {
     try {
       final headers = {
         'Accept': 'application/json',
         'Content-Type': 'application/x-www-form-urlencoded'
       };
+      final body = {
+        'url': url,
+      };
+      if (alias != null) {
+        body['alias'] = alias;
+      }
+      if (password != null) {
+        body['password'] = password;
+      }
 
       final response = await _httpClient.post(
         Uri.parse(ApiEndpoints.baseUrl),
         headers: headers,
-        body: param.toJson(),
+        body: body,
       );
 
       if (response.statusCode == 400) {
