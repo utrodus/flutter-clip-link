@@ -76,7 +76,11 @@ class SettingsPage extends StatelessWidget {
                       ),
                     ),
                     MenuTile(
-                      onTap: () {},
+                      onTap: () {
+                        GoRouter.of(context).go(
+                          '${Routes.settings.path}/${Routes.apiRateLimits.path}',
+                        );
+                      },
                       title: 'API Rate Limits',
                       leading: CircleAvatar(
                         backgroundColor: context.colorScheme.primary,

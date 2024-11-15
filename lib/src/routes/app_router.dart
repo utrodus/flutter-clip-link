@@ -122,10 +122,8 @@ GoRouter appRouter = GoRouter(
                   builder: (context, state) => const AboutDeveloperPage(),
                 ),
                 GoRoute(
-                  path: Routes.faq.path,
-                  builder: (context, state) {
-                    return const FaqPage();
-                  },
+                  path: Routes.apiRateLimits.path,
+                  builder: (context, state) => const ApiRateLimitPage(),
                 ),
               ],
             ),
