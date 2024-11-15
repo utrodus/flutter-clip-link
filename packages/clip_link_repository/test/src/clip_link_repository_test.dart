@@ -1,4 +1,7 @@
+import 'package:clip_link_database/clip_link_database.dart';
 import 'package:clip_link_repository/clip_link_repository.dart';
+import 'package:drift/drift.dart';
+import 'package:drift/native.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:spoo_me_api/spoo_me_api.dart';
 import 'package:mocktail/mocktail.dart';
@@ -16,24 +19,28 @@ void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
   group('ClipLinkRepository', () {
     late spoo_me_api.SpooMeApiClient spooMeApiClient;
+    late Database database;
     late ClipLinkRepository clipLinkRepository;
+    late ClipLinkDatabaseClient clipLinkDatabaseClient;
 
     setUp(() {
       spooMeApiClient = MockSpooMeApiClient();
+      final inMemory = DatabaseConnection(NativeDatabase.memory());
+      database = Database.forTesting(inMemory);
+      clipLinkDatabaseClient = ClipLinkDatabaseClient(database: database);
       clipLinkRepository = ClipLinkRepository(
         spooMeApiClient: spooMeApiClient,
+        clipLinkDatabaseClient: clipLinkDatabaseClient,
       );
     });
 
-    group('constructor', () {
-      test('instantiates internal spoo me api client when not injected', () {
-        expect(ClipLinkRepository(), isNotNull);
-      });
-    });
+    tearDown(() => database.close());
 
     group(
       'generateShortUrl',
       () {
+        final mockShortUrlResponse = MockShortUrlResponse();
+
         test('should call postShortenUrl once when generate short url',
             () async {
           try {
@@ -93,24 +100,41 @@ void main() {
           );
         });
 
-        test(
-            'should return ShortUrlModel with correct value when postShortenUrl success',
-            () async {
-          final mockShortUrlResponse = MockShortUrlResponse();
+        test('should return true when generate short url success', () async {
           when(() => mockShortUrlResponse.url)
               .thenReturn('https://www.spoo.me/utrd');
           when(() => spooMeApiClient.postShortenUrl(
                   url: "https://www.utrodus.com"))
               .thenAnswer((_) async => mockShortUrlResponse);
+
           final actual = await clipLinkRepository.generateShortUrl(
               url: "https://www.utrodus.com");
-          expect(
-              actual,
-              isA<ShortUrlModel>().having((value) => value.shortUrl,
-                  'short_url', 'https://www.spoo.me/utrd'));
+
+          expect(actual, isTrue);
         });
+        // TODO: add test - should return false when generate shorl url fail
       },
     );
+
+    group('getShortCode', () {
+      test('should return correctly shortCode value', () {
+        const String shortenedUrl = "https://www.spoo.me/abcd";
+        final String shortCode =
+            clipLinkRepository.getShortCode(shortenedUrl: shortenedUrl);
+        expect(shortCode, equals('abcd'));
+      });
+    });
+
+    // TODO: add group for test addToFavorites function
+    // TODO: add test should return true when addToFavorites success
+    // TODO: add test should return false when addToFavorites fail
+
+    // TODO: add group for test removeFromFavorites function
+    // TODO: add test should return true when removeFromFavorites true
+    // TODO: add test should return false when removeFromFavorites fail
+
+    // TODO: add group for test getRecentsShortenedUrlItems function
+    // TODO: add group for test getAllFavoritesShortUrlItems function
 
     group('loadUrlStatistics', () {
       test('should call getUrlStatistics once when load url statistics',
