@@ -21,12 +21,9 @@ class ClipLinkRepository {
       final response = await _spooMeApiClient.postShortenUrl(
           url: url, alias: alias, password: password);
 
-      final splitUrl = response.url.split('/');
-      final shortCode = splitUrl.last;
-
       final shortUrlItem = ShortUrlItemModel(
         shortenedUrl: response.url,
-        shortCode: shortCode,
+        shortCode: getShortCode(shortenedUrl: response.url),
         isHavePassword: password != null,
         password: password,
         originalUrl: url,
@@ -44,6 +41,32 @@ class ClipLinkRepository {
       rethrow;
     }
   }
+
+  String getShortCode({required String shortenedUrl}) =>
+      shortenedUrl.split('/').last;
+
+  Future<bool> addToFavorites({required int id}) async {
+    final result = await _clipLinkDatabaseClient.addItemToFavorites(id: id);
+    if (result == 1) {
+      return true;
+    }
+    return false;
+  }
+
+  Future<bool> removeFromFavorites({required int id}) async {
+    final result =
+        await _clipLinkDatabaseClient.removeItemFromFavorites(id: id);
+    if (result == 1) {
+      return true;
+    }
+    return false;
+  }
+
+  Stream<List<ShortUrlItemModel>> getRecentsShortenedUrlItems() =>
+      _clipLinkDatabaseClient.getAllShortUrlItems();
+
+  Stream<List<ShortUrlItemModel>> getAllFavoritesShortUrlItems() =>
+      _clipLinkDatabaseClient.getAllFavoritesShortUrlItems();
 
   Future<UrlStatisticsModel> loadUrlStatistics({
     required String shortCode,
