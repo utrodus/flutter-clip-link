@@ -42,11 +42,11 @@ class _AboutDeveloperPageState extends State<AboutDeveloperPage> {
         title: const Text('About The Developer'),
         centerTitle: true,
       ),
-      body: Align(
-        alignment: Alignment.topCenter,
-        child: ConstrainedBox(
-          constraints: const BoxConstraints(maxWidth: 600),
-          child: SafeArea(
+      body: SafeArea(
+        child: Align(
+          alignment: Alignment.topCenter,
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: 600),
             child: SingleChildScrollView(
               padding: const EdgeInsets.symmetric(
                 vertical: 14,
