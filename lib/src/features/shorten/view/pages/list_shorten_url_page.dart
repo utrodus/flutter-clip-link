@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_clip_link/src/core/core.dart';
-import 'package:flutter_clip_link/src/features/shorten/cubit/list_shorten_cubit.dart';
+import 'package:flutter_clip_link/src/features/shorten/cubit/list_shorten_url/list_shorten_cubit.dart';
 import 'package:flutter_clip_link/src/features/shorten/view/widgets/list_shorten_appbar.dart';
 import 'package:flutter_clip_link/src/features/shorten/view/widgets/shorten_url_item.dart';
 import 'package:flutter_clip_link/src/routes/routes.dart';
