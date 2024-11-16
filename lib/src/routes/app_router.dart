@@ -57,7 +57,10 @@ GoRouter appRouter = GoRouter(
               routes: [
                 GoRoute(
                   path: Routes.addNewShortenURL.path,
-                  builder: (context, state) => const AddNewShortenUrlPage(),
+                  builder: (context, state) => BlocProvider(
+                    create: (context) => sl<AddNewShortenUrlBloc>(),
+                    child: const AddNewShortenUrlPage(),
+                  ),
                 ),
                 GoRoute(
                   path: Routes.detailShortenURL.path,
