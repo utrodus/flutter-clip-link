@@ -9,6 +9,7 @@ class CLButton extends StatelessWidget {
     this.onPressed,
     this.leading,
     this.trailing,
+    this.isLoading = true,
   });
 
   final String text;
@@ -16,11 +17,12 @@ class CLButton extends StatelessWidget {
   final void Function()? onPressed;
   final Widget? leading;
   final Widget? trailing;
+  final bool isLoading;
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: onPressed,
+      onPressed: isLoading ? null : onPressed,
       style: ElevatedButton.styleFrom(
         minimumSize: minimumSize ?? const Size(double.infinity, 44),
       ),
@@ -36,18 +38,29 @@ class CLButton extends StatelessWidget {
               child: leading,
             ),
           ),
-          Flexible(
-            child: Text(
-              text,
-              style: context.textTheme.labelLarge?.copyWith(
-                color: onPressed != null
-                    ? context.colorScheme.onPrimary
-                    : context.colorScheme.onSurface.withOpacity(0.2),
-                fontWeight: bold,
+          if (isLoading) ...[
+            const SizedBox(
+              width: 20,
+              height: 20,
+              child: LoaderByPlatform(
+                strokeWidth: 3.5,
+                radius: 15,
               ),
-              textAlign: TextAlign.center,
             ),
-          ),
+          ] else ...[
+            Flexible(
+              child: Text(
+                text,
+                style: context.textTheme.labelLarge?.copyWith(
+                  color: onPressed != null
+                      ? context.colorScheme.onPrimary
+                      : context.colorScheme.onSurface.withOpacity(0.2),
+                  fontWeight: bold,
+                ),
+                textAlign: TextAlign.center,
+              ),
+            ),
+          ],
           Offstage(
             offstage: trailing == null,
             child: Padding(
