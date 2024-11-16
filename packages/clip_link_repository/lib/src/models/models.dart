@@ -1,2 +1,2 @@
-export 'short_url_model.dart';
-export 'url_statistics_model.dart';
+export 'short_url_item.dart';
+export 'url_statistics.dart';

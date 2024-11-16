@@ -62,20 +62,44 @@ class ClipLinkRepository {
     return false;
   }
 
-  Stream<List<ShortUrlItemModel>> getRecentsShortenedUrlItems() =>
-      _clipLinkDatabaseClient.getAllShortUrlItems();
+  Stream<List<ShortUrlItem>> getRecentsShortenedUrlItems() {
+    return _clipLinkDatabaseClient.getAllShortUrlItems().map(
+          (listOfShortUrlItem) => listOfShortUrlItem
+              .map((item) => ShortUrlItem(
+                  id: item.id,
+                  shortCode: item.shortCode,
+                  originalUrl: item.originalUrl,
+                  shortenedUrl: item.shortenedUrl,
+                  isHavePassword: item.isHavePassword,
+                  isFavorited: item.isFavorited,
+                  password: item.password))
+              .toList(),
+        );
+  }
 
-  Stream<List<ShortUrlItemModel>> getAllFavoritesShortUrlItems() =>
-      _clipLinkDatabaseClient.getAllFavoritesShortUrlItems();
+  Stream<List<ShortUrlItem>> getAllFavoritesShortUrlItems() {
+    return _clipLinkDatabaseClient.getAllFavoritesShortUrlItems().map(
+          (listOfShortUrlItem) => listOfShortUrlItem
+              .map((item) => ShortUrlItem(
+                  id: item.id,
+                  shortCode: item.shortCode,
+                  originalUrl: item.originalUrl,
+                  shortenedUrl: item.shortenedUrl,
+                  isHavePassword: item.isHavePassword,
+                  isFavorited: item.isFavorited,
+                  password: item.password))
+              .toList(),
+        );
+  }
 
-  Future<UrlStatisticsModel> loadUrlStatistics({
+  Future<UrlStatistics> loadUrlStatistics({
     required String shortCode,
     String? password,
   }) async {
     try {
       final response = await _spooMeApiClient.getUrlStatistics(
           shortCode: shortCode, password: password);
-      return UrlStatisticsModel.toModel(response);
+      return UrlStatistics.toModel(response);
     } catch (e) {
       rethrow;
     }

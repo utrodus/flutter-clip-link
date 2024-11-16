@@ -19,8 +19,7 @@ void main() {
           originalUrl: 'originalUrl',
           password: 'password',
         );
-        final urlStatisticsModel =
-            UrlStatisticsModel.toModel(urlStatisticsResponse);
+        final urlStatisticsModel = UrlStatistics.toModel(urlStatisticsResponse);
         expect(urlStatisticsModel.id, urlStatisticsResponse.id);
         expect(urlStatisticsModel.shortCode, urlStatisticsResponse.shortCode);
         expect(

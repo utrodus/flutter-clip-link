@@ -209,7 +209,7 @@ void main() {
 
         expect(
           actual,
-          isA<UrlStatisticsModel>()
+          isA<UrlStatistics>()
               .having((value) => value.id, 'id', 'asdfasd')
               .having((value) => value.shortCode, 'short_code', 'asdfasd')
               .having((value) => value.totalClicks, 'total-clicks', 1)

@@ -1,6 +1,6 @@
 import 'package:spoo_me_api/spoo_me_api.dart';
 
-class UrlStatisticsModel {
+class UrlStatistics {
   final String id;
   final String shortCode;
   final int totalClicks;
@@ -12,7 +12,7 @@ class UrlStatisticsModel {
   final String? password;
   final String originalUrl;
 
-  const UrlStatisticsModel({
+  const UrlStatistics({
     required this.id,
     required this.shortCode,
     required this.totalClicks,
@@ -25,9 +25,8 @@ class UrlStatisticsModel {
     this.password,
   });
 
-  static UrlStatisticsModel toModel(
-          UrlStatisticsResponse urlStatisticsResponse) =>
-      UrlStatisticsModel(
+  static UrlStatistics toModel(UrlStatisticsResponse urlStatisticsResponse) =>
+      UrlStatistics(
         id: urlStatisticsResponse.id,
         shortCode: urlStatisticsResponse.shortCode,
         totalClicks: urlStatisticsResponse.totalClicks,
