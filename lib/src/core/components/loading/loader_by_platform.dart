@@ -8,24 +8,31 @@ import 'package:flutter_clip_link/src/core/core.dart';
 /// LoadingByPlatform widget is a widget that displays a loading indicator
 /// based on the platform.
 class LoaderByPlatform extends StatelessWidget {
-  const LoaderByPlatform({super.key, this.color});
+  const LoaderByPlatform({
+    super.key,
+    this.color,
+    this.strokeWidth,
+    this.radius,
+  });
   final Color? color;
+  final double? strokeWidth;
+  final double? radius;
 
   @override
   Widget build(BuildContext context) {
     return kIsWeb
         ? CircularProgressIndicator(
             color: color ?? context.colorScheme.onSurface,
-            strokeWidth: 4.5,
+            strokeWidth: strokeWidth ?? 4.5,
           )
         : Platform.isIOS
             ? CupertinoActivityIndicator(
                 color: color ?? context.colorScheme.onSurface,
-                radius: 20,
+                radius: radius ?? 20,
               )
             : CircularProgressIndicator(
                 color: color ?? context.colorScheme.onSurface,
-                strokeWidth: 4.5,
+                strokeWidth: strokeWidth ?? 4.5,
               );
   }
 }
