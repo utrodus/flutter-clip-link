@@ -30,6 +30,7 @@ class ListFavoritesEmpty extends StatelessWidget {
           ),
           CLButton(
             text: 'Add link now',
+            isLoading: false,
             minimumSize: const Size(130, 40),
             onPressed: () {
               Routes.listShorten.go(context);

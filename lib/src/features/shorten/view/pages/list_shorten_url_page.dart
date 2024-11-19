@@ -73,6 +73,7 @@ class ListShortenUrlPage extends StatelessWidget {
                   responsive.onlyVisibleOnDesktopAndLarge(
                     child: CLButton(
                       text: 'Add New Link',
+                      isLoading: false,
                       leading: const Icon(IconsaxPlusLinear.add),
                       minimumSize: const Size(44, 48),
                       onPressed: () {
