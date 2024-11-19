@@ -44,8 +44,28 @@ class _AddNewShortenUrlPageState extends State<AddNewShortenUrlPage> {
       listener: (context, state) {
         if (state is AddNewShortenUrlSuccess) {
           CLSnackbar(state.message);
+
+          // ClDialog(
+          //   context: context,
+          //   title: 'Short URL Generated',
+          //   body: 'Your short URL has been successfully created!',
+          //   cancelTitle: 'Close',
+          //   acceptTitle: 'Copy URL',
+          //   onPressedAccept: () => context.pop(),
+          //   onPressedCancel: () => context.pop(),
+          // );
           Routes.listShorten.go(context);
         } else if (state is AddNewShortenUrlFailure) {
+          //  ClDialog(
+          //                 context: context,
+          //                 title: 'Failed to Generate URL',
+          //                 body: 'We encountered an error while generating  '
+          //                     'the short URL. Please try again later.',
+          //                 cancelTitle: 'Close',
+          //                 acceptTitle: 'Retry',
+          //                 onPressedAccept: () => context.pop(),
+          //                 onPressedCancel: () => context.pop(),
+          //               );
           CLSnackbar.error(state.message);
         }
       },
@@ -83,8 +103,9 @@ class _AddNewShortenUrlPageState extends State<AddNewShortenUrlPage> {
                             validationMessages: {
                               ValidationMessage.required: (error) =>
                                   'Long Url must be filled!',
-                              ValidationMessage.email: (error) =>
-                                  'Url must be valid!',
+                              ValidationMessage.pattern: (error) =>
+                                  'Url must contain a valid protocol like '
+                                  'https or http',
                             },
                             label: 'Long URL',
                             hintText: 'https://www.your-long-url.com',
