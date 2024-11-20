@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_clip_link/src/core/core.dart';
+import 'package:go_router/go_router.dart';
 
 enum CLDialogType { basic, delete, withoutCancelButton }
 
@@ -8,7 +9,7 @@ class ClDialog {
     required this.context,
     required this.title,
     required this.body,
-    required this.onPressedAccept,
+    this.onPressedAccept,
     this.onPressedCancel,
     this.acceptTitle = 'Okay',
     this.cancelTitle = 'Cancel',
@@ -33,7 +34,7 @@ class ClDialog {
   final String cancelTitle;
   final String acceptTitle;
   final void Function()? onPressedCancel;
-  final void Function()? onPressedAccept;
+  final void Function(BuildContext ctx)? onPressedAccept;
 
   void _show({
     required BuildContext context,
@@ -42,8 +43,8 @@ class ClDialog {
     required String body,
     required String cancelTitle,
     required String acceptTitle,
-    required void Function()? onPressedCancel,
-    required void Function()? onPressedAccept,
+    void Function(BuildContext ctx)? onPressedAccept,
+    void Function()? onPressedCancel,
   }) =>
       showDialog(
         context: context,
@@ -88,7 +89,10 @@ class ClDialog {
                     children: <Widget>[
                       if (type != CLDialogType.withoutCancelButton) ...[
                         TextButton(
-                          onPressed: onPressedCancel,
+                          onPressed: () {
+                            context.pop();
+                            onPressedCancel?.call();
+                          },
                           child: Text(
                             cancelTitle,
                             style: context.textTheme.labelLarge,
@@ -99,7 +103,10 @@ class ClDialog {
                         ),
                       ],
                       TextButton(
-                        onPressed: onPressedAccept,
+                        onPressed: () {
+                          context.pop();
+                          onPressedAccept?.call(context);
+                        },
                         child: Text(
                           acceptTitle,
                           style: context.textTheme.labelLarge?.copyWith(
