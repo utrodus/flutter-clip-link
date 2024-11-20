@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_clip_link/src/core/core.dart';
 import 'package:flutter_clip_link/src/features/shorten/shorten.dart';
 import 'package:flutter_clip_link/src/routes/routes.dart';
+import 'package:go_router/go_router.dart';
 import 'package:iconsax_plus/iconsax_plus.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
@@ -43,30 +45,39 @@ class _AddNewShortenUrlPageState extends State<AddNewShortenUrlPage> {
     return BlocListener<AddNewShortenUrlBloc, AddNewShortenUrlState>(
       listener: (context, state) {
         if (state is AddNewShortenUrlSuccess) {
-          CLSnackbar(state.message);
-
-          // ClDialog(
-          //   context: context,
-          //   title: 'Short URL Generated',
-          //   body: 'Your short URL has been successfully created!',
-          //   cancelTitle: 'Close',
-          //   acceptTitle: 'Copy URL',
-          //   onPressedAccept: () => context.pop(),
-          //   onPressedCancel: () => context.pop(),
-          // );
-          Routes.listShorten.go(context);
+          ClDialog(
+            context: context,
+            title: state.title,
+            body: state.message,
+            cancelTitle: 'Close',
+            acceptTitle: 'Copy URL',
+            onPressedAccept: () async {
+              await Clipboard.setData(
+                ClipboardData(
+                  text: state.shortenUrl,
+                ),
+              );
+              context.pop();
+              CLSnackbar(
+                '✅ URL copied to clipboard!',
+                position: CLSnackbarPosition.customWidth,
+              );
+            },
+            onPressedCancel: () {
+              Routes.listShorten.go(context);
+              context.pop();
+            },
+          );
         } else if (state is AddNewShortenUrlFailure) {
-          //  ClDialog(
-          //                 context: context,
-          //                 title: 'Failed to Generate URL',
-          //                 body: 'We encountered an error while generating  '
-          //                     'the short URL. Please try again later.',
-          //                 cancelTitle: 'Close',
-          //                 acceptTitle: 'Retry',
-          //                 onPressedAccept: () => context.pop(),
-          //                 onPressedCancel: () => context.pop(),
-          //               );
-          CLSnackbar.error(state.message);
+          ClDialog(
+            context: context,
+            title: state.title,
+            body: state.message,
+            cancelTitle: 'Close',
+            acceptTitle: 'Retry',
+            onPressedAccept: () => context.pop(),
+            onPressedCancel: () => context.pop(),
+          );
         }
       },
       child: Scaffold(

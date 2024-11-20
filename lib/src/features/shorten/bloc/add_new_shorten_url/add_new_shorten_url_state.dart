@@ -13,14 +13,26 @@ final class AddNewShortenUrlInitial extends AddNewShortenUrlState {}
 final class AddNewShortenUrlLoading extends AddNewShortenUrlState {}
 
 final class AddNewShortenUrlSuccess extends AddNewShortenUrlState {
-  const AddNewShortenUrlSuccess({required this.message});
+  const AddNewShortenUrlSuccess({
+    required this.shortenUrl,
+    required this.title,
+    required this.message,
+  });
+
+  final String shortenUrl;
+  final String title;
   final String message;
   @override
-  List<Object> get props => [message];
+  List<Object> get props => [title, message, shortenUrl];
 }
 
 final class AddNewShortenUrlFailure extends AddNewShortenUrlState {
-  const AddNewShortenUrlFailure({required this.message});
+  const AddNewShortenUrlFailure({
+    required this.title,
+    required this.message,
+  });
+
+  final String title;
   final String message;
 
   @override

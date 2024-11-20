@@ -27,29 +27,43 @@ class AddNewShortenUrlBloc
         alias: event.alias,
         password: event.password,
       );
-      if (result) {
+      if (result != null) {
         emit(
-          const AddNewShortenUrlSuccess(
-            message: 'Success Generate Short Url',
+          AddNewShortenUrlSuccess(
+            title: 'Short URL Generated',
+            message: 'Your short URL has been successfully created!',
+            shortenUrl: result,
           ),
         );
       } else {
         emit(
           const AddNewShortenUrlFailure(
-            message: 'Failed to save data to database',
+            title: 'Failed to generate URL',
+            message: 'We encountered an error while generating '
+                'the short URL. Please try again later.',
           ),
         );
       }
     } on InvalidUrlRequestFailure catch (e) {
-      emit(AddNewShortenUrlFailure(message: e.message));
+      emit(AddNewShortenUrlFailure(title: 'Invalid Url', message: e.message));
     } on AliasRequestFailure catch (e) {
-      emit(AddNewShortenUrlFailure(message: e.message));
+      emit(
+        AddNewShortenUrlFailure(
+          title: 'Alias is already taken',
+          message: e.message,
+        ),
+      );
     } on PasswordInvalidRequestFailure catch (e) {
-      emit(AddNewShortenUrlFailure(message: e.message));
+      emit(
+        AddNewShortenUrlFailure(
+          title: 'Password not valid',
+          message: e.message,
+        ),
+      );
     } on HttpRequestFailure catch (e) {
-      emit(AddNewShortenUrlFailure(message: e.message));
+      emit(AddNewShortenUrlFailure(title: 'HTTP Error', message: e.message));
     } on Exception catch (e) {
-      emit(AddNewShortenUrlFailure(message: e.toString()));
+      emit(AddNewShortenUrlFailure(title: 'Error', message: e.toString()));
     }
   }
 }
