@@ -21,7 +21,7 @@ class ClipLinkDatabaseClient {
       );
 
   Stream<List<ShortUrlItemModel>> getAllShortUrlItems() =>
-      _database.managers.shortUrlTable.watch();
+      _database.managers.shortUrlTable.orderBy((o) => o.id.desc()).watch();
 
   Stream<List<ShortUrlItemModel>> getAllFavoritesShortUrlItems() =>
       _database.managers.shortUrlTable
