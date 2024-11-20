@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_clip_link/src/core/core.dart';
-import 'package:flutter_clip_link/src/features/shorten/cubit/list_shorten_url/list_shorten_cubit.dart';
-import 'package:flutter_clip_link/src/features/shorten/view/widgets/list_shorten_appbar.dart';
-import 'package:flutter_clip_link/src/features/shorten/view/widgets/shorten_url_item.dart';
+import 'package:flutter_clip_link/src/features/shorten/shorten.dart';
+import 'package:flutter_clip_link/src/features/shorten/view/widgets/widgets.dart';
 import 'package:flutter_clip_link/src/routes/routes.dart';
 import 'package:go_router/go_router.dart';
 import 'package:iconsax_plus/iconsax_plus.dart';
-import 'package:skeletonizer/skeletonizer.dart';
 
 class ListShortenUrlPage extends StatelessWidget {
   const ListShortenUrlPage({super.key});
@@ -41,93 +39,104 @@ class ListShortenUrlPage extends StatelessWidget {
             right: 20,
             bottom: 24,
           ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
+          child: Align(
+            alignment: Alignment.center,
+            child: ConstrainedBox(
+              constraints: const BoxConstraints(
+                maxWidth: Breakpoints.tablet,
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Text(
-                          'Hi 👋, Welcome to ClipLink',
-                          style: context.textTheme.titleMedium,
+                  Row(
+                    children: [
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Text(
+                              'Hi 👋, Welcome to ClipLink',
+                              style: context.textTheme.titleMedium,
+                            ),
+                            const SizedBox(
+                              height: 6,
+                            ),
+                            Text(
+                              'ClipLink App is a URL Shortener that lets '
+                              'you create short links for all your '
+                              'favorite websites!',
+                              style: context.textTheme.bodyMedium,
+                            ),
+                            const SizedBox(
+                              height: 16,
+                            ),
+                          ],
                         ),
-                        const SizedBox(
-                          height: 6,
+                      ),
+                      const SizedBox(
+                        width: 16,
+                      ),
+                      responsive.onlyVisibleOnDesktopAndLarge(
+                        child: CLButton(
+                          text: 'Add New Link',
+                          isLoading: false,
+                          leading: const Icon(IconsaxPlusLinear.add),
+                          minimumSize: const Size(44, 48),
+                          onPressed: () {
+                            GoRouter.of(context).go(
+                              '${Routes.listShorten.path}/${Routes.addNewShortenURL.path}',
+                            );
+                          },
                         ),
-                        Text(
-                          'ClipLink App is a URL Shortener that lets '
-                          'you create short links for all your '
-                          'favorite websites!',
-                          style: context.textTheme.bodyMedium,
-                        ),
-                        const SizedBox(
-                          height: 16,
-                        ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                   responsive.onlyVisibleOnDesktopAndLarge(
-                    child: CLButton(
-                      text: 'Add New Link',
-                      isLoading: false,
-                      leading: const Icon(IconsaxPlusLinear.add),
-                      minimumSize: const Size(44, 48),
-                      onPressed: () {
-                        GoRouter.of(context).go(
-                          '${Routes.listShorten.path}/${Routes.addNewShortenURL.path}',
-                        );
-                      },
+                    child: const SizedBox(
+                      height: 22,
                     ),
+                  ),
+                  BlocBuilder<GetListShortenUrlBloc, GetListShortenUrlState>(
+                    builder: (context, state) {
+                      if (state is GetListShortenUrlLoading) {
+                        return const ListShortenLoading();
+                      } else if (state is GetListShortenUrlSuccess) {
+                        if (state.shortenItems.isEmpty) {
+                          return const ListShortenEmpty();
+                        }
+                        return ListView.builder(
+                          shrinkWrap: true,
+                          physics: const NeverScrollableScrollPhysics(),
+                          itemCount: state.shortenItems.length,
+                          itemBuilder: (ctx, index) {
+                            final item = state.shortenItems[index];
+                            return ShortenUrlItem(
+                              shortUrl: item.shortenedUrl,
+                              originalUrl: item.originalUrl,
+                              isFavorited: item.isFavorited,
+                              onTapItem: () {
+                                GoRouter.of(context).go(
+                                  '${Routes.listShorten.path}/${Routes.detailShortenURL.path}',
+                                );
+                              },
+                              onTapFavorite: () {
+                                debugPrint('coba');
+                              },
+                            );
+                          },
+                        );
+                      } else if (state is GetListShortenUrlFailure) {
+                        return const Center(
+                          child: Text('Failed to load list shorten url'),
+                        );
+                      }
+                      return const ListShortenEmpty();
+                    },
                   ),
                 ],
               ),
-              responsive.onlyVisibleOnDesktopAndLarge(
-                child: const SizedBox(
-                  height: 22,
-                ),
-              ),
-
-              BlocBuilder<ListShortenCubit, ListShortenState>(
-                builder: (context, state) {
-                  final isLoading = state is ListShortenLoading;
-                  final isLoaded = state is ListShortenLoaded;
-                  return Skeletonizer(
-                    enabled: isLoading,
-                    child: ListView.builder(
-                      shrinkWrap: true,
-                      physics: const NeverScrollableScrollPhysics(),
-                      itemCount: isLoading
-                          ? 6
-                          : isLoaded
-                              ? state.shortenItems.length
-                              : 0,
-                      itemBuilder: (ctx, index) {
-                        return ShortenUrlItem(
-                          shortUrl: 'https://spoo.me/people-work',
-                          originalUrl: 'https://www.freepik.com/free-psd/...',
-                          isFavorited: true,
-                          onTapItem: () {
-                            debugPrint('tapped item');
-                            GoRouter.of(context).go(
-                              '${Routes.listShorten.path}/${Routes.detailShortenURL.path}',
-                            );
-                          },
-                          onTapFavorite: () {
-                            debugPrint('coba');
-                          },
-                        );
-                      },
-                    ),
-                  );
-                },
-              ),
-
-              // const ListShortenEmpty(),
-            ],
+            ),
           ),
         ),
       ),
