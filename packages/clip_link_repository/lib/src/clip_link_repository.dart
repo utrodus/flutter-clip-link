@@ -12,7 +12,7 @@ class ClipLinkRepository {
         _clipLinkDatabaseClient =
             clipLinkDatabaseClient ?? ClipLinkDatabaseClient();
 
-  Future<bool> generateShortUrl({
+  Future<String?> generateShortUrl({
     required String url,
     String? alias,
     String? password,
@@ -30,13 +30,8 @@ class ClipLinkRepository {
         isFavorited: false,
       );
 
-      final result =
-          await _clipLinkDatabaseClient.insertShortUrlItem(shortUrlItem);
-
-      if (result == 1) {
-        return true;
-      }
-      return false;
+      await _clipLinkDatabaseClient.insertShortUrlItem(shortUrlItem);
+      return response.url;
     } catch (e) {
       rethrow;
     }
