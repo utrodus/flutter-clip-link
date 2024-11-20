@@ -57,12 +57,6 @@ class DetailShortenUrlPage extends StatelessWidget {
                                 title: 'Are You Sure to Delete',
                                 body: 'https://spoo.me/people-work',
                                 acceptTitle: 'Delete',
-                                onPressedCancel: () {
-                                  context.pop();
-                                },
-                                onPressedAccept: () {
-                                  context.pop();
-                                },
                               );
                             },
                             icon: const Icon(
