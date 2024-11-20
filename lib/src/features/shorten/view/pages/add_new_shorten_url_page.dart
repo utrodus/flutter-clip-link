@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_clip_link/src/core/core.dart';
 import 'package:flutter_clip_link/src/features/shorten/shorten.dart';
 import 'package:flutter_clip_link/src/routes/routes.dart';
-import 'package:go_router/go_router.dart';
 import 'package:iconsax_plus/iconsax_plus.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
@@ -26,7 +25,7 @@ class _AddNewShortenUrlPageState extends State<AddNewShortenUrlPage> {
     FormFieldNames.customAlias: FormControl<String>(),
     FormFieldNames.urlPassword: FormControl<String>(
       validators: [
-        Validators.minLength(6),
+        Validators.minLength(8),
       ],
     ),
   });
@@ -51,13 +50,13 @@ class _AddNewShortenUrlPageState extends State<AddNewShortenUrlPage> {
             body: state.message,
             cancelTitle: 'Close',
             acceptTitle: 'Copy URL',
-            onPressedAccept: () async {
+            onPressedAccept: (ctx) async {
+              Routes.listShorten.go(ctx);
               await Clipboard.setData(
                 ClipboardData(
                   text: state.shortenUrl,
                 ),
               );
-              context.pop();
               CLSnackbar(
                 '✅ URL copied to clipboard!',
                 position: CLSnackbarPosition.customWidth,
@@ -65,7 +64,6 @@ class _AddNewShortenUrlPageState extends State<AddNewShortenUrlPage> {
             },
             onPressedCancel: () {
               Routes.listShorten.go(context);
-              context.pop();
             },
           );
         } else if (state is AddNewShortenUrlFailure) {
@@ -75,8 +73,6 @@ class _AddNewShortenUrlPageState extends State<AddNewShortenUrlPage> {
             body: state.message,
             cancelTitle: 'Close',
             acceptTitle: 'Retry',
-            onPressedAccept: () => context.pop(),
-            onPressedCancel: () => context.pop(),
           );
         }
       },
