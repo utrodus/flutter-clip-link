@@ -35,8 +35,13 @@ GoRouter appRouter = GoRouter(
           child: MultiBlocProvider(
             providers: [
               BlocProvider(
-                create: (context) =>
-                    sl<ListShortenCubit>()..getAllListShorten(),
+                create: (context) => sl<GetListShortenUrlBloc>()
+                  ..add(
+                    GetListShortenUrlRecents(),
+                  ),
+              ),
+              BlocProvider(
+                create: (context) => sl<AddNewShortenUrlBloc>(),
               ),
             ],
             child: MainPage(
@@ -57,10 +62,7 @@ GoRouter appRouter = GoRouter(
               routes: [
                 GoRoute(
                   path: Routes.addNewShortenURL.path,
-                  builder: (context, state) => BlocProvider(
-                    create: (context) => sl<AddNewShortenUrlBloc>(),
-                    child: const AddNewShortenUrlPage(),
-                  ),
+                  builder: (context, state) => const AddNewShortenUrlPage(),
                 ),
                 GoRoute(
                   path: Routes.detailShortenURL.path,
