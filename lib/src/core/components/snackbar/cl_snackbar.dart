@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_clip_link/src/core/core.dart'; // Assuming core.dart defines scaffoldMessengerKey
 
-enum CLSnackbarPosition { top, bottom }
+enum CLSnackbarPosition { customWidth, top, bottom }
 
 class CLSnackbar {
   /// CLSnackbar is a class that displays a snackbar without context.<br>
@@ -66,6 +66,9 @@ class CLSnackbar {
   }) {
     final snackBar = SnackBar(
       content: Text(message),
+      width: position == CLSnackbarPosition.customWidth
+          ? Breakpoints.mobile
+          : null,
       backgroundColor: color ??
           scaffoldMessengerKey.currentContext?.colorScheme.inverseSurface,
       action: actionText != null
@@ -87,7 +90,9 @@ class CLSnackbar {
               left: 10,
               right: 10,
             )
-          : const EdgeInsets.only(bottom: 16, left: 16, right: 16),
+          : position == CLSnackbarPosition.bottom
+              ? const EdgeInsets.only(bottom: 16, left: 16, right: 16)
+              : null,
     );
 
     scaffoldMessengerKey.currentState?.showSnackBar(snackBar);
