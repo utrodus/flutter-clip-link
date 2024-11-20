@@ -7,13 +7,13 @@ class AppBlocObserver extends BlocObserver with BlocLoggy {
   @override
   void onChange(BlocBase bloc, Change change) {
     super.onChange(bloc, change);
-    loggy.debug('Bloc: ${bloc.runtimeType} | Change: $change');
+    logDebug('Bloc: ${bloc.runtimeType} | Change: $change');
   }
 
   @override
   void onCreate(BlocBase bloc) {
     super.onCreate(bloc);
-    loggy.debug('Bloc: ${bloc.runtimeType} | Created');
+    logDebug('Bloc: ${bloc.runtimeType} | Created');
   }
 
   @override
@@ -27,17 +27,13 @@ class AppBlocObserver extends BlocObserver with BlocLoggy {
       ..write('Transition: ${transition.currentState.runtimeType}')
       ..writeln(' => ${transition.nextState.runtimeType}')
       ..write('New State: ${transition.nextState}');
-    loggy.debug(buffer.toString());
+    logDebug(buffer.toString());
     super.onTransition(bloc, transition);
   }
 
   @override
   void onError(BlocBase<Object?> bloc, Object error, StackTrace stackTrace) {
-    loggy.error(
-      'Bloc: ${bloc.runtimeType} | $error',
-      error,
-      stackTrace,
-    );
+    logError('Bloc: ${bloc.runtimeType} | $error', error, stackTrace);
     super.onError(bloc, error, stackTrace);
   }
 }
