@@ -116,9 +116,32 @@ class ListShortenUrlPage extends StatelessWidget {
                               originalUrl: item.originalUrl,
                               isFavorited: item.isFavorited,
                               onTapItem: () {
-                                GoRouter.of(context).go(
-                                  '${Routes.listShorten.path}/${Routes.detailShortenURL.path}',
-                                );
+                                item.isHavePassword
+                                    ? context.goNamed(
+                                        Routes.inputPassword.name,
+                                        pathParameters: {
+                                          'shortCode': item.shortCode,
+                                        },
+                                      )
+                                    : context.goNamed(
+                                        Routes.detailShortenURL.name,
+                                        pathParameters: {
+                                          'shortCode': item.shortCode,
+                                        },
+                                      );
+                                // item.isHavePassword
+                                //     ? GoRouter.of(context).go(
+                                //         Uri(
+                                //           path:
+                                //               '${Routes.listShorten.path}/${Routes.inputPassword.path}',
+                                //           queryParameters: {
+                                //             'shortCode': item.shortCode,
+                                //           },
+                                //         ).toString(),
+                                //       )
+                                //     : GoRouter.of(context).go(
+                                //         '${Routes.listShorten.path}/${Routes.detailShortenURL.path}',
+                                //       );
                               },
                               onTapFavorite: () {
                                 debugPrint('coba');
