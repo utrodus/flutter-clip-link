@@ -3,6 +3,7 @@ export 'bloc/get_list_shorten_url/get_list_shorten_url_bloc.dart';
 export 'di.dart';
 export 'view/pages/add_new_shorten_url_page.dart';
 export 'view/pages/detail_shorten_url_page.dart';
+export 'view/pages/input_password_page.dart';
 export 'view/pages/list_shorten_url_page.dart';
 export 'view/widgets/detail_shorten_general_stats.dart';
 export 'view/widgets/detail_shorten_label.dart';
