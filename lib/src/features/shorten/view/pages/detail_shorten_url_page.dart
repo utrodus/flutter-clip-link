@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_clip_link/src/core/core.dart';
 import 'package:flutter_clip_link/src/features/shorten/shorten.dart';
-import 'package:go_router/go_router.dart';
 import 'package:iconsax_plus/iconsax_plus.dart';
 
 class DetailShortenUrlPage extends StatelessWidget {
   const DetailShortenUrlPage({
+    required this.shortCode,
     super.key,
   });
 
+  final String shortCode;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
