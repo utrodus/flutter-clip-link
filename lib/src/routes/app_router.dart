@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_clip_link/src/core/core.dart';
 import 'package:flutter_clip_link/src/features/favorited/favorited.dart';
 import 'package:flutter_clip_link/src/features/main/main.dart';
-import 'package:flutter_clip_link/src/features/search/search.dart';
 import 'package:flutter_clip_link/src/features/settings/settings.dart';
 import 'package:flutter_clip_link/src/features/shorten/shorten.dart';
 import 'package:flutter_clip_link/src/features/splash/splash.dart';
@@ -20,6 +19,9 @@ GoRouter appRouter = GoRouter(
   navigatorKey: _rootNavigatorKey,
   initialLocation: kIsWeb ? Routes.listShorten.path : Routes.splash.path,
   debugLogDiagnostics: kDebugMode,
+  redirect: (context, state) {
+    return null;
+  },
   routes: [
     GoRoute(
       path: Routes.splash.path,
@@ -65,16 +67,26 @@ GoRouter appRouter = GoRouter(
                   builder: (context, state) => const AddNewShortenUrlPage(),
                 ),
                 GoRoute(
-                  path: Routes.detailShortenURL.path,
+                  name: Routes.inputPassword.name,
+                  path: Routes.inputPassword.path,
                   builder: (context, state) {
-                    // final shortCode = state.pathParameters['shortCode']!;
-                    return const DetailShortenUrlPage();
+                    final shortCode = state.pathParameters['shortCode'] ?? '';
+                    debugPrint('patParam shortCode:$shortCode');
+                    final password = state.extra as String? ?? '';
+                    return InputPasswordPage(
+                      shortCode: shortCode,
+                      password: password,
+                    );
                   },
                 ),
                 GoRoute(
-                  path: Routes.search.path,
+                  name: Routes.detailShortenURL.name,
+                  path: Routes.detailShortenURL.path,
                   builder: (context, state) {
-                    return const SearchPage();
+                    final shortCode = state.pathParameters['shortCode'] ?? '';
+                    return DetailShortenUrlPage(
+                      shortCode: shortCode,
+                    );
                   },
                 ),
               ],
@@ -91,16 +103,24 @@ GoRouter appRouter = GoRouter(
               ),
               routes: [
                 GoRoute(
-                  path: Routes.detailShortenURL.path,
+                  path: Routes.inputPassword.path,
                   builder: (context, state) {
-                    // final shortCode = state.pathParameters['shortCode']!;
-                    return const DetailShortenUrlPage();
+                    final shortCode = state.pathParameters['shortCode'] ?? '';
+                    final password = state.extra as String? ?? '';
+
+                    return InputPasswordPage(
+                      shortCode: shortCode,
+                      password: password,
+                    );
                   },
                 ),
                 GoRoute(
-                  path: Routes.search.path,
+                  path: Routes.detailShortenURL.path,
                   builder: (context, state) {
-                    return const SearchPage();
+                    final shortCode = state.pathParameters['shortCode']!;
+                    return DetailShortenUrlPage(
+                      shortCode: shortCode,
+                    );
                   },
                 ),
               ],
