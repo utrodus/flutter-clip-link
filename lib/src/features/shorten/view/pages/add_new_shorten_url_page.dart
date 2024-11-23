@@ -52,11 +52,8 @@ class _AddNewShortenUrlPageState extends State<AddNewShortenUrlPage> {
             acceptTitle: 'Copy URL',
             onPressedAccept: (ctx) async {
               Routes.listShorten.go(ctx);
-              await Clipboard.setData(
-                ClipboardData(
-                  text: state.shortenUrl,
-                ),
-              );
+              await copyToClipboard(state.shortenUrl);
+
               CLSnackbar(
                 '✅ URL copied to clipboard!',
                 position: CLSnackbarPosition.customWidth,
