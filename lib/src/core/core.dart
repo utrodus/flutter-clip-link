@@ -17,4 +17,5 @@ export 'res/generated/assets.gen.dart';
 export 'res/generated/fonts.gen.dart';
 export 'responsive/responsive.dart';
 export 'util/app_bloc_observer.dart';
+export 'util/copy_to_clipboard.dart';
 export 'util/regexp.dart';
