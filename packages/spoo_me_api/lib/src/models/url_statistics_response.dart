@@ -4,7 +4,7 @@ part 'url_statistics_response.g.dart';
 
 @JsonSerializable(
   createToJson: false,
-  includeIfNull: true,
+  includeIfNull: false,
 )
 class UrlStatisticsResponse {
   @JsonKey(name: '_id')
@@ -16,28 +16,29 @@ class UrlStatisticsResponse {
   @JsonKey(name: 'creation-date')
   final String creationDate;
   @JsonKey(name: 'last-click')
-  final String lastClickDate;
+  final String? lastClickDate;
   @JsonKey(name: 'last-click-browser')
-  final String lastClickBrowser;
+  final String? lastClickBrowser;
   @JsonKey(name: 'last-click-os')
-  final String lastClickOS;
+  final String? lastClickOS;
   @JsonKey(name: 'average_redirection_time')
   final double averageRedirectionTime;
 
-  final String? password;
   @JsonKey(name: 'url')
   final String originalUrl;
+
+  final String? password;
 
   UrlStatisticsResponse({
     required this.id,
     required this.shortCode,
     required this.totalClicks,
     required this.creationDate,
-    required this.lastClickDate,
-    required this.lastClickBrowser,
-    required this.lastClickOS,
     required this.averageRedirectionTime,
     required this.originalUrl,
+    this.lastClickDate,
+    this.lastClickBrowser,
+    this.lastClickOS,
     this.password,
   });
 
