@@ -1,7 +1,11 @@
+import 'package:clip_link_repository/clip_link_repository.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_clip_link/src/core/core.dart';
+import 'package:flutter_clip_link/src/features/settings/settings.dart';
 import 'package:flutter_clip_link/src/features/shorten/shorten.dart';
 import 'package:iconsax_plus/iconsax_plus.dart';
+import 'package:qr_flutter/qr_flutter.dart';
 
 class DetailShortenUrlPage extends StatelessWidget {
   const DetailShortenUrlPage({
@@ -10,79 +14,67 @@ class DetailShortenUrlPage extends StatelessWidget {
   });
 
   final String shortCode;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'https://spoo.me/people-work',
+          'shortener url',
           style: context.textTheme.titleMedium,
         ),
+        actions: [
+          PopupMenuButton(
+            itemBuilder: (context) => <PopupMenuEntry>[
+              PopupMenuItem(
+                onTap: () {
+                  ClDialog(
+                    context: context,
+                    type: CLDialogType.delete,
+                    title: 'Are You Sure to Delete',
+                    body: 'shortener url',
+                    acceptTitle: 'Delete',
+                  );
+                },
+                child: const Row(
+                  children: [
+                    Icon(
+                      IconsaxPlusLinear.trash,
+                    ),
+                    SizedBox(
+                      width: 12,
+                    ),
+                    Text(
+                      'Delete Item',
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ],
       ),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              ConstrainedBox(
-                constraints: const BoxConstraints(
-                  maxHeight: 248,
-                ),
-                child: Container(
-                  padding: const EdgeInsets.all(21),
-                  color: context.colorScheme.surfaceContainerLowest,
-                  width: double.infinity,
-                  child: Row(
-                    children: [
-                      const Spacer(),
-                      const SizedBox(
-                        width: 20,
-                      ),
-                      Assets.images.qrExample.image(
-                        fit: BoxFit.contain,
-                        width: 204,
-                        height: 204,
-                      ),
-                      const SizedBox(
-                        width: 20,
-                      ),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          IconButton.filledTonal(
-                            tooltip: 'Remove Shorten Item',
-                            onPressed: () {
-                              ClDialog(
-                                context: context,
-                                type: CLDialogType.delete,
-                                title: 'Are You Sure to Delete',
-                                body: 'https://spoo.me/people-work',
-                                acceptTitle: 'Delete',
-                              );
-                            },
-                            icon: const Icon(
-                              IconsaxPlusLinear.trash,
-                            ),
-                          ),
-                          IconButton.filledTonal(
-                            tooltip: 'Add to favorites',
-                            onPressed: () {},
-                            icon: const Icon(
-                              IconsaxPlusLinear.heart,
-                            ),
-                          ),
-                          IconButton.filledTonal(
-                            tooltip: 'Download QR Image',
-                            onPressed: () {},
-                            icon: const Icon(
-                              Icons.file_download_outlined,
-                            ),
-                          ),
-                        ],
-                      ),
-                      const Spacer(),
-                    ],
-                  ),
+              Container(
+                alignment: Alignment.center,
+                padding: const EdgeInsets.all(21),
+                color: context.colorScheme.surfaceContainerLowest,
+                width: double.infinity,
+                child: BlocBuilder<ThemeCubit, ThemeMode>(
+                  builder: (context, state) {
+                    return QrImageView(
+                      data: 'item.originalUrl',
+                      version: QrVersions.auto,
+                      size: 204,
+                      backgroundColor: state == ThemeMode.dark
+                          ? Colors.white
+                          : context.colorScheme.surfaceContainerLowest,
+                    );
+                  },
                 ),
               ),
               const DetailShortenLabel(text: 'Shortened URL'),
@@ -96,7 +88,7 @@ class DetailShortenUrlPage extends StatelessWidget {
                   children: <Widget>[
                     Expanded(
                       child: Text(
-                        'https://spoo.me/people-work',
+                        'item.shortenedUrl',
                         style: context.textTheme.titleMedium?.copyWith(
                           fontWeight: bold,
                           color: context.colorScheme.onPrimaryContainer,
@@ -107,12 +99,6 @@ class DetailShortenUrlPage extends StatelessWidget {
                       onPressed: () {},
                       icon: const Icon(
                         IconsaxPlusLinear.copy,
-                      ),
-                    ),
-                    IconButton(
-                      onPressed: () {},
-                      icon: const Icon(
-                        Icons.share_outlined,
                       ),
                     ),
                   ],
@@ -129,7 +115,7 @@ class DetailShortenUrlPage extends StatelessWidget {
                   children: <Widget>[
                     Expanded(
                       child: Text(
-                        'https://originalurl-with-long-url.com',
+                        'item.originalUrl',
                         style: context.textTheme.titleMedium?.copyWith(
                           fontWeight: bold,
                           color: context.colorScheme.onPrimaryContainer,
@@ -145,10 +131,12 @@ class DetailShortenUrlPage extends StatelessWidget {
                   ],
                 ),
               ),
-              const DetailShortenLabel(text: 'Password to Access'),
-              const DetailShortenUrlPassword(
-                password: 'password',
-              ),
+              // if (item.isHavePassword) ...[
+              //   const DetailShortenLabel(text: 'Password to Access'),
+              //   DetailShortenUrlPassword(
+              //     password: item.password ?? '',
+              //   ),
+              // ],
               const DetailShortenLabel(text: 'General Stats'),
               const DetailShortenGeneralStats(),
             ],

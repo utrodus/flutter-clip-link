@@ -8,12 +8,10 @@ import 'package:reactive_forms/reactive_forms.dart';
 class InputPasswordPage extends StatefulWidget {
   const InputPasswordPage({
     required this.shortCode,
-    required this.password,
     super.key,
   });
 
   final String shortCode;
-  final String password;
 
   @override
   State<InputPasswordPage> createState() => _InputPasswordPageState();
@@ -107,12 +105,17 @@ class _InputPasswordPageState extends State<InputPasswordPage> {
                               text: 'Submit Password',
                               onPressed: formGroup.valid
                                   ? () {
-                                      context.goNamed(
-                                        Routes.detailShortenURL.name,
-                                        pathParameters: {
-                                          'shortCode': widget.shortCode,
-                                        },
-                                      );
+                                      final password = form
+                                          .control(FormFieldNames.urlPassword)
+                                          .value as String;
+                                      debugPrint('password: $password');
+                                      // context.goNamed(
+                                      //   Routes.detailShortenURL.name,
+                                      //   pathParameters: {
+                                      //     'shortCode': widget.shortCode,
+                                      //   },
+                                      //   extra: password,
+                                      // );
                                     }
                                   : null,
                             );
