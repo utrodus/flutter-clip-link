@@ -23,18 +23,4 @@ PreferredSizeWidget listShortenAppbar(
           ),
         ],
       ),
-      actions: [
-        Padding(
-          padding: const EdgeInsets.only(right: 12),
-          child: IconButton(
-            onPressed: () {},
-            icon: Assets.icons.icSearch.svg(
-              colorFilter: ColorFilter.mode(
-                context.colorScheme.secondary,
-                BlendMode.srcIn,
-              ),
-            ),
-          ),
-        ),
-      ],
     );
