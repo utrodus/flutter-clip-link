@@ -108,14 +108,13 @@ class _InputPasswordPageState extends State<InputPasswordPage> {
                                       final password = form
                                           .control(FormFieldNames.urlPassword)
                                           .value as String;
-                                      debugPrint('password: $password');
-                                      // context.goNamed(
-                                      //   Routes.detailShortenURL.name,
-                                      //   pathParameters: {
-                                      //     'shortCode': widget.shortCode,
-                                      //   },
-                                      //   extra: password,
-                                      // );
+                                      context.goNamed(
+                                        Routes.detailShortenURL.name,
+                                        pathParameters: {
+                                          'shortCode': widget.shortCode,
+                                        },
+                                        extra: password,
+                                      );
                                     }
                                   : null,
                             );

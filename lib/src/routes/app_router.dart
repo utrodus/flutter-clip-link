@@ -45,6 +45,9 @@ GoRouter appRouter = GoRouter(
               BlocProvider(
                 create: (context) => sl<AddNewShortenUrlBloc>(),
               ),
+              BlocProvider(
+                create: (context) => sl<DetailShortenUrlBloc>(),
+              ),
             ],
             child: MainPage(
               navShell: navShell,
@@ -82,18 +85,13 @@ GoRouter appRouter = GoRouter(
                   builder: (context, state) {
                     final shortCode = state.pathParameters['shortCode'] ?? '';
                     final password = state.extra as String?;
-                    return BlocProvider<DetailShortenUrlBloc>(
-                      create: (context) {
-                        return sl<DetailShortenUrlBloc>()
-                          ..add(
-                            DetailShortenUrlLoad(
-                              shortCode: shortCode,
-                              password: password,
-                            ),
-                          );
-                      },
-                      child: const DetailShortenUrlPage(),
-                    );
+                    context.read<DetailShortenUrlBloc>().add(
+                          DetailShortenUrlLoad(
+                            shortCode: shortCode,
+                            password: password,
+                          ),
+                        );
+                    return const DetailShortenUrlPage();
                   },
                 ),
               ],
@@ -124,18 +122,13 @@ GoRouter appRouter = GoRouter(
                   builder: (context, state) {
                     final shortCode = state.pathParameters['shortCode'] ?? '';
                     final password = state.extra as String?;
-                    return BlocProvider<DetailShortenUrlBloc>(
-                      create: (context) {
-                        return sl<DetailShortenUrlBloc>()
-                          ..add(
-                            DetailShortenUrlLoad(
-                              shortCode: shortCode,
-                              password: password,
-                            ),
-                          );
-                      },
-                      child: const DetailShortenUrlPage(),
-                    );
+                    context.read<DetailShortenUrlBloc>().add(
+                          DetailShortenUrlLoad(
+                            shortCode: shortCode,
+                            password: password,
+                          ),
+                        );
+                    return const DetailShortenUrlPage();
                   },
                 ),
               ],

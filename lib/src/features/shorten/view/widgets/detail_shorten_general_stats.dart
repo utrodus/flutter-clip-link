@@ -2,7 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter_clip_link/src/core/core.dart';
 
 class DetailShortenGeneralStats extends StatelessWidget {
-  const DetailShortenGeneralStats({super.key});
+  const DetailShortenGeneralStats({
+    required this.totalClicks,
+    required this.creationDate,
+    required this.lastClickDate,
+    required this.lastClickBrowser,
+    required this.lastClickOS,
+    required this.averageRedirectionTime,
+    super.key,
+  });
+
+  final String totalClicks;
+  final String creationDate;
+  final String lastClickDate;
+  final String lastClickBrowser;
+  final String lastClickOS;
+  final String averageRedirectionTime;
 
   @override
   Widget build(BuildContext context) {
@@ -12,32 +27,32 @@ class DetailShortenGeneralStats extends StatelessWidget {
         horizontal: 16,
       ),
       color: context.colorScheme.surfaceContainerLowest,
-      child: const Column(
+      child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           GeneralStatsTile(
             label: 'Total Clicks',
-            value: '0',
+            value: totalClicks,
           ),
           GeneralStatsTile(
             label: 'Creation Date:',
-            value: '2024-10-12',
+            value: creationDate,
           ),
           GeneralStatsTile(
             label: 'Last Click Date:',
-            value: '2024-10-12',
+            value: lastClickDate,
           ),
           GeneralStatsTile(
             label: 'Last Click Browser:',
-            value: 'Chrome',
+            value: lastClickBrowser,
           ),
           GeneralStatsTile(
             label: 'Last Click OS:',
-            value: 'Windows',
+            value: lastClickOS,
           ),
           GeneralStatsTile(
             label: 'Average Redirection Time:',
-            value: '20.49 ms',
+            value: '$averageRedirectionTime ms',
           ),
         ],
       ),
