@@ -26,6 +26,7 @@ dependencies:
   reactive_forms: ^17.0.1
   skeletonizer: ^1.4.2
   url_launcher: ^6.3.1
+  qr_flutter: ^4.1.0
   clip_link_repository:
     path: packages/clip_link_repository
 
