@@ -60,7 +60,7 @@ class ListShortenUrlPage extends StatelessWidget {
                               style: context.textTheme.titleMedium,
                             ),
                             const SizedBox(
-                              height: 6,
+                              height: 12,
                             ),
                             Text(
                               'ClipLink App is a URL Shortener that lets '
@@ -69,7 +69,7 @@ class ListShortenUrlPage extends StatelessWidget {
                               style: context.textTheme.bodyMedium,
                             ),
                             const SizedBox(
-                              height: 16,
+                              height: 24,
                             ),
                           ],
                         ),
