@@ -26,9 +26,9 @@ class DetailShortenUrlBloc
       );
       emit(DetailShortenUrlSuccess(urlStatistics: result));
     } on UrlNotFoundRequestFailure catch (e) {
-      emit(DetailShortenUrlFailure(message: e.message));
+      emit(DetailShortenUrlNotExist(message: e.message));
     } on WrongPasswordFailure catch (e) {
-      emit(DetailShortenUrlFailure(message: e.message));
+      emit(DetailShortenUrlWrongPassword(message: e.message));
     } on Exception catch (e) {
       emit(DetailShortenUrlFailure(message: e.toString()));
     }

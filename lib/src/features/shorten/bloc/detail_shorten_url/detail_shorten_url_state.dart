@@ -21,10 +21,22 @@ final class DetailShortenUrlSuccess extends DetailShortenUrlState {
   List<Object> get props => [urlStatistics];
 }
 
+final class DetailShortenUrlNotExist extends DetailShortenUrlState {
+  const DetailShortenUrlNotExist({required this.message});
+  final String message;
+  @override
+  List<Object> get props => [message];
+}
+
+final class DetailShortenUrlWrongPassword extends DetailShortenUrlState {
+  const DetailShortenUrlWrongPassword({required this.message});
+  final String message;
+  @override
+  List<Object> get props => [message];
+}
+
 final class DetailShortenUrlFailure extends DetailShortenUrlState {
-  const DetailShortenUrlFailure({
-    required this.message,
-  });
+  const DetailShortenUrlFailure({required this.message});
   final String message;
 
   @override
