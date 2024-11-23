@@ -51,7 +51,13 @@ class _DetailShortenUrlPasswordState extends State<DetailShortenUrlPassword> {
             ),
           ),
           IconButton(
-            onPressed: () {},
+            onPressed: () async {
+              await copyToClipboard(widget.password);
+              CLSnackbar(
+                '✅ Password copied to clipboard!',
+                position: CLSnackbarPosition.customWidth,
+              );
+            },
             icon: const Icon(
               IconsaxPlusLinear.copy,
             ),
