@@ -4,6 +4,7 @@ enum Routes {
   addNewShortenURL('add-new-shorten-url'),
   inputPassword('input-password/:shortCode'),
   detailShortenURL('detail/:shortCode'),
+  detailFavorites('detail/:shortCode'),
   listFavorites('/list-favorites'),
   settings('/settings'),
   about('about'),

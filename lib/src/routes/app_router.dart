@@ -92,9 +92,7 @@ GoRouter appRouter = GoRouter(
                             ),
                           );
                       },
-                      child: DetailShortenUrlPage(
-                        shortCode: shortCode,
-                      ),
+                      child: const DetailShortenUrlPage(),
                     );
                   },
                 ),
@@ -121,8 +119,8 @@ GoRouter appRouter = GoRouter(
                   },
                 ),
                 GoRoute(
-                  name: Routes.detailShortenURL.name,
-                  path: Routes.detailShortenURL.path,
+                  name: Routes.detailFavorites.name,
+                  path: Routes.detailFavorites.path,
                   builder: (context, state) {
                     final shortCode = state.pathParameters['shortCode'] ?? '';
                     final password = state.extra as String?;
@@ -136,9 +134,7 @@ GoRouter appRouter = GoRouter(
                             ),
                           );
                       },
-                      child: DetailShortenUrlPage(
-                        shortCode: shortCode,
-                      ),
+                      child: const DetailShortenUrlPage(),
                     );
                   },
                 ),
