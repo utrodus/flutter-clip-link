@@ -12,6 +12,11 @@ void _initBloc() {
         clipLinkRepository: sl(),
       ),
     )
+    ..registerLazySingleton<DetailShortenUrlBloc>(
+      () => DetailShortenUrlBloc(
+        clipLinkRepository: sl(),
+      ),
+    )
     ..registerLazySingleton<AddNewShortenUrlBloc>(
       () => AddNewShortenUrlBloc(
         clipLinkRepository: sl(),
