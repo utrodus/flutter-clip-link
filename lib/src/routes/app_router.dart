@@ -71,11 +71,8 @@ GoRouter appRouter = GoRouter(
                   path: Routes.inputPassword.path,
                   builder: (context, state) {
                     final shortCode = state.pathParameters['shortCode'] ?? '';
-                    debugPrint('patParam shortCode:$shortCode');
-                    final password = state.extra as String? ?? '';
                     return InputPasswordPage(
                       shortCode: shortCode,
-                      password: password,
                     );
                   },
                 ),
@@ -84,8 +81,20 @@ GoRouter appRouter = GoRouter(
                   path: Routes.detailShortenURL.path,
                   builder: (context, state) {
                     final shortCode = state.pathParameters['shortCode'] ?? '';
-                    return DetailShortenUrlPage(
-                      shortCode: shortCode,
+                    final password = state.extra as String?;
+                    return BlocProvider<DetailShortenUrlBloc>(
+                      create: (context) {
+                        return sl<DetailShortenUrlBloc>()
+                          ..add(
+                            DetailShortenUrlLoad(
+                              shortCode: shortCode,
+                              password: password,
+                            ),
+                          );
+                      },
+                      child: DetailShortenUrlPage(
+                        shortCode: shortCode,
+                      ),
                     );
                   },
                 ),
@@ -106,20 +115,30 @@ GoRouter appRouter = GoRouter(
                   path: Routes.inputPassword.path,
                   builder: (context, state) {
                     final shortCode = state.pathParameters['shortCode'] ?? '';
-                    final password = state.extra as String? ?? '';
-
                     return InputPasswordPage(
                       shortCode: shortCode,
-                      password: password,
                     );
                   },
                 ),
                 GoRoute(
+                  name: Routes.detailShortenURL.name,
                   path: Routes.detailShortenURL.path,
                   builder: (context, state) {
-                    final shortCode = state.pathParameters['shortCode']!;
-                    return DetailShortenUrlPage(
-                      shortCode: shortCode,
+                    final shortCode = state.pathParameters['shortCode'] ?? '';
+                    final password = state.extra as String?;
+                    return BlocProvider<DetailShortenUrlBloc>(
+                      create: (context) {
+                        return sl<DetailShortenUrlBloc>()
+                          ..add(
+                            DetailShortenUrlLoad(
+                              shortCode: shortCode,
+                              password: password,
+                            ),
+                          );
+                      },
+                      child: DetailShortenUrlPage(
+                        shortCode: shortCode,
+                      ),
                     );
                   },
                 ),
