@@ -31,11 +31,11 @@ class UrlStatistics {
         shortCode: urlStatisticsResponse.shortCode,
         totalClicks: urlStatisticsResponse.totalClicks,
         creationDate: urlStatisticsResponse.creationDate,
-        lastClickDate: urlStatisticsResponse.lastClickDate,
-        lastClickBrowser: urlStatisticsResponse.lastClickBrowser,
-        lastClickOS: urlStatisticsResponse.lastClickOS,
         averageRedirectionTime: urlStatisticsResponse.averageRedirectionTime,
         originalUrl: urlStatisticsResponse.originalUrl,
+        lastClickBrowser: urlStatisticsResponse.lastClickBrowser ?? '',
+        lastClickOS: urlStatisticsResponse.lastClickOS ?? '',
+        lastClickDate: urlStatisticsResponse.lastClickDate ?? '',
         password: urlStatisticsResponse.password ?? '',
       );
 }
