@@ -19,7 +19,6 @@ class CLSnackbar {
     _showSnackbar(
       message: message,
       position: position ?? CLSnackbarPosition.bottom,
-      color: scaffoldMessengerKey.currentContext?.colorScheme.inverseSurface,
       actionText: actionText,
       actionOnTap: actionOnTap,
     );
