@@ -40,21 +40,28 @@ class ClipLinkRepository {
   String getShortCode({required String shortenedUrl}) =>
       shortenedUrl.split('/').last;
 
-  Future<bool> addToFavorites({required int id}) async {
-    final result = await _clipLinkDatabaseClient.addItemToFavorites(id: id);
-    if (result == 1) {
-      return true;
+  Future addToFavorites({required int id}) async {
+    try {
+      return await _clipLinkDatabaseClient.addItemToFavorites(id: id);
+    } catch (e) {
+      throw ('Error adding item to favorites');
     }
-    return false;
   }
 
-  Future<bool> removeFromFavorites({required int id}) async {
-    final result =
-        await _clipLinkDatabaseClient.removeItemFromFavorites(id: id);
-    if (result == 1) {
-      return true;
+  Future removeFromFavorites({required int id}) async {
+    try {
+      return await _clipLinkDatabaseClient.removeItemFromFavorites(id: id);
+    } catch (e) {
+      throw ('Error removing item from favorites');
     }
-    return false;
+  }
+
+  Future removeShortenUrlItem({required String shortCode}) {
+    try {
+      return _clipLinkDatabaseClient.removeShortUrlItem(shortCode: shortCode);
+    } catch (e) {
+      throw ('Error removing item from database');
+    }
   }
 
   Stream<List<ShortUrlItem>> getRecentsShortenedUrlItems() {
