@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_clip_link/src/core/core.dart';
+import 'package:flutter_clip_link/src/features/favorited/favorited.dart';
 import 'package:flutter_clip_link/src/features/main/main.dart';
 import 'package:flutter_clip_link/src/features/shorten/shorten.dart';
 import 'package:go_router/go_router.dart';
@@ -75,6 +76,11 @@ class MainPage extends StatelessWidget {
       case 0:
         context.read<ListShortenUrlBloc>().add(
               ListShortenUrlLoadRecent(),
+            );
+        break;
+      case 1:
+        context.read<ListFavoritesBloc>().add(
+              ListFavoritesLoad(),
             );
         break;
       default:
