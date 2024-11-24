@@ -15,7 +15,23 @@ class DetailShortenUrlPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<DetailShortenUrlBloc, DetailShortenUrlState>(
+    return BlocConsumer<DetailShortenUrlBloc, DetailShortenUrlState>(
+      listener: (context, state) {
+        if (state is DetailShortenUrlDeleteSuccess) {
+          CLSnackbar(
+            state.message,
+            position: CLSnackbarPosition.customWidth,
+            actionText: 'Okay',
+          );
+          Routes.listShorten.go(context);
+        } else if (state is DetailShortenUrlDeleteFailure) {
+          CLSnackbar.error(
+            state.message,
+            position: CLSnackbarPosition.customWidth,
+            actionText: 'Try Again',
+          );
+        }
+      },
       builder: (context, state) {
         if (state is DetailShortenUrlLoading) {
           return Scaffold(
@@ -47,6 +63,13 @@ class DetailShortenUrlPage extends StatelessWidget {
                           title: 'Are You Sure to Delete',
                           body: 'https://www.spoo.me/${item.shortCode}',
                           acceptTitle: 'Delete',
+                          onPressedAccept: (_) {
+                            context.read<DetailShortenUrlBloc>().add(
+                                  DetailShortenUrlDeleteItem(
+                                    shortCode: item.shortCode,
+                                  ),
+                                );
+                          },
                         );
                       },
                       child: const Row(
@@ -252,9 +275,7 @@ class DetailShortenUrlPage extends StatelessWidget {
                     );
                   } else if (state is DetailShortenUrlNotExist ||
                       state is DetailShortenUrlFailure) {
-                    context.goNamed(
-                      Routes.listShorten.name,
-                    );
+                    Routes.listShorten.go(context);
                   }
                 },
               ),

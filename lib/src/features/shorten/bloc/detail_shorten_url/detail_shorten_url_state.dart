@@ -42,3 +42,19 @@ final class DetailShortenUrlFailure extends DetailShortenUrlState {
   @override
   List<Object> get props => [message];
 }
+
+final class DetailShortenUrlDeleteSuccess extends DetailShortenUrlState {
+  const DetailShortenUrlDeleteSuccess({required this.message});
+  final String message;
+
+  @override
+  List<Object> get props => [message];
+}
+
+final class DetailShortenUrlDeleteFailure extends DetailShortenUrlState {
+  const DetailShortenUrlDeleteFailure({required this.message});
+  final String message;
+
+  @override
+  List<Object> get props => [message];
+}

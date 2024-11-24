@@ -10,6 +10,7 @@ class DetailShortenUrlBloc
   DetailShortenUrlBloc({required this.clipLinkRepository})
       : super(DetailShortenUrlInitial()) {
     on<DetailShortenUrlLoad>(_onDetailShortenUrlLoad);
+    on<DetailShortenUrlDeleteItem>(_onDetailShortenUrlDeleteItem);
   }
 
   final ClipLinkRepository clipLinkRepository;
@@ -31,6 +32,20 @@ class DetailShortenUrlBloc
       emit(DetailShortenUrlWrongPassword(message: e.message));
     } on Exception catch (e) {
       emit(DetailShortenUrlFailure(message: e.toString()));
+    }
+  }
+
+  Future<void> _onDetailShortenUrlDeleteItem(
+    DetailShortenUrlDeleteItem event,
+    Emitter<DetailShortenUrlState> emit,
+  ) async {
+    try {
+      await clipLinkRepository.removeShortenUrlItem(shortCode: event.shortCode);
+      emit(
+        const DetailShortenUrlDeleteSuccess(message: 'Success Delete Item'),
+      );
+    } catch (e) {
+      emit(DetailShortenUrlDeleteFailure(message: e.toString()));
     }
   }
 }

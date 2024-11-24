@@ -15,3 +15,11 @@ class DetailShortenUrlLoad extends DetailShortenUrlEvent {
   @override
   List<Object?> get props => [shortCode, password];
 }
+
+class DetailShortenUrlDeleteItem extends DetailShortenUrlEvent {
+  const DetailShortenUrlDeleteItem({required this.shortCode});
+  final String shortCode;
+
+  @override
+  List<Object?> get props => [shortCode];
+}
