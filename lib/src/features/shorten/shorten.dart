@@ -11,4 +11,3 @@ export 'view/widgets/detail_shorten_label.dart';
 export 'view/widgets/detail_shorten_url_password.dart';
 export 'view/widgets/list_shorten_appbar.dart';
 export 'view/widgets/list_shorten_empty.dart';
-export 'view/widgets/shorten_url_item.dart';

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_clip_link/src/core/core.dart';
 import 'package:flutter_clip_link/src/features/shorten/shorten.dart';
-import 'package:flutter_clip_link/src/features/shorten/view/widgets/widgets.dart';
 import 'package:flutter_clip_link/src/routes/routes.dart';
 import 'package:go_router/go_router.dart';
 import 'package:iconsax_plus/iconsax_plus.dart';
@@ -128,7 +127,7 @@ class ListShortenUrlPage extends StatelessWidget {
                     BlocBuilder<ListShortenUrlBloc, ListShortenUrlState>(
                       builder: (context, state) {
                         if (state is ListShortenUrlLoading) {
-                          return const ListShortenLoading();
+                          return const ShortenUrlItemsLoading();
                         } else if (state is ListShortenUrlSuccessLoad) {
                           if (state.shortenItems.isEmpty) {
                             return const ListShortenEmpty();
