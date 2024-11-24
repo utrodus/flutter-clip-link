@@ -109,7 +109,7 @@ class DetailShortenUrlPage extends StatelessWidget {
                           child: BlocBuilder<ThemeCubit, ThemeMode>(
                             builder: (context, state) {
                               return QrImageView(
-                                data: item.originalUrl,
+                                data: 'https://www.spoo.me/${item.shortCode}',
                                 version: QrVersions.auto,
                                 size: 204,
                                 backgroundColor: state == ThemeMode.dark
