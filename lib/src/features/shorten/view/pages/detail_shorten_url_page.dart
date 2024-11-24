@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_clip_link/src/core/core.dart';
@@ -7,11 +8,41 @@ import 'package:flutter_clip_link/src/routes/routes.dart';
 import 'package:go_router/go_router.dart';
 import 'package:iconsax_plus/iconsax_plus.dart';
 import 'package:qr_flutter/qr_flutter.dart';
+import 'package:url_launcher/url_launcher.dart';
 
-class DetailShortenUrlPage extends StatelessWidget {
+class DetailShortenUrlPage extends StatefulWidget {
   const DetailShortenUrlPage({
     super.key,
   });
+
+  @override
+  State<DetailShortenUrlPage> createState() => _DetailShortenUrlPageState();
+}
+
+class _DetailShortenUrlPageState extends State<DetailShortenUrlPage> {
+  Future<void> _launchUrl(String url) async {
+    final canLaunchUrl = await launchUrl(
+      Uri.parse(url),
+      mode:
+          kIsWeb ? LaunchMode.externalApplication : LaunchMode.inAppBrowserView,
+    );
+
+    if (!canLaunchUrl) {
+      _showErrorDialog();
+      throw Exception('Could not launch $url');
+    }
+  }
+
+  void _showErrorDialog() {
+    ClDialog(
+      context: context,
+      type: CLDialogType.withoutCancelButton,
+      title: 'Sorry for the inconvenience',
+      body: 'Could not launch link',
+      onPressedAccept: context.pop,
+      acceptTitle: 'Ok',
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -53,6 +84,19 @@ class DetailShortenUrlPage extends StatelessWidget {
                 style: context.textTheme.titleMedium,
               ),
               actions: [
+                IconButton(
+                  onPressed: () {
+                    context.read<DetailShortenUrlBloc>().add(
+                          DetailShortenUrlLoad(
+                            shortCode: item.shortCode,
+                            password: item.password,
+                          ),
+                        );
+                  },
+                  icon: const Icon(
+                    Icons.refresh,
+                  ),
+                ),
                 PopupMenuButton(
                   itemBuilder: (context) => <PopupMenuEntry>[
                     PopupMenuItem(
@@ -130,13 +174,20 @@ class DetailShortenUrlPage extends StatelessWidget {
                           child: Row(
                             children: <Widget>[
                               Expanded(
-                                child: Text(
-                                  'https://www.spoo.me/${item.shortCode}',
-                                  style:
-                                      context.textTheme.titleMedium?.copyWith(
-                                    fontWeight: bold,
-                                    color:
-                                        context.colorScheme.onPrimaryContainer,
+                                child: GestureDetector(
+                                  onTap: () {
+                                    _launchUrl(
+                                      'https://www.spoo.me/${item.shortCode}',
+                                    );
+                                  },
+                                  child: Text(
+                                    'https://www.spoo.me/${item.shortCode}',
+                                    style:
+                                        context.textTheme.titleMedium?.copyWith(
+                                      fontWeight: bold,
+                                      color: context
+                                          .colorScheme.onPrimaryContainer,
+                                    ),
                                   ),
                                 ),
                               ),
@@ -167,13 +218,18 @@ class DetailShortenUrlPage extends StatelessWidget {
                           child: Row(
                             children: <Widget>[
                               Expanded(
-                                child: Text(
-                                  item.originalUrl,
-                                  style:
-                                      context.textTheme.titleMedium?.copyWith(
-                                    fontWeight: bold,
-                                    color:
-                                        context.colorScheme.onPrimaryContainer,
+                                child: GestureDetector(
+                                  onTap: () {
+                                    _launchUrl(item.originalUrl);
+                                  },
+                                  child: Text(
+                                    item.originalUrl,
+                                    style:
+                                        context.textTheme.titleMedium?.copyWith(
+                                      fontWeight: bold,
+                                      color: context
+                                          .colorScheme.onPrimaryContainer,
+                                    ),
                                   ),
                                 ),
                               ),
