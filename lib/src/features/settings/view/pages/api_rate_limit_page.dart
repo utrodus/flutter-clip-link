@@ -32,18 +32,12 @@ class ApiRateLimitPage extends StatelessWidget {
                   Text(
                     'ClipLink App use spoo.me API provider'
                     ' for generating short url ',
-                    style: context.textTheme.bodyMedium,
+                    style: context.textTheme.bodyLarge,
                   ),
                   const SizedBox(height: 12),
                   Text(
                     'The spoo.me API enforces a rate limit to prevent '
-                    'excessive usage and ensure fair access for all users.',
-                    style: context.textTheme.bodyMedium,
-                  ),
-                  const SizedBox(height: 12),
-                  Text(
-                    'The rate limits are designed to control the frequency '
-                    'with which clients can send requests.',
+                    'excessive usage and ensure fair access for all users. The rate limits are designed to control the frequency with which clients can send requests.',
                     style: context.textTheme.bodyMedium,
                   ),
                   const SizedBox(height: 12),
