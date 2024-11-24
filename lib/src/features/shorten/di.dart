@@ -7,8 +7,8 @@ void shortenFeatureDI() {
 
 void _initBloc() {
   sl
-    ..registerLazySingleton<GetListShortenUrlBloc>(
-      () => GetListShortenUrlBloc(
+    ..registerLazySingleton<ListShortenUrlBloc>(
+      () => ListShortenUrlBloc(
         clipLinkRepository: sl(),
       ),
     )

@@ -19,9 +19,6 @@ GoRouter appRouter = GoRouter(
   navigatorKey: _rootNavigatorKey,
   initialLocation: kIsWeb ? Routes.listShorten.path : Routes.splash.path,
   debugLogDiagnostics: kDebugMode,
-  redirect: (context, state) {
-    return null;
-  },
   routes: [
     GoRoute(
       path: Routes.splash.path,
@@ -37,9 +34,9 @@ GoRouter appRouter = GoRouter(
           child: MultiBlocProvider(
             providers: [
               BlocProvider(
-                create: (context) => sl<GetListShortenUrlBloc>()
+                create: (context) => sl<ListShortenUrlBloc>()
                   ..add(
-                    GetListShortenUrlRecents(),
+                    ListShortenUrlLoadRecent(),
                   ),
               ),
               BlocProvider(

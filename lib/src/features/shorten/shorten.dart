@@ -1,6 +1,6 @@
 export 'bloc/add_new_shorten_url/add_new_shorten_url_bloc.dart';
 export 'bloc/detail_shorten_url/detail_shorten_url_bloc.dart';
-export 'bloc/get_list_shorten_url/get_list_shorten_url_bloc.dart';
+export 'bloc/list_shorten_url/list_shorten_url_bloc.dart';
 export 'di.dart';
 export 'view/pages/add_new_shorten_url_page.dart';
 export 'view/pages/detail_shorten_url_page.dart';

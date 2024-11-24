@@ -73,8 +73,8 @@ class MainPage extends StatelessWidget {
   }) {
     switch (index) {
       case 0:
-        context.read<GetListShortenUrlBloc>().add(
-              GetListShortenUrlRecents(),
+        context.read<ListShortenUrlBloc>().add(
+              ListShortenUrlLoadRecent(),
             );
         break;
       default:
