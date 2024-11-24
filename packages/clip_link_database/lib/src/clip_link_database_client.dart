@@ -45,4 +45,9 @@ class ClipLinkDatabaseClient {
               isFavorited: const Value(false),
             ),
           );
+
+  Future<int> removeShortUrlItem({required String shortCode}) async =>
+      await _database.managers.shortUrlTable
+          .filter((row) => row.shortCode(shortCode))
+          .delete();
 }
