@@ -32,30 +32,12 @@ class $AssetsFontsGen {
       [robotoBlack, robotoBold, robotoMedium, robotoRegular];
 }
 
-class $AssetsIconsGen {
-  const $AssetsIconsGen();
-
-  /// File path: assets/icons/ic_search.svg
-  SvgGenImage get icSearch => const SvgGenImage('assets/icons/ic_search.svg');
-
-  /// List of all assets
-  List<SvgGenImage> get values => [icSearch];
-}
-
 class $AssetsIllustrationGen {
   const $AssetsIllustrationGen();
 
   /// File path: assets/illustration/dark_theme.svg
   SvgGenImage get darkTheme =>
       const SvgGenImage('assets/illustration/dark_theme.svg');
-
-  /// File path: assets/illustration/email_sent.svg
-  SvgGenImage get emailSent =>
-      const SvgGenImage('assets/illustration/email_sent.svg');
-
-  /// File path: assets/illustration/google_logo.svg
-  SvgGenImage get googleLogo =>
-      const SvgGenImage('assets/illustration/google_logo.svg');
 
   /// File path: assets/illustration/light_theme.svg
   SvgGenImage get lightTheme =>
@@ -66,8 +48,7 @@ class $AssetsIllustrationGen {
       const SvgGenImage('assets/illustration/logo_circle.svg');
 
   /// List of all assets
-  List<SvgGenImage> get values =>
-      [darkTheme, emailSent, googleLogo, lightTheme, logoCircle];
+  List<SvgGenImage> get values => [darkTheme, lightTheme, logoCircle];
 }
 
 class $AssetsImagesGen {
@@ -116,7 +97,6 @@ class Assets {
   Assets._();
 
   static const $AssetsFontsGen fonts = $AssetsFontsGen();
-  static const $AssetsIconsGen icons = $AssetsIconsGen();
   static const $AssetsIllustrationGen illustration = $AssetsIllustrationGen();
   static const $AssetsImagesGen images = $AssetsImagesGen();
 }
