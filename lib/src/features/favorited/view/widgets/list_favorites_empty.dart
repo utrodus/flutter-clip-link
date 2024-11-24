@@ -29,7 +29,7 @@ class ListFavoritesEmpty extends StatelessWidget {
             height: 24,
           ),
           CLButton(
-            text: 'Add link now',
+            text: 'Add link to Favorites',
             isLoading: false,
             minimumSize: const Size(130, 40),
             onPressed: () {
