@@ -85,26 +85,28 @@ class GeneralStatsTile extends StatelessWidget {
           const SizedBox(
             width: 8,
           ),
-          Chip(
-            padding: EdgeInsets.zero,
-            labelPadding: const EdgeInsets.symmetric(
-              vertical: 0,
-              horizontal: 12,
-            ),
-            visualDensity: VisualDensity.compact,
-            color: WidgetStatePropertyAll(
-              context.colorScheme.primaryContainer,
-            ),
-            shape: const RoundedRectangleBorder(
-              borderRadius: BorderRadius.all(
-                Radius.circular(12),
+          Flexible(
+            child: Chip(
+              padding: EdgeInsets.zero,
+              labelPadding: const EdgeInsets.symmetric(
+                vertical: 0,
+                horizontal: 12,
               ),
-            ),
-            label: Text(
-              value,
-              style: context.textTheme.labelLarge?.copyWith(
-                color: context.colorScheme.primary,
-                fontWeight: bold,
+              visualDensity: VisualDensity.compact,
+              color: WidgetStatePropertyAll(
+                context.colorScheme.primaryContainer,
+              ),
+              shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(
+                  Radius.circular(12),
+                ),
+              ),
+              label: Text(
+                value,
+                style: context.textTheme.labelLarge?.copyWith(
+                  color: context.colorScheme.primary,
+                  fontWeight: bold,
+                ),
               ),
             ),
           ),
