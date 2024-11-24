@@ -49,7 +49,6 @@ flutter:
     - assets/fonts/
     - assets/illustration/
     - assets/images/
-    - assets/icons/
   fonts:
     - family: Roboto
       fonts:
