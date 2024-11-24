@@ -88,7 +88,7 @@ class AppColorScheme {
         onSurface: const Color(0xffE6E0E9),
         onSurfaceVariant: const Color(0xffCAC4D0),
         inverseSurface: const Color(0xffE6E0E9),
-        onInverseSurface: const Color(0xff322F35),
+        onInverseSurface: const Color(0xffF5EFF7),
         inversePrimary: const Color(0xff6750A4),
         shadow: const Color(0xff000000),
         surfaceTint: const Color(0xffD0BCFF),
