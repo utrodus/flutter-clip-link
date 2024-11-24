@@ -45,6 +45,12 @@ GoRouter appRouter = GoRouter(
               BlocProvider(
                 create: (context) => sl<DetailShortenUrlBloc>(),
               ),
+              BlocProvider(
+                create: (context) => sl<ListFavoritesBloc>()
+                  ..add(
+                    ListFavoritesLoad(),
+                  ),
+              ),
             ],
             child: MainPage(
               navShell: navShell,
