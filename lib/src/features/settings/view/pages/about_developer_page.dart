@@ -1,3 +1,6 @@
+// ignore_for_file: avoid_web_libraries_in_flutter
+
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_clip_link/src/core/core.dart';
 import 'package:go_router/go_router.dart';
@@ -11,11 +14,13 @@ class AboutDeveloperPage extends StatefulWidget {
 }
 
 class _AboutDeveloperPageState extends State<AboutDeveloperPage> {
-  final portfolioUri = Uri.parse('utrodus.com/');
+  final portfolioUri = Uri.parse('https://www.utrodus.com/');
+
   Future<void> _launchUrl() async {
     final canLaunchUrl = await launchUrl(
       portfolioUri,
-      mode: LaunchMode.inAppBrowserView,
+      mode:
+          kIsWeb ? LaunchMode.externalApplication : LaunchMode.inAppBrowserView,
     );
 
     if (!canLaunchUrl) {
@@ -73,13 +78,28 @@ class _AboutDeveloperPageState extends State<AboutDeveloperPage> {
                           ),
                         ),
                         TextSpan(
-                          text: 'a software engineer focused on '
-                              'creating beautiful, '
-                              'cross-platform apps using ',
+                          text: 'a software engineer with a passion for  '
+                              'building beautiful, user-friendly app using',
                           style: context.textTheme.bodyMedium,
                         ),
                         TextSpan(
-                          text: 'Flutter.',
+                          text: ' Flutter.',
+                          style: context.textTheme.bodyMedium?.copyWith(
+                            fontWeight: bold,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 12),
+                  RichText(
+                    text: TextSpan(
+                      text: 'Every project i take on is an opportunity to ',
+                      style: context.textTheme.bodyMedium,
+                      children: [
+                        TextSpan(
+                          text:
+                              'create technology that makes a positive impact.',
                           style: context.textTheme.bodyMedium?.copyWith(
                             fontWeight: bold,
                           ),
