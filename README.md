@@ -9,7 +9,8 @@ Cross-platform URL Shortener App to create short links for your favourite websit
 | `3.6.1` | `3.27.3` | `2.40.2`    |
 
 
-## Screenshots & Demo 📸 
+## Demo App 📸 
+![](https://i.ibb.co.com/8BxMddN/demo-flutter-clip-link.gif)
 
 ## Get Started 🚀
 Before you start, make sure you have the following installed:
