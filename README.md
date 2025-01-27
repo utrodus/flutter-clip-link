@@ -6,7 +6,7 @@ Cross-platform URL Shortener App to create short links for your favourite websit
 
 | Dart       | Flutter   | DevTools  |
 | ---------- | --------- | --------- |
-| `3.5.3` | `3.24.3` | `2.37.3`    |
+| `3.6.1` | `3.27.3` | `2.40.2`    |
 
 
 ## Screenshots & Demo 📸 
@@ -14,8 +14,8 @@ Cross-platform URL Shortener App to create short links for your favourite websit
 ## Get Started 🚀
 Before you start, make sure you have the following installed:
 
-- Flutter SDK `3.24.4`
-- Dart SDK `3.5.3`
+- Flutter SDK `3.27.3`
+- Dart SDK `3.6.1`
 
 ### Clone the repo
 - Clone the repo
@@ -93,6 +93,17 @@ Here's the explanation in list form:
 
 </details>
 
+## Custom Packages
+This project has three custom packages for easier and more efficient development, all created and tested by me:
+
+1. **clip_link_database**  
+   Manages local database operations for reliable data storage and retrieval.
+
+2. **clip_link_repository**  
+   Connects application logic to data sources for clear and scalable code.
+
+3. **spoo_me_api**  
+   Integrates with Spoo.me API for functions like link shortening
 
 ## Routes 🚃
 
