@@ -8,7 +8,7 @@ class CLLoadingOverlay extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return LoaderOverlay(
-      overlayColor: context.colorScheme.onSurface.withOpacity(0.5),
+      overlayColor: context.colorScheme.onSurface.withValues(alpha: 0.5),
       overlayWidgetBuilder: (_) => Center(
         child: LoaderByPlatform(
           color: context.colorScheme.surface,

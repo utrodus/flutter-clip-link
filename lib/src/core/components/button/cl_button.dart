@@ -54,7 +54,7 @@ class CLButton extends StatelessWidget {
                 style: context.textTheme.labelLarge?.copyWith(
                   color: onPressed != null
                       ? context.colorScheme.onPrimary
-                      : context.colorScheme.onSurface.withOpacity(0.2),
+                      : context.colorScheme.onSurface.withValues(alpha: 0.2),
                   fontWeight: bold,
                 ),
                 textAlign: TextAlign.center,

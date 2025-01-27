@@ -34,7 +34,9 @@ class _ShortenUrlItemState extends State<ShortenUrlItem> {
       margin: const EdgeInsets.only(
         bottom: 12,
       ),
-      color: isSelected ? context.colorScheme.primary.withOpacity(0.08) : null,
+      color: isSelected
+          ? context.colorScheme.primary.withValues(alpha: 0.08)
+          : null,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(12),
         side: BorderSide(

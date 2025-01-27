@@ -129,7 +129,7 @@ class AppTheme {
         disabledBorder: OutlineInputBorder(
           borderSide: BorderSide(
             width: 1,
-            color: colorScheme.onSurface.withOpacity(0.12),
+            color: colorScheme.onSurface.withValues(alpha: 0.12),
           ),
           borderRadius: const BorderRadius.all(Radius.circular(4)),
         ),
@@ -153,9 +153,12 @@ class AppTheme {
   ElevatedButtonThemeData elevatedButtonThemeData(ColorScheme colorScheme) =>
       ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
+          iconColor: colorScheme.onPrimary,
           backgroundColor: colorScheme.primary,
           foregroundColor: colorScheme.onPrimary,
-          disabledBackgroundColor: colorScheme.onSurface.withOpacity(0.12),
+          disabledBackgroundColor: colorScheme.onSurface.withValues(
+            alpha: 0.12,
+          ),
           disabledForegroundColor: colorScheme.onSurface,
           padding: const EdgeInsets.symmetric(
             vertical: 13,
