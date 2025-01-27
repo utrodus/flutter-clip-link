@@ -5,7 +5,7 @@
     "display": "standalone",
     "background_color": "#4F378B",
     "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "description": "Flutter Clip Link is a URL Shortener App that lets you create short links for all your favorite websites! - Built with Flutter", 
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [
