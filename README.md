@@ -10,7 +10,8 @@ Cross-platform URL Shortener App to create short links for your favourite websit
 
 
 ## Demo App 📸 
-![](https://i.ibb.co.com/8BxMddN/demo-flutter-clip-link.gif)
+![demo-flutter-clip-link](https://github.com/user-attachments/assets/3907cd90-6320-41b4-a05e-32f24394c111)
+
 
 ## Get Started 🚀
 Before you start, make sure you have the following installed:
