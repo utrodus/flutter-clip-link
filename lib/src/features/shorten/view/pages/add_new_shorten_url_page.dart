@@ -32,6 +32,16 @@ class _AddNewShortenUrlPageState extends State<AddNewShortenUrlPage> {
   bool canShowPassword = true;
 
   @override
+  void initState() {
+    super.initState();
+    form
+        .control(
+          FormFieldNames.longUrl,
+        )
+        .value = 'https://';
+  }
+
+  @override
   void dispose() {
     form.dispose();
     super.dispose();
@@ -111,7 +121,7 @@ class _AddNewShortenUrlPageState extends State<AddNewShortenUrlPage> {
                                   'https or http',
                             },
                             label: 'Long URL',
-                            hintText: 'https://www.your-long-url.com',
+                            hintText: 'Your Long URL',
                           ),
                           const SizedBox(
                             height: 24,
