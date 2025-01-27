@@ -2,18 +2,18 @@
 Cross-platform URL Shortener App to create short links for your favourite websites powered by Flutter and [spoo.me](https://spoo.me/)
 
 
-## Technologies Used ⚙
+## ⚙ Technologies Used 
 
 | Dart       | Flutter   | DevTools  |
 | ---------- | --------- | --------- |
 | `3.6.1` | `3.27.3` | `2.40.2`    |
 
 
-## Demo App 📸 
+## 📸 Demo App  
 ![demo-flutter-clip-link](https://github.com/user-attachments/assets/3907cd90-6320-41b4-a05e-32f24394c111)
 
 
-## Get Started 🚀
+## 🚀 Get Started 
 Before you start, make sure you have the following installed:
 
 - Flutter SDK `3.27.3`
@@ -25,13 +25,13 @@ Before you start, make sure you have the following installed:
 git clone https://github.com/utrodus/flutter_clip_link
 ```
 
-### Install dependencies
+### 📦 Install dependencies
 run the following command to install all the dependencies
 ```bash
 flutter pub get
 ```
 
-### Run the app
+### 🧑‍💻 Run the app
 - in Visual Studio Code, navigate to run and debug section
 - choose the `flutter_clip_link` configuration
   - if you choose `flutter_clip_link`, it will run in debug mode in selected device
@@ -39,14 +39,14 @@ flutter pub get
 
 > Now you're ready to go! 🚀
 
-## Architecture 🏗️
+## 🏗️ Architecture 
 
 The architecture of the **Flutter Clip Link app** is based on the **bloc architecture** guidelines, which promotes a clean and organized codebase. 
 
 Read more about the architecture [here](https://bloclibrary.dev/architecture).
 
 
-## Project Structure 📁
+## 📁 Project Structure 
 <details>
 <summary>Click to toggle contents of Project Structure</summary>
 
@@ -95,7 +95,7 @@ Here's the explanation in list form:
 
 </details>
 
-## Custom Packages
+## ⛷️ Custom Packages
 This project has three custom packages for easier and more efficient development, all created and tested by me:
 
 1. **clip_link_database**  
@@ -107,7 +107,7 @@ This project has three custom packages for easier and more efficient development
 3. **spoo_me_api**  
    Integrates with Spoo.me API for functions like link shortening
 
-## Routes 🚃
+## 📍 Routes 
 
 The **routes** folder serves as the central point for managing the navigation in the app. It contains two main files that handle the application's routing: `routes.dart` and `app_router.dart`.
 
