@@ -1,5 +1,14 @@
-# Flutter Clip Link
-Cross-platform URL Shortener App to create short links for your favourite websites powered by Flutter and [spoo.me](https://spoo.me/)
+## Flutter Clip Link**  
+
+Flutter Clip Link is a cross-platform URL shortener app that allows users to generate short links for their favorite websites, powered by **[Spoo.me](https://spoo.me/)**. The app is built using Flutter, emphasizing clean and maintainable code while delivering a seamless user experience.  
+
+### Key Features:  
+- **Bloc Pattern**: Ensures predictable state management and scalable architecture.  
+- **Responsive UI**: Adapts seamlessly across different screen sizes and platforms.  
+- **Light & Dark Mode**: Offers a visually appealing experience tailored to user preferences.  
+- **Clean Code**: Follows best practices to maintain a high-quality, readable, and maintainable codebase.  
+
+This app is designed for efficiency and modern aesthetics, providing a robust and user-friendly solution for URL shortening.
 
 
 ## ⚙ Technologies Used 
