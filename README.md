@@ -1,4 +1,4 @@
-## Flutter Clip Link**  
+## Flutter Clip Link  
 
 Flutter Clip Link is a cross-platform URL shortener app that allows users to generate short links for their favorite websites, powered by **[Spoo.me](https://spoo.me/)**. The app is built using Flutter, emphasizing clean and maintainable code while delivering a seamless user experience.  
 
@@ -10,43 +10,9 @@ Flutter Clip Link is a cross-platform URL shortener app that allows users to gen
 
 This app is designed for efficiency and modern aesthetics, providing a robust and user-friendly solution for URL shortening.
 
-
-## ⚙ Technologies Used 
-
-| Dart       | Flutter   | DevTools  |
-| ---------- | --------- | --------- |
-| `3.6.1` | `3.27.3` | `2.40.2`    |
-
-
 ## 📸 Demo App  
 ![demo-flutter-clip-link](https://github.com/user-attachments/assets/3907cd90-6320-41b4-a05e-32f24394c111)
 
-
-## 🚀 Get Started 
-Before you start, make sure you have the following installed:
-
-- Flutter SDK `3.27.3`
-- Dart SDK `3.6.1`
-
-### Clone the repo
-- Clone the repo
-```bash
-git clone https://github.com/utrodus/flutter_clip_link
-```
-
-### 📦 Install dependencies
-run the following command to install all the dependencies
-```bash
-flutter pub get
-```
-
-### 🧑‍💻 Run the app
-- in Visual Studio Code, navigate to run and debug section
-- choose the `flutter_clip_link` configuration
-  - if you choose `flutter_clip_link`, it will run in debug mode in selected device
-  - for web, choose `flutter_clip_link (web)`
-
-> Now you're ready to go! 🚀
 
 ## 🏗️ Architecture 
 
@@ -173,6 +139,35 @@ final GoRouter appRouter = GoRouter(
   ],
 );
 ```
+
+## 🚀 Get Started 
+Before you start, make sure you have the following installed:
+
+| Dart       | Flutter   | DevTools  |
+| ---------- | --------- | --------- |
+| `3.6.1` | `3.27.3` | `2.40.2`    |
+
+
+### Clone the repo
+- Clone the repo
+```bash
+git clone https://github.com/utrodus/flutter_clip_link
+```
+
+### 📦 Install dependencies
+run the following command to install all the dependencies
+```bash
+flutter pub get
+```
+
+### 🧑‍💻 Run the app
+- in Visual Studio Code, navigate to run and debug section
+- choose the `flutter_clip_link` configuration
+  - if you choose `flutter_clip_link`, it will run in debug mode in selected device
+  - for web, choose `flutter_clip_link (web)`
+
+> Now you're ready to go! 🚀
+
 
 In this file, each route name from `routes.dart` is connected to its corresponding widget, such as `HomePage()`. 
 
